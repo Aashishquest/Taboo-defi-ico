@@ -1,0 +1,152 @@
+<link id="bootstrap-grid" href="/stylesheets/css/wallet.css" rel="stylesheet" type="text/css" />
+
+  <div class="heading-row mb-20">
+    <div class="row align-item-center">
+       <div class="col-lg-6">
+          <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-account-plus"></i></span> Preview </h3>
+       </div>
+        <div class="col-lg-6">
+         <div class="text-right">
+           <div>
+             <a href="#" onclick="goBack()" class="btn btn-common bg-gradient-primary">Go Back</a>
+           </div>
+         </div>
+       </div>
+  </div>
+  </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+           <div class="card-body Preview-box">
+             <div class="row">
+               <div class="col-md-3">
+                 <%if(image){%>
+                  <div>
+                    
+                   
+                    <img src="/uploadFile/<%=image %>"class="img-fluid">
+                    
+                  </div>
+                  <%}%>
+                 <%if(files){%>
+                 <% files.forEach(function(file,index){%>
+                  <div>
+                    <% let file_type=file.mimetype.split('/','2');
+                    if(file_type[0]=="image"){%>
+                    <img src="/uploadFile/<%=file.filename %>"class="img-fluid">
+                    <%} else {%>  
+                      <video width="260" height="200" controls>
+                        <source src="/uploadFile/<%=file.filename %>" type="<%=file.mimetype%>">
+                      </video>
+                    <%} %>
+                  </div>
+                 <% }) %> 
+                 <%}%>
+
+               </div>
+               <div class="col-md-9">
+                    <h4>Basic Details</h4>
+                     <div class="row">
+                        <div class="col-md-3">
+                          <p><b>No of copies : </b> <br><span><%=data.total_copy %></span></p>
+                        </div>
+                        <div class="col-md-3">
+                          <p><b>No of copies for Sale : </b> <span><%=data.copy_for_sale %></span></p>
+                        </div>
+                        <div class="col-md-3">
+                          <p><b>Display Name : </b> <br> <span><%=data.title %></span></p>
+                        </div>
+                        <div class="col-md-3">
+                          <p><b>Categories : </b> <br> <span><%=data.category %></span></p>
+                        </div>
+                     </div>
+                     <h4>Pricing Details</h4>
+                     <div class="row">
+                        <div class="col-md-3">
+                          <p><b>For Sale : </b> <br> <span><%=data.for_sale %></span></p>
+                        </div>
+                        <%if(data.for_sale=="Bid"){%>
+                          <div class="col-md-3">
+                            <p><b>Min. Bid Amount(Taboo) : </b> <br> <span><%=data.bid_min_amount %></span></p>
+                          </div>
+                          <div class="col-md-2">
+                            <p><b>Plateform Fee(15%) : </b> <br> <span></span></p>
+                          </div>
+                          <div class="col-md-2">
+                            <p><b>Start Date: </b> <br> <span><%=data.bid_start %></span></p>
+                          </div>
+
+                          <div class="col-md-2">
+                            <p><b>End Date: </b> <br> <span><%=data.bid_end %></span></p>
+                          </div>
+                          
+                          <%}else{%> 
+
+                            <div class="col-md-3">
+                              <p><b>Basic Price(Taboo) : </b> <br> <span><%=data.basic_price %></span></p>
+                            </div>
+                            <div class="col-md-3">
+                              <p><b>Plateform Fee(15%) : </b> <br> <span><%=data.plateform_fees %></span></p>
+                            </div>
+                            <div class="col-md-3">
+                              <p><b>You get (Taboo) : </b> <br> <span><%=data.total_taboo %></span></p>
+                            </div>
+                            <%}%>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-md-4">
+                          <h4>Accept Payment In : <span>Taboo</span></h4>
+                        </div>
+                        <div class="col-md-4 d-none">
+                          <h4>This content available For : <span><% if(data.available_to.includes("All")) { %> Free <% } %>
+                            <% if(data.available_to.includes("1 Tier")) { %> 1 Tier <% } %>
+                            <% if(data.available_to.includes("2 Tier")) { %> 2 Tier <% } %></span>
+                            <span><% if(data.available_to.includes("3 Tier")) { %> 3 Tier <% } %></span>
+                          </h4>
+                        </div>
+                        <div class="col-md-4">
+                          <h4>Chose Contract Type : <span><%=data.contract_type %></span></h4>
+                        </div>
+                        
+                     </div>
+                     
+                      
+                      
+
+                      
+                     <div class="row">
+                        <div class="col-md-12">
+                          <p><b>Meta Tag : </b> <span><%=data.meta_tag %></span></p>
+                        </div>
+                        <div class="col-md-12">
+                          <p><b>Description(optional)</b> <span> 
+                            <%=data.description %></span></p>
+                        </div>
+                       
+                     </div>
+                     <form  method="post" enctype="multipart/form-data" action="/users/update-painting">
+                      <input type="hidden" name="id" value="<%=id%>">
+                      <button type="submit"  class="btn btn-common bg-gradient-primary">Submit</button>
+
+                     </form>
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .heading-row.mb-20 {
+        margin-top: 75px;
+     }
+    </style>
+    <script>
+      function goBack() {
+        window.history.back();
+        }
+    </script>
+
+    

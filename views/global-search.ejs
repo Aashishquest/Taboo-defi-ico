@@ -1,0 +1,129 @@
+<style>
+    .Subscribeitemtab .nft__item::after {
+    content: "";
+    background-color: rgba(111 ,37 ,37,0.94);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    border-radius: 8px;
+    z-index: 10;
+    /* width: 88%; */
+    margin: auto;
+    height: 94%;
+}
+</style>
+<div class="no-bottom no-top" id="content">
+    <section aria-label="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="de_tab">
+
+                         
+                        
+                        <div class="de_tab_content">
+                            
+                            <div class="tab-1">
+                                <div class="row">
+                                        <!-- nft item begin -->
+                                        <% content.forEach(function(content,index){%>
+                                            <%var Subscribeitemtabs=''%>
+                                            
+                                            <%if(session.subscription){%>
+                                                <% if(content.details.available_to.includes(session.subscription)==true ){%>
+                                                    
+                                                    <%Subscribeitemtabs=''%>
+                                            <%}else{%>
+                                                    <%if(session.subscription=='3 Tier'){%>
+                                                        
+                                                        <%if(content.details.available_to.includes('2 Tier')==true ){%>
+                        
+                                                            <%Subscribeitemtabs=''%>
+                                                        <%}else if(content.details.available_to.includes('1 Tier')==true ){%>
+                                                            <%Subscribeitemtabs=''%>
+                                                            <%}else{%>
+                                                                <%Subscribeitemtabs='Subscribeitemtab'%>
+                                                                <%}%>
+                                                    <%}else if(content.details.available_to.includes('1 Tier')==true ){%>
+                                                    
+                                                <% Subscribeitemtabs=''%>
+                                                <%}else{%>
+                                                    <%Subscribeitemtabs='Subscribeitemtab'%>
+                                            <% }%>
+                                                    
+                                                
+                                            <%}%>
+                                    <%}else{%>
+                                   
+                                       <% if(content.details.available_to.includes('1 Tier')==true){%>
+                                        
+                                        <%Subscribeitemtabs=''%>
+                                    <%}else{%>
+                                        <%Subscribeitemtabs='Subscribeitemtab'%>
+                                   <% }%> 
+                                   <% }%>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 <%=Subscribeitemtabs%>">
+                                            <div class="nft__item">
+                                                <div class="de_countdown" data-year="2021" data-month="8" data-day="16" data-hour="8"></div>
+                                                <div class="author_list_pp">
+                                                    <a href="/author?id=<%=content.user._id %>">                                    
+                                                        <img class="lazy" src="/uploadFile/<%=content.user.image?content.user.image:'author-2.jpg' %>" alt="">
+                                                        <i class="fa fa-check"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="nft__item_wrap">
+                                                    <a href="/item-details?id=<%=content._id %>">
+                                                        <img src="/uploadFile/<%=content.image %>" class="lazy nft__item_preview" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="nft__item_info">
+                                                    <a href="item-details.php">
+                                                        <h4><%=content.title %></h4> 
+                                                    </a>
+                                                    <div class="nft__item_price">
+                                                        0.08 ETH<span>1/20</span>
+                                                    </div>
+                                                    <div class="nft__item_action">
+                                                       <%if(content.details.for_sale=="Bid"){%>
+                                                        <%
+                                                        var myDate = content.details.bid_end.split("-");
+                                                        var newDate = new Date( myDate[0], myDate[1] - 1, myDate[2]);
+                                                        var end_date = newDate.getTime()
+                                                        var todayDate = new Date().toISOString().slice(0, 10);
+                                                        var myDate1 = todayDate.split("-");
+                                                        var newDate1 = new Date( myDate1[0], myDate1[1] - 1, myDate1[2]);
+                                                        var to_day_date = newDate1.getTime()
+                                                        %>
+                                                        <button type="button" <%if(end_date<to_day_date){%> disabled <%}%> class="btn btn-primary " onclick="startBid('<%=content._id %>','<%=content.details.bid_min_amount%>');" >Place Bid</button>
+                                                        <%}else{%>
+                                                        <%if(content.nftToken){%>
+                                                        <a href="#" onclick="startBuy('<%=content._id %>','<%=content.basic_price%>')">Buy Now</a>
+                                                        <%}else{%>
+                                                            <a href="#">Sold Out</a>
+                                                        <%}%>
+                                                        <%}%>
+                                                       
+                                                    </div>
+                                                    <div class="nft__item_like">
+                                                        <i class="fa fa-heart"></i><span>50</span>
+                                                    </div>                            
+                                                </div> 
+                                            </div>
+                                        </div> 
+
+                                       <% }) %>
+                                    </div>
+                            </div>
+                            
+                          
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

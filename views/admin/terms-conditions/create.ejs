@@ -1,0 +1,68 @@
+<div class="heading-row mb-20">
+  <div class="row align-item-center">
+     <div class="col-lg-6">
+        <h3 class="page-title"><span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-hammer"></i></span> Terms & Conditions </h3>
+     </div>
+</div>
+</div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+         <div class="card-body">
+           <div class="row">
+              
+             <div class="col-md-12">
+              <form action="/users/create-page" method="post">
+                  <input type="hidden"name="page_name"value="terms"/>
+               <div>
+                 <div class="profile-form mt-20">
+                    <div class="row">
+                      <div class="col-md-8">
+                          <div class="row">
+                            <div class="col-md-12">
+                               <div class="form-group">
+                                  <label>Tittle</label>
+                                  <input type="text" name="title"class="form-control"value="<%=page?page.title:'' %>">
+                                </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                  <label>Content</label>
+                                  <textarea class="form-control" name="editor1">
+                                    <%=page?page.description:'' %>
+                                  </textarea>
+                                </div>
+                            </div>
+                          </div>
+                          
+                            
+                      </div>
+                      <div class="col-md-4">
+                       
+                      </div>
+                    </div>
+                  
+                    
+                   
+                   
+                
+                    <div class="popup-btn">
+                      <button type="submit" class="btn btn-common bg-gradient-primary">Save</button>
+                      <a href="" class="btn btn-common bg-gradient-primary">Cancel</a>
+                    </div>
+                    
+             
+
+                 </div>
+               </div>
+             </div>
+            </form>
+           </div>
+         </div>
+      </div>
+    </div>
+  </div>
+
+

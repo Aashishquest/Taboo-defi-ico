@@ -1,0 +1,79 @@
+<!-- content begin -->
+<div class="no-bottom no-top" id="content">
+    <div id="top"></div>
+    
+    <section class="full-height relative no-top no-bottom vertical-center" data-bgimage="url(assets/images/background/subheader.jpg) top" data-stellar-background-ratio=".5">
+        <div class="overlay-gradient t50">
+            <div class="center-y relative">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 text-light wow fadeInRight" data-wow-delay=".5s">
+                        <div class="spacer-10"></div>
+                        <h1>Playboy of Blockchain</h1>
+                        <p class="lead">
+                            Taboo is an adult NFT & Streaming media project. Specializing in highly, exclusive content. With models, who aren’t strictly porn stars, their content is nothing like other adult tokens. Taboo aims to be the Playboy of Blockchain. Their marketplace is cutting-edge, built by the Enjin Coin Marketplace Developers.
+                        </p>
+                    </div>
+                        
+                        <div class="col-lg-4 offset-lg-2 wow fadeIn" data-wow-delay=".5s">
+                            <div class="box-rounded padding20" data-bgcolor="#ffffff">
+                                <h3 class="mb10">Login</h3>
+                                <p>
+                                    Login using an existing account or create a new account.Please note that this process is for creators only, members can simply login by Metamask/Trust Wallet" by clicking <a href="/">here</a>.
+                                </p>
+                                <form name="contactForm" id='contact_form' class="form-border" method="post" action='/users/login'>
+
+                                    <div class="field-set">
+                                        <input type='text' name='email' id='email' class="form-control" placeholder="enter email">
+                                    </div>
+                                    
+                                     <div class="field-set">
+                                        <input type='password' name='password' id='password' class="form-control" placeholder="password">
+                                    </div>
+                                    
+                                    <div class="field-set">
+                                      <!--  <a href="../tao-artist/index.php" class="btn btn-main btn-fullwidth color-2">Submit</a>-->
+                                         <input type='submit'  value='Submit' class="btn btn-main btn-fullwidth color-2"> 
+                                    </div>
+                                    
+                                    <div class="clearfix"></div>
+                                    
+                                    <div class="spacer-single"></div>
+                                    <ul style="list-style: none;">
+                                     <% if(err_msg!=undefined){ %>
+                                        <li>
+                                          <span class="error_validate flash_msg"><%= err_msg %></span>
+                                             
+                                        </li>
+                                     <% }%>
+
+                                     <% if(success_msg!=undefined){ %>
+                                        <li>
+                                          <span class="error_validate flash_msg"><%= success_msg %></span>
+                                             
+                                        </li>
+                                     <% }%>
+                                    </ul>
+                                    
+                                <!-- social icons -->
+                                <ul class="list s3">
+                                    <li>Don't Have an Account: <a href="/users/signup">Register</a></li>
+                                   
+                                </ul>
+                                <!-- social icons close -->
+                        </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>		
+    
+    </div>
+    <!-- content close -->
+    <style>
+        span.error_validate.flash_msg {
+           color: #bedc16;
+         }
+    </style>

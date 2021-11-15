@@ -1,0 +1,73 @@
+<div class="heading-row mb-20">
+    <div class="row align-item-center">
+       <div class="col-lg-6">
+          <h3 class="page-title"><span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-account"></i></span> KYC Status </h3>
+       </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+                              
+        <div class="card-body table-responsive">
+          <table class="table">
+            <thead>
+                <tr>
+                  <th width="10%" class="border-top-0">S.No</th>
+                  <th width="15%" class="border-top-0">Document</th>
+                  <th width="15%" class="border-top-0">Full Name</th>
+                  <th width="15%" class="border-top-0">Document Type</th>
+                  
+                  <th width="15%" class="border-top-0">Id Number</th>
+                  <th width="15%" class="border-top-0">Date Of Birth</th>
+
+                  <th width="15%" class="border-top-0">Date</th>
+
+                   <th width="10%" class="border-top-0">Status</th> 
+                   
+                   <th width="10%" class="border-top-0">Action</th>    
+
+                  </tr>
+            </thead>
+             <tbody>
+                              <tr>
+                                <td width="5%">1</td>
+                                <td width="12%">
+                                  <div class="normal-img">
+                                    <img src="/uploadFile/<%=kyc.image %>">
+                                  </div>
+                                </td>
+                                <td width="15%"><%=user.name%></td>
+                                
+                                <td width="15%"><%=kyc.document_type%></td>
+                                <td width="15%"><%=kyc.document_number
+                                  %></td>
+                                  <td width="15%"><%=kyc.dob%></td>
+
+                                  <td width="15%"><%=kyc.created_at%></td>
+
+
+                                <td width="10%"><span class="white-text"><%=kyc.status %></span></td>
+                                 <td>
+                                   <%if(kyc.status!="approved"){%>
+                                      <a href="/users/approve-kyc?id=<%=kyc._id %>">Approve</a>
+                                      <a href="/users/reject-kyc?id=<%=kyc._id %>">Reject</a>
+
+                                     <% } %>
+                                    </td>
+                              </tr>
+
+                             
+
+                              
+                            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    span.white-text {
+    text-transform: capitalize;
+    }
+  </style>

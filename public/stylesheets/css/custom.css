@@ -1,0 +1,733 @@
+.buy-now-input{
+    max-width: 250px;
+    margin: 30px 0 0px;
+    }
+    .buy-now-input .form-control {
+        font-size: 13px;
+        border: 1px solid  #262d42; 
+    }
+    .buy-now-input .buyNow {
+        font-size: 14px;
+        background-color: #29292d;
+        color: #fff;
+        font-weight: 700;
+        box-shadow: none !important;
+    }
+    .buy_option li {
+        display: inline-block;
+        list-style: none;
+        border: 1px solid #d2d2d2;
+        border-radius: 10px;
+        background-color: #f6f6f6;
+        margin: 10px;
+    }
+    .buy_option li a {
+        padding: 10px;
+        display: block;
+    }
+    hr{
+        margin: 15px 0;
+    }
+    .itemDetail{
+        font-size: 14px;
+    }
+    .checkbox label:after, 
+    .radio label:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    
+    .checkbox .cr,
+    .radio .cr {
+        position: relative;
+        display: inline-block;
+        border: 1px solid #a9a9a9;
+        border-radius: .25em;
+        width: 1.3em;
+        height: 1.3em;
+        float: left;
+        margin-right: .5em;
+    }
+    
+    .radio .cr {
+        border-radius: 50%;
+    }
+    
+    .checkbox .cr .cr-icon,
+    .radio .cr .cr-icon {
+        position: absolute;
+        font-size: .8em;
+        line-height: 0;
+        top: 50%;
+        left: 20%;
+    }
+    
+    .radio .cr .cr-icon {
+        margin-left: 0.04em;
+    }
+    
+    .checkbox label input[type="checkbox"],
+    .radio label input[type="radio"] {
+        display: none;
+    }
+    
+    .checkbox label input[type="checkbox"] + .cr > .cr-icon,
+    .radio label input[type="radio"] + .cr > .cr-icon {
+        transform: scale(3) rotateZ(-20deg);
+        opacity: 0;
+        transition: all .3s ease-in;
+    }
+    
+    .checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+    .radio label input[type="radio"]:checked + .cr > .cr-icon {
+        transform: scale(1) rotateZ(0deg);
+        opacity: 1;
+    }
+    
+    .checkbox label input[type="checkbox"]:disabled + .cr,
+    .radio label input[type="radio"]:disabled + .cr {
+        opacity: .5;
+    }
+    
+    /*.dark-scheme section {
+        background: #161D30 !important;
+    }*/
+    footer.footer-light {
+        background: #161d30 !important;
+        /* border-top: solid 1px #eeeeee; */
+        color: #fff;
+    }
+    .dark-scheme h1, .dark-scheme h2, .dark-scheme h4, .dark-scheme h3, .dark-scheme h5, .dark-scheme h6, .dark-scheme .h1_big, .dark-scheme .h1, .dark-scheme .h2, .dark-scheme .h3, .dark-scheme .h4, .dark-scheme .h5, .dark-scheme .h6 {
+        color: #ffffff !important;
+    }
+    
+    .dark-scheme .box-rounded{
+    background-color: #1a1a1a !important;
+    }
+    .de_countdown{
+        display: none !important;
+    }
+    <<<<<<< HEAD
+    /*.explor-sec .nft__item_price{
+    display: none !important;
+    }*/
+    =======
+    
+    >>>>>>> 3480fe74d4055dde0777d84c33e1946e55642b66
+    #subheader {
+        padding: 70px 0 0 0 !important;
+    }
+    
+    <<<<<<< HEAD
+    /*.de_tab_content .nft__item_price{
+       display: none !important; 
+    }*/
+    =======
+    
+    >>>>>>> 3480fe74d4055dde0777d84c33e1946e55642b66
+    .dark-scheme .defi-box{
+        background: transparent !important;
+        background: url("../images/background/2.jpg") center top / cover !important;
+    }
+    .footer-links {
+    
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    footer.footer-light {
+        padding: 40px 0 0;
+        background-color: #0f0f0f !important;
+        border: none !important;
+    }
+    
+    .defi-box{
+        min-height: 100vh;
+    }
+    .box-inner{
+        background-color: #b30606;
+        margin-top: 30px;
+    }
+    .upper-tab-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    background-color: #252424;
+    }
+    .upper-tab-list li{
+    list-style: none;
+    }
+    .upper-tab-list li a {
+        display: inline-block;
+        padding: 15px;
+        text-align: center;
+        width: 110px;
+    }
+    .upper-tab-list li a div i{
+        font-size: 20px;
+    }
+    .upper-tab-list li a div span{
+    display: block;
+    }
+    .upper-tab-list li a.active {
+        background-color: #34363c;
+    }
+    .upper-tab-list li a span{
+        color: #aaa;
+        display: block;
+        margin-top: 10px;
+    }
+    .upper-tab-list li a.active span{
+        color: #fff;
+    }
+    .inner-body{
+        padding: 40px;
+        background-color: #29292d;
+        margin-top: 5px;
+    }
+    .inner-row{
+        display: flex;
+        align-items: center;
+    }
+    
+    .inner-row img{
+        height: 40px;
+    }
+    .inner-row .form-control {
+        width: 60%;
+        margin-right: 5%;
+        background-color: #34363c;
+        border: none;
+        padding: 15px;
+    }
+    .eth-box img{
+        margin-right: 15px;
+    }
+    .eth-box p{
+        font-size: 12px;
+        color: #ddd;
+    }
+    .eth-box h4{
+        font-size: 24px;
+        color: #eee;
+    }
+    .exchange-icon-box {
+        display: flex;
+        padding: 10px 30px;
+        justify-content: flex-end;
+    }
+    .exchange-icon-box span{
+        display: block;
+        width: 35%;
+        text-align: center;
+    }
+    .exchange-icon-box img {
+        height: 50px;
+        object-fit: contain;
+        width: 50px;
+        padding: 10px;
+        transition: all ease-in-out .5s;
+        
+    }
+    .exchange-icon-box img:hover{
+        background-color: #34363c;
+        
+        border-radius: 50%;
+    }
+    .select-token-btn {
+        border: 1px solid #b30606;
+        font-size: 14px;
+        padding: 0px 10px;
+        display: block;
+        border-radius: 30px;
+        margin: 5px 0 0;
+    }
+    
+    #slidecaption {
+       -webkit-animation-name: spinner; 
+      -webkit-animation-timing-function: linear; 
+      -webkit-animation-iteration-count: infinite; 
+      -webkit-animation-duration: 2s; 
+      animation-name: spinner; 
+      animation-timing-function: linear; 
+      animation-iteration-count: infinite; 
+      animation-duration: 2s; 
+      -webkit-transform-style: preserve-3d; 
+      -moz-transform-style: preserve-3d; 
+      -ms-transform-style: preserve-3d; 
+      transform-style: preserve-3d;
+    }
+    
+    
+    /* WebKit and Opera browsers */ 
+    @-webkit-keyframes spinner { 
+      from 
+      { 
+        -webkit-transform: rotateY(0deg); 
+      } 
+      to { 
+        -webkit-transform: rotateY(-360deg); 
+      } 
+    } 
+    /* all other browsers */ 
+    @keyframes spinner { 
+       from { 
+        -moz-transform: rotateY(0deg); 
+        -ms-transform: rotateY(0deg); 
+        transform: rotateY(0deg); 
+       } 
+       to 
+       { 
+        -moz-transform: rotateY(-360deg); 
+        -ms-transform: rotateY(-360deg); 
+        transform: rotateY(-360deg); 
+    
+       } 
+    }
+    
+    .outer-setting {
+        position: relative;
+        padding-right: 25px;
+    }
+    .box-setting {
+        padding: 20px;
+        display: block;
+        position: absolute;
+        right: 0px;
+        top: 45px;
+        background-color: #252424;
+        min-width: 340px;
+        text-align: left;
+        box-shadow: 0 0 10px rgb(0 0 0 / 90%);
+        border-radius: 10px;
+        z-index: 100;
+    }
+    
+    .outer-setting.active .box-setting{
+        display: block !important;
+    }
+    
+    
+    .box-setting{
+    
+    }
+    .box-setting h4 {
+        font-size: 16px;
+    }
+    .box-setting p {
+        font-size: 14px;
+        color: #aaa;
+    }
+    .box-setting button {
+        background-color: transparent;
+        border: 1px solid #b30606;
+        margin: 0 10px 0 0;
+        color: #fff;
+        padding: 2px 10px;
+        height: auto;
+        border-radius: 5px;
+        font-size: 12px;
+        min-width: 60px;
+    }
+    .box-setting .form-control {
+        background-color: transparent;
+        border: 1px solid #b30606 !important;
+        padding: 3px 20px 3px 10px;
+        position: relative;
+        color: #fff;
+        text-align: right;
+    }
+    .box-setting .form-control::after{
+        content: "%";
+        position: absolute;
+        right: 0;
+    }
+    .input-box{
+        position: relative;
+    }
+    .input-box span {
+        position: absolute;
+        top: 3px;
+        right: 6px;
+    }
+    .minut-input{
+        max-width: 80px;
+    }
+    .box-setting button.active-btn{
+    background-color: #b30606;
+    }
+    .on-of-btn {
+        border-radius: 10px;
+        border: none;
+        background: rgb(42, 58, 80);
+        display: flex;
+        width: fit-content;
+        cursor: pointer;
+        outline: none;
+        padding: 0px !important;
+    }
+    .on-btn {
+        padding: 0.35rem 0.6rem;
+        border-radius: 10px;
+        background: none;
+        color: rgb(195, 197, 203);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16px;
+    }
+    .off-btn {
+        padding: 0.35rem 0.6rem;
+        border-radius: 5px;
+        background: rgb(52 54 60);
+        color: rgb(195, 197, 203);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16px;
+    }
+        
+    .defi-modal.modal.show .modal-dialog {
+        background-color: #1f1f1f !important;
+        padding: 20px;
+        border: 1px solid #29292d;
+        border-radius: 5px;
+    }
+    .btn-close {
+        background-color: #fff;
+    }
+    .on-of-btn.active .on-btn {
+        border-radius: 5px;
+        background: rgb(52 54 60);
+        color: rgb(195, 197, 203);
+    }
+    .on-of-btn.active .off-btn{
+     border-radius:0;
+        background:transparent;
+        color: #ddd;
+    }
+    .select-token-body .form-control {
+        background-color: #34363c;
+        border: 1px solid #b30606;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+    .select-token-body ul {
+        padding-left: 10px;
+        margin-bottom: 40px;
+        max-height: 280px;
+        overflow-y: scroll;
+    }
+    .select-token-body ul li {
+        list-style: none;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    .select-token-body ul li .eth-box {
+        display: flex;
+        align-items: center;
+        
+    }
+    .select-token-body ul li .eth-box img {
+        height: 26px;
+    }
+    .select-token-body ul li .eth-box h4 {
+        font-size: 18px;
+        font-weight: 200;
+        color: #ddd !important;
+    }
+    .select-token-body ul li .eth-box p {
+        line-height: 18px;
+        color: #aaa;
+    }
+    .select-token-body ul li.active,
+    .select-token-body ul li:hover,
+    .select-token-body ul li:focus {
+        background-color: #34363c;
+    }
+    .select-token-body ul li.active .eth-box h4{
+    color: #aaa !important;
+    }
+    .select-token-body ul li.active .eth-box p {
+        color: #747474;
+    }
+    .modal, .dark-scheme.modal-open{
+        padding-right: 0 !important;
+    }
+    .tip-box {
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #34363c;
+        margin-bottom: 30px;
+        border: 1px solid #34363c;
+        font-size: 14px;
+    }
+    .tip-box.show{
+        display: block !important;
+    }
+    section#section-subscription-plan .f-boxed.style-3 {
+        height: 390px;
+    }
+    section#section-subscription-plan ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    section#section-subscription-plan ul li {
+        padding: 5px 20px;
+    }
+    section#section-subscription-plan ul li.active {
+        border: 2px solid #b30606;
+        border-radius: 10px;
+        padding: 5px 20px;
+    }
+    section#section-subscription-plan .feature-box.f-boxed:hover li.active{
+        border: 2px solid #ffffff;
+        border-radius: 10px;
+        padding: 5px 20px;
+    }
+    section#section-subscription-plan ul li a {
+        color: #fff;
+    }
+    a.btn-main.btn-subscription {
+        padding: 10px 50px;
+        font-size: 20px;
+        display: inline-block;
+        margin-bottom: 40px;
+    }
+    a.btn-main.btn-subscription img {
+        vertical-align: sub;
+        margin: 0 5px;
+    }
+    .btn-group-sec {
+        margin: 50px 0 20px;
+    }
+    .btn-group-sec a img {
+        margin: 0 10px;
+        vertical-align: top;
+    }
+    .wallet-content {
+        padding: 90px 0;
+    }
+    .wallet-content .wallet-data {
+        padding: 50px 40px;
+        width: 80%;
+        margin: 30px auto 0;
+        background: rgba(var(--secondary-color-rgb), .1);
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+    }
+    .wallet-content .wallet-data .border-bottom {
+        border-bottom: solid 2px #b30606 !important;
+        display: inline-block;
+        padding: 5px 0px;
+        margin: 0 33px;
+    }
+    @media(min-width:576px) and (max-width: 991px) {
+        .btn-group-sec .col-lg-4.col-md-6.col-sm-6.col-xs-12 {
+        margin-bottom: 25px;
+    }
+    .btn-group-sec {
+        margin: 50px 0 0px;
+    }
+    .margin-top {
+        margin-top: 25px;
+    }
+    .wallet-content .wallet-data .btn-group-sec .col-lg-6.col-md-6.col-sm-6.col-xs-12 {
+        flex: 0 0 auto;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+    }
+    @media (max-width: 575px) {
+    .btn-group-sec .col-lg-4.col-md-6.col-sm-6.col-xs-12 {
+        margin-bottom: 25px;
+    }
+    .btn-group-sec {
+        margin: 50px 0 0px;
+    }
+    .margin-top {
+        margin-top: 25px;
+    }
+    .wallet-content .wallet-data .btn-group-sec .col-lg-6.col-md-6.col-sm-6.col-xs-12 {
+        flex: 0 0 auto;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+    }
+    
+    
+    .for-sale-row{
+        display: flex;
+        align-items: center;
+    }
+    .for-sale-row label {
+        width: auto;
+        margin-right: 20px;
+        font-weight: 600;
+    }
+    .for-sale-row .radio, .for-sale-row .checkbox {
+        width: 16.3%;
+    }
+    .border-table-taboo, .border-table-taboo th, .border-table-taboo td{
+        border-color: #fff;
+        color: #fff;
+    }
+    .nice-select {
+        width: 100% !important;
+        height: 42px !important;
+        background-color: transparent !important;
+        line-height: 42px !important;
+        border: 1px solid #ddd !important;
+        margin: 10px 0;
+    }
+    .nice-select .list{
+      width: 100%;
+      background-color: #000 !important;
+      border: 1px solid #ddd !important;
+    }
+    .nice-select .option:hover, .nice-select .option.focus, .nice-select .option.selected.focus {
+        background-color: #b20606 !important;
+    }
+    .subscription-plan .feature-box{
+    padding: 20px;
+    }
+    .subscription-plan ul{
+        padding-left: 0;
+    }
+    .subscription-plan ul li {
+        padding: 5px 0px;
+        list-style: none;
+    }
+    .subscription-plan ul li a {
+        color: #fff;
+    }
+    .subscription-plan ul li a i {
+        margin: 0;
+        padding: 2px 0 !important;
+        line-height: initial !important;
+        height: auto !important;
+        font-size: 22px !important;
+    }
+    .Subscribe-item-tab .nft__item{
+    position: relative;
+    }
+    .Subscribe-item-tab .nft__item::before {
+        content: "";
+        background-color: rgba(111 ,37 ,37,0.5);;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        border-radius: 8px;
+        z-index: 10;
+    }
+    .Subscribe-item-tab .nft__item::after {
+        content: "";
+        background-color: rgba(111 ,37 ,37,0.94);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        border-radius: 8px;
+        z-index: 10;
+        width: 88%;
+        margin: auto;
+        height: 93%;
+    }
+    .Subscribe-item-tab .author_list_pp{
+        display: none;
+    }
+    
+    .tier-banner {
+        background-color: rgba(0,0,0,0.8) !important;
+        background-blend-mode: multiply;
+        padding: 190px 0 0;
+        background-position: top 20% center !important;
+        background-repeat: no-repeat !important;
+    }
+    
+    .nft__item{
+        padding: 0 !important;
+        margin: 20px 0;
+    }
+    .nft__item_wrap {
+        height: 320px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        overflow: hidden;
+    }
+    .nft__item .portrait {
+        height: 300px !important;
+        width: 100% !important;
+    <<<<<<< HEAD
+        border-bottom: 1px solid #1c1c1c !important;
+    =======
+        border-bottom: 1px solid #1c1c1c;
+    >>>>>>> 3480fe74d4055dde0777d84c33e1946e55642b66
+    }
+    .author_list_pp {
+        top: -25px;
+    }
+    .nft__item_info{
+        padding: 20px !important;
+    }
+    .subscribed-plan.main-full-vid .nft__item .portrait{
+        height: auto !important;
+    }
+    .nft__item:hover img.nft__item_preview {
+        transform: scale(0.98);
+    }
+    .plan-box-new .feature-box {
+        padding: 10px !important;
+        background-image: url(../images/model-bg.png);
+        background-color: rgba(179, 6, 6,0.6);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain !important;
+    }
+    .plan-box-new .feature-box .text h4 {
+        font-size: 34px;
+        padding-top: 140px;
+    }
+    .plan-box-new .feature-box  .text ul{
+       visibility: hidden !important;
+       opacity: 0 !important;
+    }
+    
+    .plan-box-new .feature-box:hover .text h4{
+        padding-top: 10px;
+    }
+    .confirm-btn {
+        background-color: #fff;
+        padding: 6px 20px;
+        border-radius: 10px;
+        color: #b30606 !important;
+        font-weight: 600;
+        display: block;
+        text-align: center;
+        margin: 15px 0;
+    }
+    .plan-box-new .feature-box:hover .text ul{
+        visibility: visible !important;
+       opacity: 1 !important;
+    }
+    
+    @media (max-width: 768px) {
+    
+     
+    .plan-box-new .feature-box .text ul{
+        visibility: visible !important;
+       opacity: 1 !important;
+    }
+    .plan-box-new .feature-box .text h4 {
+        font-size: 24px;
+        padding-top: 10px;
+    }
+    
+    }

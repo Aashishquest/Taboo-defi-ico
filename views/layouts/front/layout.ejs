@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>TAO NFT</title>
+
+      <link rel="shortcut icon" href="/images/favicon.png"  />
+
+      <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0">
+      <meta content="TAO" name="description" />
+      <meta content="" name="keywords" />
+      <meta content="" name="author" />
+      <!-- CSS Files
+      ================================================== -->
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+
+      <link id="bootstrap" href="/stylesheets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+      <link id="bootstrap-grid" href="/stylesheets/css/bootstrap-grid.min.css" rel="stylesheet" type="text/css" />
+      <link id="bootstrap-reboot" href="/stylesheets/css/bootstrap-reboot.min.css" rel="stylesheet" type="text/css" />
+      <link href="/stylesheet/css/animate.css" rel="stylesheet" type="text/css" />
+      <link href="/stylesheets/css/owl.carousel.css" rel="stylesheet" type="text/css" />
+      <link href="/stylesheets/css/owl.theme.css" rel="stylesheet" type="text/css" />
+      <link href="/stylesheets/css/owl.transitions.css" rel="stylesheet" type="text/css" />
+      <link href="/stylesheets/css/magnific-popup.css" rel="stylesheet" type="text/css" />
+      <link href="/stylesheets/css/jquery.countdown.css" rel="stylesheet" type="text/css" />
+      <link href="/stylesheets/css/style.css" rel="stylesheet" type="text/css" />
+      <link href="/stylesheets/css/custom.css" rel="stylesheet" type="text/css" />
+      <!-- color scheme -->
+      <link id="colors" href="/stylesheets/css/colors/scheme-01.css" rel="stylesheet" type="text/css" />
+      <link href="/stylesheets/css/coloring.css" rel="stylesheet" type="text/css" />
+  
+      <link rel="stylesheet" href="/stylesheets/css/nice-select.css">
+      
+  <style>
+    #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+#preloader img{
+  height: 80px;
+ width: 80px;
+}
+  </style>
+  </head>
+
+
+    <!-- Preloader -->
+<div id="preloader">
+  <div id="status"><img height="100" width="100" src="/images/loader-new.gif"></div>
+</div>
+  
+  <body class="dark-scheme">
+    <div class="wrapper">
+     <%- include('./header.ejs') %>
+     <main>
+        
+        <%- body %>
+
+     </main>
+     <%- include('./footer.ejs') %>
+    </div>
+  </body>
+</html>

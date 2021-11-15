@@ -1,0 +1,136 @@
+<div class="heading-row mb-20">
+    <div class="row align-item-center">
+       <div class="col-lg-6">
+          <h3 class="page-title"><span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-sim"></i></span>Orders Management </h3>
+       </div>
+       <div class="col-lg-6">
+         <div class="text-right">
+           <div>
+             <a href="/users/dashboard" class="btn btn-common bg-gradient-primary">Go Back</a>
+           </div>
+         </div>
+       </div>
+      
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th width="10%">S. No.</th>
+                <th width="15%">User Address</th>
+                <th width="20%">conent Id</th>
+                <th width="10%">Status</th>
+                <th width="10%">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+           <% orders.forEach(function(order,index){ %>
+             
+              
+              <tr>
+                <td><%- index+1 %></td>
+               
+                <td><%- order.user_id %></td>
+                <td><%- order.content_id %></td>
+               
+
+                <td class="success-color" style="text-transform: capitalize;"> <%- order.status %> </td>
+                
+                 
+                <td>
+                  <div>
+                    <% if(order.status=="success"){%>
+                    <a  href="#" onclick=" confirmOrder('<%=order._id %>')">Confirm</a>
+                     <% } %>
+                  </div>
+                </td>
+               
+              </tr>
+
+              <%  }) %>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<style>
+    .heading-row.mb-20 {
+    margin-top: 5%;
+}
+</style>
+<script>
+    
+    async function getAccount() {
+        accountsLocal = await ethereum.request({
+            method: 'eth_requestAccounts'
+        });
+           console.log(accountsLocal);
+        accounts = accountsLocal[0];
+        $(".hidden_address").val(accounts);
+        //        var obj=document.getElementById('tx_id');
+        //        obj.value=accounts;
+        return accounts;
+    }
+
+async function confirmOrder(order_id){
+    
+       let user_accounts = await getAccount();
+        let finalprice="0";
+        ethereum.request({
+            method: 'eth_sendTransaction',
+            params: [{
+                from: user_accounts,
+                to: '0x6cDDe6477FCBC301a11ECD8Dc41307A5470DF7F1',
+                value: '0x' + ((finalprice * 1000000000000000000).toString(16)), //'0x09184e72a000',
+                chainId: '0x4' //gasPrice: '0x09184e72a000',
+                //gas: '21000',
+            }, ],
+        })
+
+        .then((txHash) => {
+            console.log(txHash);
+           
+             $.ajax({
+                 dataType: "json",
+                 type: 'GET',
+                 url: '/users/confirm-order',
+                 data: {
+                     tx_id: txHash,
+                     order_id:order_id,
+                     address: user_accounts
+                 },
+                 success: function(data) {  location.reload();
+                     swal({
+                         type: 'success',
+                         text: 'Transaction completed successfully.',
+                         timer: 3000,
+                         onOpen: function() {
+                             swal.showLoading()
+                         }
+                     }).then(function() {
+                         location.reload();
+                     });
+                                   
+                 }
+             });
+        });
+    }
+   
+   
+    
+
+
+
+
+// Script connect wallet
+
+
+
+</script>

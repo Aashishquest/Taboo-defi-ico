@@ -1,0 +1,75 @@
+<div class="heading-row mb-20">
+  <div class="row align-item-center">
+     <div class="col-lg-6">
+        <h3 class="page-title"><span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-account-multiple"></i></span>Models/Creators List </h3>
+     </div>
+    
+</div>
+</div>
+<section>
+    <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body table-responsive">
+                <table class="table table-bordered"id="table">
+           
+
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                         <th>Email</th>
+                         <th style="text-transform: capitalize;">status</th>
+                         <th style="text-transform: capitalize;">
+                             accept
+                         </th>
+                         <th style="text-transform: capitalize;">
+                            reject
+                      </th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <% users.forEach(function(user){ %>
+                        <tr>
+                          <td><%- user.name %></td>
+                          <td><%- user.email %></td>
+                          
+                          <td style="text-transform: capitalize;"><%- user.status %></td>
+                          <td>
+                            <a href="/users/accept?id=<%=user._id %>">Activate</a>
+                            </td>
+                            <td>
+                            <a style="text-transform: capitalize;" href="/users/reject?id=<%=user._id %>">deactivate</a>
+
+                          </td>
+                        </tr>
+                     <% }) %>
+                </tbody>
+             
+             </table>
+             </div>
+             </div>
+             </div>
+        </div>
+    </div>
+</section>
+<script>
+  function approveCreater(id)
+  {
+    alert(id);
+  }
+  function rejectCreater(){
+    alert("hello")
+  }
+</script>
+<script>
+  $(document).ready( function () {
+    $('.table').DataTable();
+  } );
+  </script>
+<style>
+    .content-wrapper {
+    padding: 15px;
+    margin-top: 48px;
+}
+</style>

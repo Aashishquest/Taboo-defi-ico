@@ -1,0 +1,508 @@
+<style>
+    .Subscribeitemtab .nft_coll::after {
+    content: "";
+    background-color: rgba(111 ,37 ,37,0.94);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    border-radius: 8px;
+    z-index: 10;
+    /* width: 88%; */
+    margin: auto;
+    height: 100%;
+}
+</style>
+<section class="nft-details-page" aria-label="section" class=" mt-5 ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6  text-center">
+                <div class="detail-img">
+                    <% if(details.media_type[0]=="video"){%> 
+                    <video width="400" controls>
+                       <source src="/uploadFile/<%=details.image %>" type="video/<%=details.media_type[1] %>">
+                    </video> 
+                    <% } else {%>
+                        
+                        <img src="/uploadFile/<%=details.image %>" class="img-fluid img-rounded mb-sm-30" alt="">
+
+                        
+                        <%}%> 
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="item_info">
+                    <input type="hidden"name="content_id"id="content_id" value="<%=details._id %>"/>
+   
+                 <input type="hidden"name="content_basic_price"id="content_basic_price" value="<%=details.basic_price %>"/>
+                    <h2><%=details.title %></h2>
+                    <div class="item_info_counts">
+                        <div class="item_info_type"><img src="/uploadFile/category/<%=category.image %>" width="20"height="20"class="fa fa-image"/> <%=details.category%></div>
+                        <div class="item_info_views"><b>Taboo</b> <%=details.basic_price??"0" %></details></div>
+                    </div>
+                    <p><%=details.description %>
+                    </p>
+
+                    <h6>Creator</h6>
+                    <div class="item_author">
+                        <div class="author_list_pp">
+                            <a href="/author?id=<%=creater._id %>">
+                                <img class="lazy" src="/uploadFile/<%=creater.image %>" alt="">
+                                <i class="fa fa-check"></i>
+                            </a>
+                        </div>
+                        <div class="author_list_info">
+                            <a href="/author?id=<%=creater._id %>"><%=creater.name %></a>
+                        </div>
+                    </div>
+
+                    <div class="input-group buy-now-input">
+                        
+                       <% if(details.for_sale=="Bid"){%>
+
+                        <input type="hidden" name="min_bid_amount"id="min_bid_amount" value="<%=details.bid_min_amount %>" class="form-control"/>
+                        <%
+                        var myDate = details.bid_end.split("-");
+                        var newDate = new Date( myDate[0], myDate[1] - 1, myDate[2]);
+                        var end_date = newDate.getTime()
+                        var todayDate = new Date().toISOString().slice(0, 10);
+                        var myDate1 = todayDate.split("-");
+                        var newDate1 = new Date( myDate1[0], myDate1[1] - 1, myDate1[2]);
+                        var to_day_date = newDate1.getTime()
+                        %>
+                        <button type="button" <%if(end_date<to_day_date){%>disabled<%}%> class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Place Bid</button>
+
+                      <% } else {
+                           
+                        if(nftToken){  %>
+                            
+                        <button type="button" class="btn buyNow">Buy Now</button>
+
+                      <% }else {%>   
+                        
+                        <button type="button" class="btn sold-out">Sold Out</button>
+
+                        
+                        <%} }%>
+                    </div>
+
+                      
+                    
+
+
+                    <div class="spacer-40"></div>
+
+                    
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form name="contactForm" id="contact_form"  class="form-border" method="post" action="">
+                                    <h5 class="modal-title mb-3" id="staticBackdropLabel">Enter Minimum Bid Amount</h5>
+                                    <div class="field-set" style="background-size: cover;">
+                                        <span id="error_message"></span>
+                                        <input type="text" name="name" id="bid_amount" class="form-control" placeholder="Enter Minimum Bid Amount">
+                                    </div>
+                    
+                                    <div class="spacer-half" style="background-size: cover;"></div>
+                    
+                                    <div id="submit" style="background-size: cover;">
+                                        <button type="button" onclick="placeBid()" id="send_message"class="btn btn-main">submit</button>
+                                    </div>
+                                    
+                                </form>
+                              </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                     
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="section-collections" data-bgcolor="#0f0f0f">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <h2>Hot Collections </h2>
+                    <div class="small-border bg-color-2"></div>
+                </div>
+            </div>
+            <div id="collection-carousel" class="owl-carousel wow fadeIn">
+                  
+                <% containtArr.forEach(function(content){%>
+                    <%var Subscribeitemtabs=''%>
+                    
+                    <%if(session.subscription){%>
+                        <% if(content.details.available_to.includes(session.subscription)==true ){%>
+                            
+                            <%Subscribeitemtabs=''%>
+                    <%}else{%>
+                            <%if(session.subscription=='3 Tier'){%>
+                                
+                                <%if(content.details.available_to.includes('2 Tier')==true ){%>
+
+                                    <%Subscribeitemtabs=''%>
+                                <%}else if(content.details.available_to.includes('1 Tier')==true ){%>
+                                    <%Subscribeitemtabs=''%>
+                                    <%}else{%>
+                                        <%Subscribeitemtabs='Subscribeitemtab'%>
+                                        <%}%>
+                            <%}else if(content.details.available_to.includes('1 Tier')==true ){%>
+                            
+                        <% Subscribeitemtabs=''%>
+                        <%}else{%>
+                            <%Subscribeitemtabs='Subscribeitemtab'%>
+                    <% }%>
+                            
+                        
+                    <%}%>
+            <%}else{%>
+            
+               <% if(content.details.available_to.includes('1 Tier')==true){%>
+                
+                <%Subscribeitemtabs=''%>
+            <%}else{%>
+                <%Subscribeitemtabs='Subscribeitemtab'%>
+           <% }%> 
+           <% }%>
+                     <div class="<%=Subscribeitemtabs%>">
+                      <div class="nft_coll ">
+                          <div class="nft_wrap">
+                              <a href="/item-details?id=<%=content._id %>">
+                             <% if(content.media_type[0]=="video"){%> 
+
+                                <video width="200"height="259">
+                                    <source src="/uploadFile/<%=content.image %>" type="video/<%=content.media_type[1]%>">
+                                </video>
+                                    
+                                    
+                                    <%} 
+                                else {%> 
+                                    <img src="/uploadFile/<%=content.image %>" class="lazy img-fluid" alt=""></a>
+
+                                      
+                                     <%} %>
+                          </div>
+                          <div class="nft_coll_pp">
+                              <a href="/author?id=<%=content.userinfo._id %>">
+                                <img class="lazy" src="/uploadFile/<%=content.userinfo.image %>" alt=""></a>
+                              <i class="fa fa-check"></i>
+                          </div>
+                          <div class="nft_coll_info">
+                              <a href="/model"><h4><%=content.title %> </h4></a>
+                              <span>ERC-192</span>
+                          </div>
+                      </div>
+                   </div>
+                    <% }) %>
+                 
+                    
+                
+                    
+                    
+                </div>
+                <div id="collection-carousel" class="owl-carousel wow fadeIn">
+                                            
+                   
+                          
+                      
+                          
+                          
+                      </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="section-popular">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <h2>Top Sellers</h2>
+                    <div class="small-border bg-color-2"></div>
+                </div>
+            </div>
+            <div class="col-md-12 wow fadeIn">
+                <ol class="author_list">
+
+                  <% users.forEach(function(user){%>
+                    <li>                                    
+                        <div class="author_list_pp">
+                            <a href="/author?id=<%= user._id %>">
+                                <img class="lazy" <% if(user.image){%> src="/uploadFile/<%=user.image %>" <%}else{%>
+                                  src="/images/author/author-1.jpg" <%}%> alt="">
+                                <i class="fa fa-check"></i>
+                            </a>
+                        </div>                                    
+                        <div class="author_list_info">
+                            <a href="/author?id=<%=user._id %>"><%=user.name %></a>
+                            <span class="d-none">3.2 ETH</span>
+                        </div>
+                    </li>
+                  <% }) %>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+ <style>
+    
+    button.btn.sold-out {
+    color: #fff;
+    font-size: 14px;
+    background-color: #29292d;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: none !important;
+    position: relative !important;
+}
+</style> 
+<script>
+     function checkBidAmount(){  //alert("hello")
+      let min_amount=document.getElementById('min_bid_amount').value;
+      let amount= document.getElementById('bid_amount').value
+
+      min_amount=parseInt(min_amount);
+      amount=parseInt(amount);
+      if(amount<min_amount){ 
+          document.getElementById('error_message').innerText="Bid Amount Should be greater than min bid Amount";
+         document.getElementById('bid_amount').value="";
+      }
+      else
+      {
+        document.getElementById('error_message').innerText="";
+
+          return true;
+      }
+  }          
+      
+  function placeBid(){
+      let checkAmount=checkBidAmount();
+      if(checkAmount)
+       {
+        let amount= document.getElementById('bid_amount').value
+
+         confirmBid(amount);
+       }
+       else
+        {
+            return false;
+        }
+  }  
+  
+
+  function confirmBid(amount){
+          let content_id=document.getElementById('content_id').value;
+          let address=getAccountData();
+          console.log(address)
+                $.ajax({
+                   dataType: "json",
+                   type: 'GET',
+                   url: '/place-bid',
+                    data: {
+                            "address":address,
+                             "bid_amount":amount,
+                             "content_id":content_id
+                            },
+                    success: function(data) {
+                        swal({
+                             type: 'success',
+                              text: 'Bid completed successfully.',
+                              timer: 3000,
+                              onOpen: function() {
+                                swal.showLoading()
+                            }
+                        }).then(function() {
+                            location.reload();
+                       });
+                                  location.reload();
+                   }
+                });
+           
+            }
+
+  
+
+</script>
+<script src="/javascripts/js/wallet.js"></script>
+
+<script type="module">
+  import { ethers } from "/javascripts/ether.js";
+
+
+let contractAddress="0xc3B47d850D0fD72dE0C2009EfCdC64b418394978";
+const abi=[{"inputs":[{"internalType":"address payable","name":"minter","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"role","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"previousAdminRole","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"newAdminRole","type":"bytes32"}],"name":"RoleAdminChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"role","type":"bytes32"},{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"sender","type":"address"}],"name":"RoleGranted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"role","type":"bytes32"},{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"sender","type":"address"}],"name":"RoleRevoked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"DEFAULT_ADMIN_ROLE","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MINTER_ROLE","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"availableToWithdraw","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getChainID","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"}],"name":"getRoleAdmin","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"grantMinter","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"grantRole","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"hasRole","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"redeemer","type":"address"},{"components":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"uint256","name":"minPrice","type":"uint256"},{"internalType":"string","name":"uri","type":"string"},{"internalType":"bytes","name":"signature","type":"bytes"}],"internalType":"struct Taboo.NFTVoucher","name":"voucher","type":"tuple"}],"name":"redeem","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"renounceRole","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"revokeRole","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"}];
+const provider = new ethers.providers.Web3Provider(window.ethereum)
+console.log(provider.getSigner());
+//const contract = new ethers.Contract(contractAddress,abi2, provider);
+//console.log(contract.getChainID())
+const signer = provider.getSigner();
+console.log(signer.getAddress())
+
+if (window.ethereum) {  window.ethereum.enable().then(accounts => {   
+   console.log('ready to go!') 
+   //startMint(); 
+ }).catch(reason => {  
+     alert('conntect to wallet');  
+       // Handle error. Likely the user rejected the login. 
+});}
+else 
+{  
+    alert("The user doesn't have Metamask installed."); // The user doesn't have Metamask installed.
+}
+
+async function redeemData(voucher,nft_id){
+    const redeemer = provider.getSigner();
+    let raddress=await redeemer.getAddress();//'0x3246258362e662AE3b482A7e685A955445e9Ed47';//redeemer.getAddress();
+    console.log(raddress);
+    const redeemerContract = new ethers.Contract(contractAddress,abi,redeemer);
+    /*try{
+        let minter= await redeemerContract.grantMinter(raddress);
+        console.log(minter)
+      }
+      catch(err){
+          console.log(err);
+      } */
+    //let minPrice=1;
+   //const minPrice =""; //ethers.constants.WeiPerEther // charge 1 Eth
+    //let amount= '0x' + ((minPrice*1000000000000000000).toString(16))
+
+    console.log("new voucher",voucher);
+      try{
+        let hash= await  redeemerContract.redeem(raddress,voucher);
+         
+         document.getElementById('trx').innerText="Transaction Hash: "+hash.hash;
+         console.log(hash);
+
+          
+         $.ajax({type:"GET",
+         url:"/sale-nft",
+         data:{id:nft_id},
+         success:function(res){
+              
+                     swal({
+                              type: 'success',
+                               text: 'Transaction completed successfully.',
+                               timer: 3000,
+                               onOpen: function() {
+                                 swal.showLoading()
+                             }
+                         }).then(function() {
+                             location.reload();
+                        });
+         }
+           
+        
+        });
+
+        }catch(err){
+          console.log(err);
+      }
+    
+    }
+
+
+ /*   $('body').on("click",".buyNow",function(){ //alert("hello")
+        //onConnect();
+       let sale= onBuyNFT();
+
+       if(sale=="sold"){
+        startRedeem();
+       }
+       
+    });
+
+   function buyNow(){
+       alert("hello");
+   }*/
+</script>
+
+
+
+
+
+
+<script>
+    function buyNFT(){
+      var finalprice =getBasicPrice();
+      let amount='0x' + ((finalprice* 1000000000000000000).toString(16));
+      let address="0x6cDDe6477FCBC301a11ECD8Dc41307A5470DF7F1";
+     
+                $.ajax({
+                   dataType: "json",
+                   type: 'GET',
+                   url: '/buy-content',
+                    data: {
+                            "wallet":address,
+                             "amount":amount,
+                            },
+                    success: function(data) {
+                        swal({
+                             type: 'success',
+                              text: 'Transaction completed successfully.',
+                              timer: 3000,
+                              onOpen: function() {
+                                swal.showLoading()
+                            }
+                        }).then(function() {
+                            location.reload();
+                       });
+                                  location.reload();
+                   }
+                });
+           
+            }
+        
+</script>
+<script>
+  function buyNFT(){
+          let content_id=document.getElementById('content_id').value;
+          let content_id=document.getElementById('bid_amount').value;
+          let address=getAccountData();
+                $.ajax({
+                   dataType: "json",
+                   type: 'GET',
+                   url: '/place-bid',
+                    data: {
+                            "address":address,
+                             "bid_amount":amount,
+                             "content_id":content_id
+                            },
+                    success: function(data) {
+                        swal({
+                             type: 'success',
+                              text: 'Bid completed successfully.',
+                              timer: 3000,
+                              onOpen: function() {
+                                swal.showLoading()
+                            }
+                        }).then(function() {
+                            location.reload();
+                       });
+                                  location.reload();
+                   }
+                });
+           
+            }
+
+
+    
+</script>
+
+
+

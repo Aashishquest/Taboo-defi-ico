@@ -1,0 +1,193 @@
+<div class="heading-row mb-20">
+    <div class="row align-item-center">
+       <div class="col-lg-6">
+          <h3 class="page-title"><span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-home"></i></span> Edit Profile </h3>
+       </div>
+        <div class="col-lg-6">
+         <div class="text-right">
+           <div>
+             <a href="/users/dashboard" class="btn btn-common bg-gradient-primary">Go Back</a>
+           </div>
+         </div>
+       </div>
+  </div>
+  </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+           <div class="card-body">
+             <div class="row">
+               <div class="col-md-12">
+                 <div>
+                   <div class="profile-form mt-20">
+                       <form action="/users/update-profile"method="post" onsubmit="return validatePhone()" enctype="multipart/form-data">
+                      <div class="row">
+                        <div class="col-md-4">
+
+                             <div class="form-group">
+                                <label>Profile Image(Size in Pixel 200*200)</label>
+                                <p class="note"></p>
+                                 <div class="border-gray document-upload-box">
+                                       <div class="text-left" >
+                                          <div class="">
+                                            <img id="user_profile_image_preview" src="/uploadFile/<%=user.image %>" class="m-t-5" style="    width: 181 px;height: 150 px;margin-bottom: 5 px;">
+                                          </div>
+                                           <div class="input-group mb-3 mb-3 verification">
+                                              <input type="text" class="form-control" readonly="" id="text_img_name" data-rule-required="true" data-msg-required="Please select your Id.">
+                                              <span class="input-group-btn">
+                                                <span class="btn btn-common bg-gradient-primary btn-file1">
+                                                Upload <input type="file" id="imgInp6" value="" name="file" accept="image/*" onchange="readURL(this);">
+                                                 <input type="hidden" name="old_image" value="<%=user.image %>">
+                                                </span>   
+                                              </span>
+                                              <!-- <button class="btn btn-common bg-gradient-primary ml-15">Remove</button> -->
+                                           </div>
+                                       </div>
+                                  </div>
+                              </div>
+                       
+                            </div>
+                       
+                     
+                     
+                            <div class="col-md-8">
+                            
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                     <label>Full Name</label>
+                                     <input type="text" class="form-control"name="name"value="<%=user.name %>">
+                                   </div>
+                               </div>
+                              
+                               <div class="col-md-6">
+                                  <div class="form-group">
+                                     <label>Phone</label>
+                                     <input type="text" name="phone"id="phone" class="form-control"value="<%=user.mobile %>">
+                                   </div>
+                                   <h5 id="phonecheck" style="color: red; display: none;">
+                                    **Your phone must be valid
+                                  </h5>
+                               </div>
+                               
+
+                               <div class="col-md-6">
+                                <div class="form-group">
+                                   <label>Instagram</label>
+                                   <input type="text" class="form-control"name="instagram"value="<%=user.instagram %>">
+                                 </div>
+                             </div>
+
+                             <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>Twitter</label>
+                                 <input type="text" class="form-control"name="twitter"value="<%=user.twitter %>">
+                               </div>
+                           </div>
+                             
+
+                           <div class="col-md-6">
+                            <div class="form-group">
+                               <label>Website</label>
+                               <input type="text" class="form-control"name="website"value="<%=user.website %>">
+                             </div>
+                         </div>
+                         <div class="col-md-6">
+                          <div class="form-group">
+                             <label>Description</label>
+                             <textarea class="form-control"cols="8"rows="6"name="description">
+                                <%=user.description %>
+                             </textarea>
+                           </div>
+                       </div>
+                             </div>
+                      
+                      
+                      
+                     
+                  
+                      <div class="popup-btn text-center">
+                        <button type="submit" class="btn btn-common bg-gradient-primary">Update</button>
+                        <a href="" class="btn btn-common bg-gradient-primary">Cancel</a>
+                      </div>
+                      </div>
+                    </form>
+
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+<script>
+function readURL(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+reader.onload = function (e) {
+$('#user_profile_image_preview')
+.attr('src', e.target.result)
+.width(180)
+.height(150);
+};
+
+reader.readAsDataURL(input.files[0]);
+}
+var src = $('#imgInp6').val(); // "static/images/banner/blue.jpg"
+var tarr = src.split('/');      // ["static","images","banner","blue.jpg"]
+var file = tarr[tarr.length-1]; // "blue.jpg"
+var data = file.split('.')[0];  // "blue"
+
+//alert(data);
+$('#text_img_name').val(src);
+}
+</script>
+<script>
+   function validateForm(){ 
+
+let phone=validatePhone();
+
+console.log(phone)
+if(!phone){
+        return false;
+    }else
+    {
+      return true;
+    }
+
+
+}
+
+
+  function validatePhone(){
+     let phone=$("#phone").val();
+     
+     var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+
+ 
+     if (phone.match(phoneno))
+          {  
+            
+ 
+             return true;  
+           }
+            else
+            {  
+            $('#phonecheck').show();
+             return false;  
+           }  
+ }
+
+ function hideError(){
+  $('#phonecheck').hide();  
+
+ }
+
+ window.onload = function() {
+   hideError();
+   abbrev_name("<%=name %>");
+};
+
+
+</script>

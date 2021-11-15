@@ -1,0 +1,892 @@
+<!-- content begin -->
+<div class="no-bottom no-top" id="content">
+    <div id="top"></div>
+    
+  <section class="defi-box text-light overflow-hidden" aria-label="section" data-bgimage="url(assets/images/background/2.jpg) top" id="#section-hero">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-7 m-auto">
+                  <div class="box-inner">
+                      <ul class="upper-tab-list">
+                          <li class="inner-tab-list">
+                              <a href="javascript:void(0);" class="tab1 active">
+                                  <div>
+                                         <img src="assets/images/exchange_1.png">
+                                        <span>Swap</span>
+                                  </div>
+                              </a>
+                            </li>
+                         
+                      </ul>
+                      <div class="inner-body">
+                            <div class="tip-box" style="display: none;">
+                                <b>Tip:</b> When you add liquidity, you will receive pool tokens representing your position. These tokens automatically earn fees proportional to your share of the pool, and can be redeemed at any time.
+                            </div>
+                           <div class="inner-row">
+                            <input type="text" id="bidding" class="form-control" onchange="myChangeFunction(bidding)"
+                            placeholder="TABOO">
+                                <!-- <input type="text" class="form-control" placeholder="0.0" /> -->
+                                <div class="inner-row eth-box">
+                                    <img src="assets/images/eth-icon.png">
+                                    <div >
+                                        <p class="mb-0">Swap From:</p>
+                                        
+                                            <h4 class="mb-0">TABOO</h4>
+                                       
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="exchange-icon-box">
+                                  <span><img src="assets/images/swap_1.png"></span>
+                           </div>
+                            <div class="inner-row">
+                                <!-- <input type="text" class="form-control" placeholder="0.0" /> -->
+                                     <input type="text" id="ethbidding" class="form-control" placeholder="ETH" readonly>
+                               <div class="inner-row eth-box">
+                                    <div class="outer-img-btc">
+                                        <img id="slidecaption" src="assets/images/ethereum.png">
+                                    </div>
+                                    <div >
+                                        <p class="mb-0">Swap To:</p>
+                                        <a href="#" class="select-token-btn" data-bs-toggle="modal" data-bs-target="#selecttokenModal">Select a Token</a>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="mt-5	">
+                                 <button class="btn-main lead  w-100"> Connect Wallet</button>
+                                 <br>
+                                 <button class="btn-main lead  w-100"  onclick="BuyEth()"> Buy Taboo</button>
+
+                           </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+</div>
+<!-- content close -->
+
+<!-- Modal -->
+<div class="modal fade defi-modal" id="onModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title text-center" id="exampleModalLabel">Are you sure?</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+      <br>
+    Expert mode turns off the confirm transaction prompt and allows high slippage trades that often result in bad rates and lost funds.
+    <br>
+    <br>
+
+
+    <b>ONLY USE THIS MODE IF YOU KNOW WHAT YOU ARE DOING.</b>
+
+    <br>
+
+
+    <div class="text-center mt-5">
+        <button type="button" class="btn btn-primary">Turn On Expert Mode</button>
+    </div>
+  </div>
+  
+</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade defi-modal" id="selecttokenModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title text-center" id="exampleModalLabel">Select a token</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body select-token-body">
+      <input type="text" name="" class="form-control" placeholder="Search Name or paste Address">
+    <div>
+        <ul >
+            <li class="active">
+                <a href="">
+                    <div class="eth-box">
+                            <img src="assets/images/eth-icon.png">
+                            <div >
+                                <h4 class="mb-0">ETH </h4>
+                                <p class="mb-0"value="eth">Ether</p>
+                                
+                            </div>
+                        </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="eth-box">
+                            <img src="assets/images/bnb-icon.png">
+                            <div >
+                                <h4 class="mb-0">BNB</h4>
+                                <p class="mb-0" value="bnb">BNB</p>
+                             
+                            </div>
+                        </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="eth-box">
+                            <img src="assets/images/tether.png">
+                            <div >
+                                <h4 class="mb-0">USDT </h4>
+                                <p class="mb-0" value="usd">Usdt</p>
+                                
+                            </div>
+                        </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="eth-box">
+                            <img src="assets/images/bitcoin.png">
+                            <div >
+                                <h4 class="mb-0">BTC</h4>
+                                <p class="mb-0" value="btc">Bitcoin</p>
+                                                              
+                            </div>
+                        </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="eth-box">
+                            <img src="assets/images/eth-icon.png">
+                            <div >
+                                <h4 class="mb-0">ADA </h4>
+                                <p class="mb-0" value="cardano">CARDANO</p>
+                               
+                            </div>
+                        </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="eth-box">
+                            <img src="assets/images/eth-icon.png">
+                            <div >
+                                <h4 class="mb-0">SOL </h4>
+                                <p class="mb-0" value="solana">SOLANA</p>
+                                
+                            </div>
+                        </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="eth-box">
+                            <img src="assets/images/eth-icon.png">
+                            <div >
+                                <h4 class="mb-0">XRP </h4>
+                                <p class="mb-0" value="xrp" >xrp</p>
+                            
+                            </div>
+                        </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="eth-box">
+                            <img src="assets/images/eth-icon.png">
+                            <div >
+                                <h4 class="mb-0">DOGE </h4>
+                                <p class="mb-0" value="dogecoin" >Dogecoin</p>
+                            </div>
+                        </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="eth-box">
+                            <img src="assets/images/eth-icon.png">
+                            <div >
+                                <h4 class="mb-0">DOT</h4>
+                                <p class="mb-0" value="xrp" >Polkadot</p>
+                            </div>
+                        </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+$('#Button').click(function() {
+$(this).toggleClass('active');
+});
+});
+
+$(document).ready(function() {
+$('#on').click(function() {
+$('.for-active').addClass('active');
+});
+$('#off').click(function() {
+$('.for-active').removeClass('active');
+});
+});
+
+$(document).ready(function() {
+$('.tab1').click(function() {
+$('.tab1').addClass('active');
+$('.tab2').removeClass('active');
+$('.tip-box').removeClass('show');
+});
+$('.tab2').click(function() {
+$('.tab2').addClass('active');
+$('.tab1').removeClass('active');
+$('.tip-box').addClass('show');
+});
+});
+
+
+$(document).ready(function(){
+$(' ul .inner-tab-list a').click(function(){
+$('a').removeClass("active");
+$(this).addClass("active");
+});
+});
+
+
+</script>
+
+
+<script src="user_assets/js/jquery.js"></script>
+
+<script src="user_assets/js/bootstrap.min.js"></script>
+<script src="user_assets/js/bootstrap-select.min.js"></script>
+<script src="user_assets/js/jquery.validate.min.js"></script>
+<script src="user_assets/js/owl.carousel.min.js"></script>
+<script src="user_assets/js/isotope.js"></script>
+<script src="user_assets/js/jquery.magnific-popup.min.js"></script>
+<script src="user_assets/js/waypoints.min.js"></script>
+<script src="user_assets/js/jquery.counterup.min.js"></script>
+<script src="user_assets/js/wow.min.js"></script>
+<script src="user_assets/js/jquery.easing.min.js"></script>
+<script src="user_assets/js/particles.min.js"></script>
+<script src="user_assets/js/particles-config.js"></script>
+<script src="user_assets/js/Chart.min.js"></script>
+<script src="user_assets/js/chart-config.js"></script>
+<script src="user_assets/js/custom.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('ul.navigation-box li a').click(function () {
+            $('ul.navigation-box li a').removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+</script>
+
+<!-- Function for giving currency value -->
+<script>
+    function myChangeFunction(bidding) {
+        let currency = document.getElementById("currencyTypes").value;
+
+        if (currency == 'cardano' || currency == 'solana' || currency == 'dogecoin') {
+            axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=taboo-token&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true%27`)
+                .then(response => {
+                    const price = response.data['taboo-token'].usd
+
+                    axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${currency}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true%27`)
+                        .then(response => {
+                            var ethbiddings = document.getElementById('ethbidding');
+                            const oneTaboo = bidding.value / ((response.data[`${currency}`].usd / price))
+                            ethbiddings.value = oneTaboo;
+                        })
+                })
+
+        } else {
+            axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=taboo-token&vs_currencies=${currency}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true%27`)
+                .then(response => {
+                    // console.log(response.data['taboo-token'])
+
+                    var ethbiddings = document.getElementById('ethbidding');
+                    const price = response.data['taboo-token'][`${currency}`];
+                    ethbiddings.value = bidding.value * price;
+                    // console.log(response.data['taboo-token'][`${currency}`])
+                })
+        }
+    }
+</script>
+
+<script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/web3modal"></script>
+<script type="text/javascript" src="https://unpkg.com/evm-chains/lib/index.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider"></script>
+<script>
+    function decimalToHexString(number) {
+        if (number < 0) {
+            number = 0xFFFFFFFF + number + 1;
+        }
+        return number.toString(16).toUpperCase();
+    }
+
+    const ethereumButton = document.querySelector('.enableEthereumButton');
+    const sendEthButton = document.querySelector('.sendEthButton');
+
+    let accounts = [];
+
+    //Sending Ethereum to an address
+    sendEthButton.addEventListener('click', () => {
+        getAccount();
+
+        async function getAccount() {
+            accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        }
+        var bid = document.getElementById("bidding").value;
+        console.log(bid);
+        ethereum
+            .request({
+                method: 'eth_sendTransaction',
+                params: [
+                    {
+                        from: accounts[0],
+                        to: '0xF24a24Ab64a29edd50ACC655f4dd78360888A83e',
+                        value: decimalToHexString(bid * 10 ** 18),
+                        gasPrice: '0x09184e72a000',
+                        gas: '0x21000',
+                    },
+                ],
+            })
+            .then((txHash) => console.log(txHash))
+            .catch((error) => console.error);
+    });
+
+
+</script>
+
+<script>
+    let currencyTypeGlobal;
+    window.onload = function () {
+        changeCurrency("eth");
+    };
+    function changeCurrency(currencyType) {
+        // alert(currencyType);
+        currencyTypeGlobal = currencyType
+        if (currencyType == "eth") {
+            let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
+            document.getElementById("eth_wallet_address").value = wallet_address;
+            let contract_address = "0x1BE28AdF4ee250CBC9c6c80f9cAaC378085a440F";
+            document.getElementById("contract_address").value = contract_address;
+            let token = "ETH";
+            document.getElementById("ethbidding").placeholder = token;
+            let decimal = 1000000000000000000;
+            document.getElementById("decimal").value = decimal;
+        }
+        else if (currencyType == "btc") {
+            let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
+            document.getElementById("eth_wallet_address").value = wallet_address;
+            let contract_address = "0xad6d458402f60fd3bd25163575031acdce07538d";
+            document.getElementById("contract_address").value = contract_address;
+            let token = "BTC";
+            document.getElementById("ethbidding").placeholder = token;
+            let decimal = 1000000000000000000;
+            document.getElementById("decimal").value = decimal;
+        }
+        else if (currencyType == "bnb") {
+            let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
+            document.getElementById("eth_wallet_address").value = wallet_address;
+            let contract_address = "0x443fd8d5766169416ae42b8e050fe9422f628419";
+            document.getElementById("contract_address").value = contract_address;
+            let token = "BNB";
+            document.getElementById("ethbidding").placeholder = token;
+            let decimal = 1000000000000000000;
+            document.getElementById("decimal").value = decimal;
+        }
+        else if (currencyType == "usd") {
+            let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
+            document.getElementById("eth_wallet_address").value = wallet_address;
+            let contract_address = "0x110a13FC3efE6A245B50102D2d79B3E76125Ae83";
+            document.getElementById("contract_address").value = contract_address;
+            let token = "USDT";
+            document.getElementById("ethbidding").placeholder = token;
+            let decimal = 1000000;
+            document.getElementById("decimal").value = decimal;
+        }
+        else if (currencyType == "cardano") {
+            let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
+            document.getElementById("eth_wallet_address").value = wallet_address;
+            let contract_address = "0x1BE28AdF4ee250CBC9c6c80f9cAaC378085a440F";
+            document.getElementById("contract_address").value = contract_address;
+            let token = "CARDANO";
+            document.getElementById("ethbidding").placeholder = token;
+            let decimal = 1000000000000000000;
+            document.getElementById("decimal").value = decimal;
+        }
+        else if (currencyType == "solana") {
+            let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
+            document.getElementById("eth_wallet_address").value = wallet_address;
+            let contract_address = "0xbccce1e9a3f7241ebb233ddc5fa4134c9b781044";
+            document.getElementById("contract_address").value = contract_address;
+            let token = "SOLANA";
+            document.getElementById("ethbidding").placeholder = token;
+            let decimal = 1000000000000000000;
+            document.getElementById("decimal").value = decimal;
+        }
+        else if (currencyType == "xrp") {
+            let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
+            document.getElementById("eth_wallet_address").value = wallet_address;
+            let contract_address = "0x1BE28AdF4ee250CBC9c6c80f9cAaC378085a440F";
+            document.getElementById("contract_address").value = contract_address;
+            let token = "XRP";
+            document.getElementById("ethbidding").placeholder = token;
+            let decimal = 1000000000000000000;
+            document.getElementById("decimal").value = decimal;
+        }
+        else if (currencyType == "dogecoin") {
+            let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
+            document.getElementById("eth_wallet_address").value = wallet_address;
+            let contract_address = "0x1BE28AdF4ee250CBC9c6c80f9cAaC378085a440F";
+            document.getElementById("contract_address").value = contract_address;
+            let token = "DOGECOIN";
+            document.getElementById("ethbidding").placeholder = token;
+            let decimal = 1000000000000000000;
+            document.getElementById("decimal").value = decimal;
+        }
+        else if (currencyType == "dot") {
+            let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
+            document.getElementById("eth_wallet_address").value = wallet_address;
+            let contract_address = "0x92a71eee39440d4e6d6753c8cec05978dcd7568f";
+            document.getElementById("contract_address").value = contract_address;
+            let token = "DOT";
+            document.getElementById("ethbidding").placeholder = token;
+            let decimal = 10000000000;
+            document.getElementById("decimal").value = decimal;
+        }
+        else {
+            let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
+            document.getElementById("eth_wallet_address").value = wallet_address;
+            let contract_address = "0x1BE28AdF4ee250CBC9c6c80f9cAaC378085a440F";
+            document.getElementById("contract_address").value = contract_address;
+            let token = "ETH";
+            document.getElementById("ethbidding").placeholder = token;
+            let decimal = 1000000000000000000;
+            document.getElementById("decimal").value = decimal;
+        }
+
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+    integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+<script>
+
+    // Unpkg imports
+    const Web3Modal = window.Web3Modal.default;
+    const WalletConnectProvider = window.WalletConnectProvider.default;
+    const EvmChains = window.EvmChains;
+    const Fortmatic = window.Fortmatic;
+
+    // Web3modal instance
+    let web3Modal
+
+    // Chosen wallet provider given by the dialog window
+    let provider;
+
+
+    // Address of the selected account
+    let selectedAccount;
+
+
+    /**
+     * Setup the orchestra
+     */
+    function init() {
+
+        console.log("Initializing example");
+        console.log("WalletConnectProvider is", WalletConnectProvider);
+        // console.log("Fortmatic is", Fortmatic);
+
+        // Tell Web3modal what providers we have available.
+        // Built-in web browser provider (only one can exist as a time)
+        // like MetaMask, Brave or Opera is added automatically by Web3modal
+        const providerOptions = {
+            walletconnect: {
+                package: WalletConnectProvider,
+                options: {
+                    rpc: {
+                        3: 'https://ropsten.infura.io/v3/dc6e11412ff54869b4bb3ce77550d55a',
+                    },
+                    network: 'ropsten',
+                    chainId: 3,
+                    // infuraId: "bnb1a5cae5d9hp0we9cx9v02n9hvmt94nnuguv0fav",
+                },
+            },
+        };
+
+        web3Modal = new Web3Modal({
+            cacheProvider: false, // optional
+            providerOptions, // required
+        });
+
+    }
+
+    function BuyEth() {
+        startBuy()
+    }
+    async function startBuy() {
+
+        // console.log("Opening a dialog", web3Modal);
+        try {
+            provider = await web3Modal.connect();
+        } catch (e) {
+            console.log("Could not get a wallet connection", e);
+            return;
+        }
+
+        // Subscribe to accounts change
+        provider.on("accountsChanged", (accounts) => {
+            BuyToken();
+        });
+
+        // Subscribe to chainId change
+        provider.on("chainChanged", (chainId) => {
+            //BuyContent();
+            BuyToken();
+        });
+
+        await resetAccountDataAll();
+    }
+    init()
+
+    async function resetAccountDataAll() {
+        await BuyToken(provider);
+    }
+
+    async function BuyToken() {
+        // Get a Web3 instance for the wallet
+        const web3 = new Web3(provider);
+
+        const chainId = await web3.eth.getChainId();
+
+        const accounts = await web3.eth.getAccounts();
+
+        // console.log("Got accounts", accounts);
+        selectedAccount = accounts[0];
+
+        // Go through all accounts and get their ETH balance
+        const rowResolvers = accounts.map(async (address) => {
+            const balance = await web3.eth.getBalance(address);
+        });
+
+
+        // until data for all accounts is loaded
+        await Promise.all(rowResolvers);
+
+        const contract_address = document.getElementById("contract_address").value;
+
+        // const contract_address = '0x1BE28AdF4ee250CBC9c6c80f9cAaC378085a440F';
+
+        const abi = [{ "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "spender", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "value", "type": "uint256" }], "name": "Approval", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "delegator", "type": "address" }, { "indexed": true, "internalType": "address", "name": "fromDelegate", "type": "address" }, { "indexed": true, "internalType": "address", "name": "toDelegate", "type": "address" }], "name": "DelegateChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "delegate", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "previousBalance", "type": "uint256" }, { "indexed": false, "internalType": "uint256", "name": "newBalance", "type": "uint256" }], "name": "DelegateVotesChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "previousOwner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "newOwner", "type": "address" }], "name": "OwnershipTransferred", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "from", "type": "address" }, { "indexed": true, "internalType": "address", "name": "to", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "value", "type": "uint256" }], "name": "Transfer", "type": "event" }, { "inputs": [], "name": "DELEGATION_TYPEHASH", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "DOMAIN_TYPEHASH", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "owner", "type": "address" }, { "internalType": "address", "name": "spender", "type": "address" }], "name": "allowance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "spender", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "approve", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "account", "type": "address" }], "name": "balanceOf", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }, { "internalType": "uint32", "name": "", "type": "uint32" }], "name": "checkpoints", "outputs": [{ "internalType": "uint32", "name": "fromBlock", "type": "uint32" }, { "internalType": "uint256", "name": "votes", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "decimals", "outputs": [{ "internalType": "uint8", "name": "", "type": "uint8" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "spender", "type": "address" }, { "internalType": "uint256", "name": "subtractedValue", "type": "uint256" }], "name": "decreaseAllowance", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "delegatee", "type": "address" }], "name": "delegate", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "delegatee", "type": "address" }, { "internalType": "uint256", "name": "nonce", "type": "uint256" }, { "internalType": "uint256", "name": "expiry", "type": "uint256" }, { "internalType": "uint8", "name": "v", "type": "uint8" }, { "internalType": "bytes32", "name": "r", "type": "bytes32" }, { "internalType": "bytes32", "name": "s", "type": "bytes32" }], "name": "delegateBySig", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "delegator", "type": "address" }], "name": "delegates", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "account", "type": "address" }], "name": "getCurrentVotes", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "account", "type": "address" }, { "internalType": "uint256", "name": "blockNumber", "type": "uint256" }], "name": "getPriorVotes", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "spender", "type": "address" }, { "internalType": "uint256", "name": "addedValue", "type": "uint256" }], "name": "increaseAllowance", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "_to", "type": "address" }, { "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "mint", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "name", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "nonces", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "numCheckpoints", "outputs": [{ "internalType": "uint32", "name": "", "type": "uint32" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "renounceOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "symbol", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "totalSupply", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "recipient", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "transfer", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "sender", "type": "address" }, { "internalType": "address", "name": "recipient", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "transferFrom", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }];
+
+        const caddress = web3.utils.toChecksumAddress(contract_address);
+        const Admin_Address = document.getElementById("eth_wallet_address").value;
+        const TokenPrice = document.getElementById('ethbidding').value;
+        const decimal = document.getElementById('decimal').value;
+        const tokenContract = new web3.eth.Contract(abi, caddress);
+        const nonce = await web3.eth.getTransactionCount(selectedAccount, 'latest'); //get latest nonce
+        const from_account = web3.utils.toChecksumAddress(selectedAccount);
+        const Admin = web3.utils.toChecksumAddress('0x711105948F2673b6BcF2D7C7a774e032745f5Fb3');
+        let amount = '0x' + ((TokenPrice * decimal).toString(16))
+        tx = {
+            'from': from_account,
+            'to': caddress,
+            'nonce': nonce,
+            'gas': 5000000,
+            'maxPriorityFeePerGas': 1999999987,
+            'data': tokenContract.methods.transfer(Admin, amount).encodeABI()
+        };
+
+        web3.eth.sendTransaction(tx, function (err, hash) {
+            if (!err) {
+                console.log(hash);
+
+                $.ajax({
+                    dataType: "json",
+                    type: 'post',
+                    url: '/users/save-order',
+                    data: {
+                        tx_id: hash,
+                        address: selectedAccount,
+                        // qty: document.getElementById("copies").value,
+                        amount: TokenPrice,
+                        fees: fees,
+                        //         currency: currency,
+                        //         currencyRate: currencyRate
+                    },
+                    success: function (data) {
+
+                        console.log(data);
+
+                        window.location.href = "/transfer-nft?hash=" + hash;
+
+
+                        //location.reload();
+                    }
+                });
+
+            }
+            else {
+                console.log(err);
+            }
+        });
+
+
+    }
+
+</script>
+
+
+<script>
+
+// Unpkg imports
+const Web3Modal = window.Web3Modal.default;
+const WalletConnectProvider = window.WalletConnectProvider.default;
+const EvmChains = window.EvmChains;
+const Fortmatic = window.Fortmatic;
+
+// Web3modal instance
+let web3Modal
+
+// Chosen wallet provider given by the dialog window
+let provider;
+
+
+// Address of the selected account
+let selectedAccount;
+
+
+/**
+ * Setup the orchestra
+ */
+function initadmin() {
+
+    console.log("Initializing example");
+    console.log("WalletConnectProvider is", WalletConnectProvider);
+    // console.log("Fortmatic is", Fortmatic);
+
+    // Tell Web3modal what providers we have available.
+    // Built-in web browser provider (only one can exist as a time)
+    // like MetaMask, Brave or Opera is added automatically by Web3modal
+    const providerOptions = {
+        walletconnect: {
+            package: WalletConnectProvider,
+            options: {
+                rpc: {
+                    3: 'https://ropsten.infura.io/v3/dc6e11412ff54869b4bb3ce77550d55a',
+                },
+                network: 'ropsten',
+                chainId: 3,
+                // infuraId: "bnb1a5cae5d9hp0we9cx9v02n9hvmt94nnuguv0fav",
+            },
+        },
+    };
+
+    web3Modal = new Web3Modal({
+        cacheProvider: false, // optional
+        providerOptions, // required
+    });
+
+}
+
+function sendTaboo() {
+        startsend()
+    }
+async function startsend() {
+
+    // console.log("Opening a dialog", web3Modal);
+    try {
+        provider = await web3Modal.connect();
+    } catch (e) {
+        console.log("Could not get a wallet connection", e);
+        return;
+    }
+
+    // Subscribe to accounts change
+    provider.on("accountsChanged", (accounts) => {
+        sendToken();
+    });
+
+    // Subscribe to chainId change
+    provider.on("chainChanged", (chainId) => {
+        //BuyContent();
+        sendToken();
+    });
+
+    await resetAccountData();
+}
+initadmin()
+
+async function resetAccountData() {
+    await sendToken(provider);
+}
+async function sendToken() {
+        // Get a Web3 instance for the wallet
+        const web3 = new Web3(provider);
+
+        const chainId = await web3.eth.getChainId();
+
+        const accounts = await web3.eth.getAccounts();
+
+        // console.log("Got accounts", accounts);
+        selectedAccount = accounts[0];
+
+        // Go through all accounts and get their ETH balance
+        const rowResolvers = accounts.map(async (address) => {
+            const balance = await web3.eth.getBalance(address);
+        });
+
+
+        // until data for all accounts is loaded
+        await Promise.all(rowResolvers);
+
+        const ico_address = "0x711105948F2673b6BcF2D7C7a774e032745f5Fb3";
+
+        const icoabi = [{ "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": false, "internalType": "address", "name": "newOwner", "type": "address" }], "name": "OwnershipTransferred", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "_from", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "TransferReceived", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "_from", "type": "address" }, { "indexed": false, "internalType": "address", "name": "_destAddr", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "TransferSent", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "_from", "type": "address" }, { "indexed": false, "internalType": "address", "name": "_to", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "TransferToken", "type": "event" }, { "inputs": [], "name": "balance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "contract IERC20", "name": "token", "type": "address" }, { "internalType": "uint256", "name": "tokenamount", "type": "uint256" }, { "internalType": "contract IERC20", "name": "taboo", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }, { "internalType": "address", "name": "admin", "type": "address" }, { "internalType": "address", "name": "from", "type": "address" }], "name": "transferERC20", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "amount", "type": "uint256" }, { "internalType": "address payable", "name": "destAddr", "type": "address" }], "name": "withdraw", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "stateMutability": "payable", "type": "receive" }];
+
+
+        const token_address = document.getElementById("contract_address").value;
+        const token_add = web3.utils.toChecksumAddress(token_address);
+        const icoaddress = web3.utils.toChecksumAddress(ico_address);
+        const Admin_add = '0xF24a24Ab64a29edd50ACC655f4dd78360888A83e';
+        const Tokenquantity = document.getElementById('ethbidding').value;
+        const Tabootoken = document.getElementById('bidding').value
+        const decimal = document.getElementById('decimal').value;
+        const icocontract = new web3.eth.Contract(icoabi, icoaddress);
+        const nonce = await web3.eth.getTransactionCount(selectedAccount, 'latest'); //get latest nonce
+        const from_account = web3.utils.toChecksumAddress(selectedAccount);
+        const Admin = web3.utils.toChecksumAddress(Admin_add);
+        let Taboo = '0x' + ((Tabootoken * 1000000000000000000).toString(16))
+        let token = '0x' + ((Tokenquantity * decimal).toString(16))
+        tx = {
+            'from': from_account,
+            'to': icoaddress,
+            'nonce': nonce,
+            'gas': 5000000,
+            'maxPriorityFeePerGas': 1999999987,
+            'data': icocontract.methods.transferERC20(token_add, token, '0x1be28adf4ee250cbc9c6c80f9caac378085a440f', Taboo, Admin, '0xf04f23EBf26c8cE4369a5ac2049D6c283f868C11').encodeABI()
+        };
+
+        web3.eth.sendTransaction(tx, function (err, hash) {
+            if (!err) {
+                console.log(hash);
+
+                $.ajax({
+                    dataType: "json",
+                    type: 'post',
+                    url: '/users/save-order',
+                    data: {
+                        tx_id: hash,
+                        address: selectedAccount,
+                        // qty: document.getElementById("copies").value,
+                        fees: fees,
+                        //         currency: currency,
+                        //         currencyRate: currencyRate
+                    },
+                    success: function (data) {
+
+                        console.log(data);
+
+                        window.location.href = "/transfer-nft?hash=" + hash;
+
+
+                        //location.reload();
+                    }
+                });
+
+            }
+            else {
+                console.log(err);
+            }
+        
+        });
+    }
+
+
+</script>
+
+<script>
+
+       const ico_address = "0x711105948F2673b6BcF2D7C7a774e032745f5Fb3";
+
+        const icoabi = [{ "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": false, "internalType": "address", "name": "newOwner", "type": "address" }], "name": "OwnershipTransferred", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "_from", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "TransferReceived", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "_from", "type": "address" }, { "indexed": false, "internalType": "address", "name": "_destAddr", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "TransferSent", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "_from", "type": "address" }, { "indexed": false, "internalType": "address", "name": "_to", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "TransferToken", "type": "event" }, { "inputs": [], "name": "balance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "contract IERC20", "name": "token", "type": "address" }, { "internalType": "uint256", "name": "tokenamount", "type": "uint256" }, { "internalType": "contract IERC20", "name": "taboo", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }, { "internalType": "address", "name": "admin", "type": "address" }, { "internalType": "address", "name": "from", "type": "address" }], "name": "transferERC20", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "amount", "type": "uint256" }, { "internalType": "address payable", "name": "destAddr", "type": "address" }], "name": "withdraw", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "stateMutability": "payable", "type": "receive" }];
+
+
+        const token_address = document.getElementById("contract_address").value;
+        const token_add = web3.utils.toChecksumAddress(token_address);
+        const icoaddress = web3.utils.toChecksumAddress(ico_address);
+        const sender_address = '0xF24a24Ab64a29edd50ACC655f4dd78360888A83e';
+        const Tokenquantity = document.getElementById('ethbidding').value;
+        const Tabootoken = document.getElementById('bidding').value
+        const decimal = document.getElementById('decimal').value;
+        const icocontract = new web3.eth.Contract(icoabi, icoaddress);
+        const nonce = await web3.eth.getTransactionCount(selectedAccount, 'latest'); //get latest nonce
+        const from_account = web3.utils.toChecksumAddress(selectedAccount);
+        const Admin = web3.utils.toChecksumAddress(Admin_add);
+        let Taboo = '0x' + ((Tabootoken * 1000000000000000000).toString(16))
+        let token = '0x' + ((Tokenquantity * decimal).toString(16))
+        tx = {
+            'from': from_account,
+            'to': icoaddress,
+            'nonce': nonce,
+            'gas': 5000000,
+            'maxPriorityFeePerGas': 1999999987,
+            'data': icocontract.methods.transferERC20(token_add, token, '0x1be28adf4ee250cbc9c6c80f9caac378085a440f', Taboo, Admin, '0xf04f23EBf26c8cE4369a5ac2049D6c283f868C11').encodeABI()
+        };
+
+
+
+
+let sender_private_key = "ca45278ef6a080b00e4b38f998362f622fa8a336b9d75f20eb0609e53cfc1d16";
+const privateKey = Buffer.from(sender_private_key, 'hex');
+let estimates_gas = await web3js.eth.estimateGas({
+    from: sender_address,
+    });
+let gasLimit = web3js.utils.toHex(estimates_gas * 3);
+let gasPrice_bal = await web3js.eth.getGasPrice();
+let gasPrice = web3js.utils.toHex(gasPrice_bal * 2);
+let count = await web3js.eth.getTransactionCount(sender_address);
+// let sendAmount = amount * Math.pow(10, 18);
+// let sendAmount = BigInt(amount * 1000000000000000000).toString();
+// sendAmount = sendAmount.toString();
+let rawTransaction = {
+    "gasPrice": gasPrice,
+    "gasLimit": gasLimit,
+    "to": ico_address,
+    "data": icocontract.methods.transferERC20(token_add, token, '0x1be28adf4ee250cbc9c6c80f9caac378085a440f', Taboo, Admin, '0xf04f23EBf26c8cE4369a5ac2049D6c283f868C11').encodeABI(),
+    "nonce": web3js.utils.toHex(count)
+};
+const common = Common.default.forCustomChain('ropsten', {
+    name: 'eth',
+    networkId: 3,
+    chainId: 3
+}, 'petersburg');
+let transaction = new Tx(rawTransaction, { common });
+transaction.sign(privateKey);
+let hash = web3js.eth.sendSignedTransaction('0x' + transaction.serialize().toString('hex'))
+return hash;
+
+</script>

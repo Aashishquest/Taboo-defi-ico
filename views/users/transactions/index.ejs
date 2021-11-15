@@ -1,0 +1,125 @@
+<style>
+  .transaction-table{
+    min-width: 1000px;
+  }
+  .transaction-table .thead-dark tr th {
+         background-color: #b30606;
+         padding: 10px 15px;
+     }
+  .transaction-table.table-bordered, .table-bordered td{
+     background-color: transparent;
+     padding: 10px 15px;
+     vertical-align: middle;
+     
+  }
+  .table-bordered td.for-hide span{
+    overflow: hidden;
+     max-width: 120px;
+     display:block;
+  }
+  .transaction-table .pending {
+ background-color: #fd7311;
+ padding: 3px 10px;
+ border-radius: 5px;
+ font-size: 14px;
+ min-width: 80px;
+ display: inline-block;
+ text-align: center;
+}
+  .transaction-table .approve{
+     background-color: #03d775;
+     padding: 3px 10px;
+ border-radius: 5px;
+ font-size: 14px;
+  min-width: 80px;
+  display: block;
+  display: inline-block;
+  text-align: center;
+  }
+</style>
+
+<!-- content begin -->
+     <div class="no-bottom no-top" id="content">
+         <div id="top"></div>
+         
+          <!-- section begin -->
+         <section id="subheader" class="text-light">
+                 <div class="center-y relative text-center">
+                     <div class="container">
+                         <div class="row">
+                             
+                             <div class="col-md-12 text-center">
+               <h1>All Transactions</h1>
+                             </div>
+                             <div class="clearfix"></div>
+                         </div>
+                     </div>
+                 </div>
+         </section>
+         <!-- section close -->
+         
+
+         <section aria-label="section">
+             <div class="container">
+       <div class="row">
+           <div class="col-md-12">
+                        <div class="table-responsive">
+                          
+                          <table class="table table-bordered table-dark transaction-table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th width="10%">S. No.</th>
+                                <th width="15%">Date</th>
+                                <th width="15%">Nft Image</th>
+                                <th width="15%">User Wallet Address</th>
+                                <th width="20%">Amount Paid(in Taboo)</th>
+                                <th width="15%">Transaction Hash(Taboo)</th>
+                                <th width="15%">Transaction Hash(NFT)</th>
+                                <th width="10%">Status</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              
+                                <% tx.forEach(function(order,index) {%> 
+                                <tr>
+                                  <td><%=index+1 %></td>
+                                  <td><%=order.created_at %></td>
+                                  <td><img src="/uploadFile/<%=order.paintinginfo.image %>"height="100"width="100"/></td>
+
+                                  <td class="for-hide"><span>
+                                    <a href="https://ropsten.etherscan.io/address/<%=order.user_wallet_address %>" target="_blank">
+                                      <%=order.user_wallet_address %></a>
+                                    </span></td>
+                                  <td><%=order.total %></td>
+                                  <td class="for-hide"> <span>
+                                    <a href="https://ropsten.etherscan.io/tx/<%=order.trans_id %>" target="_blank">
+                                      <%=order.trans_id %>
+                                    </a>
+                                  </span> </td>
+                                  <td class="for-hide"><span>
+                                    <a href="https://ropsten.etherscan.io/tx/<%=order.trans_id %>" target="_blank">
+                                    <%=order.nft_hash %>
+                                  </a>
+                                </span></td>
+                                  <td><%=order.status %></td>
+                                  
+                                   
+                                  
+                                </tr>
+                                <% }) %>
+                               
+                        
+                              
+                            </tbody>
+                          </table>
+                        </div>
+
+                     </div>
+
+                 </div>
+     </div>
+         </section>
+   
+   
+     </div>
+     <!-- content close -->

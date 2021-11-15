@@ -1,0 +1,433 @@
+<style>
+    .Subscribeitemtab .nft_coll::after {
+    content: "";
+    background-color: rgba(111 ,37 ,37,0.94);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    border-radius: 8px;
+    z-index: 10;
+    /* width: 88%; */
+    margin: auto;
+    height: 100%;
+}
+</style>
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">Buy using</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="buy_option text-center">
+                                     
+                                      <li>
+                                          <a href="javascript::void(0)" onclick="checkUser()" class="buyUsingMetaMask1">
+                                              <img src="/images/nft/meta_mask.png" width="70">
+                                          </a>
+                                      </li>
+                                      
+                                  </ul>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                     
+              <style>
+                  #section-hero{
+                      background-size: contain !important;background-repeat: no-repeat !important;background-position: center right 18% !important;background-color: rgba(0,0,0,0.4) !important;background-blend-mode: multiply; 
+                  }
+              </style>
+                      <!-- content begin -->
+                      <div class="no-bottom no-top" id="content">
+                          <div id="top"></div>
+                          
+                          <!-- section begin -->
+                          <section id="section-hero" aria-label="section" class="text-light overflow-hidden" data-bgimage="url(/images/misc/mod14.png) top" style="background-image: url(/images/misc/mod2.png) top !important;background: none !important;">
+                              <div id="particles-js"></div>
+                              <div class="container">
+                                  <div class="row align-items-center">
+                                      <div class="col-lg-6">
+                                          <div class="text_top mt-5">
+                                              <div class="spacer-double"></div>
+                                              <h1>Unique Crypto for the adult industry.</h1>
+                                              <p class="lead">Easiest place to buy and sell cryptocurrency.<br>Sign up and get started today.</p>
+                                              <div class="spacer-20"></div>
+                                              <a href="/explore" class="btn-main">Explore</a>&nbsp;&nbsp;
+                                              <a href="/users/login" class="btn-main btn-white">Create</a>
+                                              <div class="spacer-double"></div>
+                                          </div>
+                                      </div>
+                                      <!--  <div class="col-md-5 ml-auto xs-hide mt-3">
+                                              <img src="/images/misc/modal22.jpg" class="lazy img-fluid wow fadeIn" data-wow-delay="1.25s" alt="">
+                                          </div> -->
+                                  </div>                    
+                              </div>
+                          </section>
+                          <!-- section close -->
+              
+                          <section id="section-steps" data-bgcolor="#0f0f0f">
+                              <div class="container">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                          <div class="text-center">
+                                              <h2>Create and sell your NFTs</h2>
+                                              <div class="small-border bg-color-2"></div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-6 mb-sm-30">
+                                          <div class="feature-box f-boxed style-3">
+                                              <i class="wow fadeInUp bg-color-2 i-boxed icon_wallet"></i>
+                                              <div class="text">
+                                                  <h4 class="wow fadeInUp">Set up your wallet</h4>
+                                                  <p class="wow fadeInUp" data-wow-delay=".25s">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                                              </div>
+                                              <i class="wm icon_wallet"></i>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-6 mb-sm-30">
+                                          <div class="feature-box f-boxed style-3">
+                                              <i class="wow fadeInUp bg-color-2 i-boxed icon_cloud-upload_alt"></i>
+                                              <div class="text">
+                                                  <h4 class="wow fadeInUp">Add your NFT's</h4>
+                                                  <p class="wow fadeInUp" data-wow-delay=".25s">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                                              </div>
+                                              <i class="wm icon_cloud-upload_alt"></i>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-6 mb-sm-30">
+                                          <div class="feature-box f-boxed style-3">
+                                              <i class="wow fadeInUp bg-color-2 i-boxed icon_tags_alt"></i>
+                                              <div class="text">
+                                                  <h4 class="wow fadeInUp">Sell your NFT's</h4>
+                                                  <p class="wow fadeInUp" data-wow-delay=".25s">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                                              </div>
+                                              <i class="wm icon_tags_alt"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </section>
+              
+                          <section id="section-nfts d-none"style="display:none">
+                              <div class="container d-none ">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                          <div class="text-center">
+                                              <h2>Popular Items</h2>
+                                              <div class="small-border bg-color-2"></div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row wow fadeIn">                        
+                                      <!-- nft item begin -->
+
+                                      <% content.forEach(function(content){%>
+                                      <div class="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                          <div class="nft__item">
+                                             
+                                              <div class="author_list_pp">
+                                                  <a href="/author?id=<%=content.userinfo._id %>">                                    
+                                                      <img class="lazy" src="/uploadFile/<%=content.userinfo.image %>" alt="">
+                                                      <i class="fa fa-check"></i>
+                                                  </a>
+                                              </div>
+                                              <div class="nft__item_wrap">
+                                                  <a href="/item-details?id=<%=content._id %>">
+                                                    
+                                                    <% if(content.media_type[0]=="video"){%>
+                                                        <video width="100%"height="259">
+                                                            <source src="/uploadFile/<%=content.image %>" type="video/<%=content.media_type[1]%>">
+                                                        </video>
+                                                     <%}else {%>
+                                                        <img src="/uploadFile/<%=content.image %>" class="lazy nft__item_preview" alt="">
+
+                                                     <%} %>
+                                                 
+                                                
+                                                </a>
+                                              </div>
+                                              <div class="nft__item_info">
+                                                  <a href="/model">
+                                                      <h4><%=content.title %></h4>
+                                                  </a>
+                                                 
+                                                  <div class="nft__item_action">
+                                                      <a href="#">Subscribe Now</a>
+                                                  </div>
+                                                  <div class="nft__item_like">
+                                                      <i class="fa fa-heart"></i><span>50</span>
+                                                  </div>                            
+                                              </div> 
+                                          </div>
+                                      </div>  
+                                      <% }) %>               
+                                      
+                                    
+                                     
+                                     
+              
+                                      <div class="col-md-12 text-center">
+                                          <a href="#" id="loadmore" class="btn-main wow fadeInUp lead">Load more</a>
+                                      </div>                                              
+                                  </div>
+                              </div>
+                          </section>
+              
+                          <section id="section-collections" data-bgcolor="#0f0f0f">
+                              <div class="container">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                          <div class="text-center">
+                                              <h2>Hot Collections</h2>
+                                              <div class="small-border bg-color-2"></div>
+                                          </div>
+                                      </div>
+                                      <div id="collection-carousel" class="owl-carousel wow fadeIn">
+                                            
+                                        <% containtArr.forEach(function(content){%>
+                                            <%var Subscribeitemtabs=''%>
+                                            
+                                            <%if(session.subscription){%>
+                                                <% if(content.details.available_to.includes(session.subscription)==true ){%>
+                                                    
+                                                    <%Subscribeitemtabs=''%>
+                                            <%}else{%>
+                                                    <%if(session.subscription=='3 Tier'){%>
+                                                        
+                                                        <%if(content.details.available_to.includes('2 Tier')==true ){%>
+                        
+                                                            <%Subscribeitemtabs=''%>
+                                                        <%}else if(content.details.available_to.includes('1 Tier')==true ){%>
+                                                            <%Subscribeitemtabs=''%>
+                                                            <%}else{%>
+                                                                <%Subscribeitemtabs='Subscribeitemtab'%>
+                                                                <%}%>
+                                                    <%}else if(content.details.available_to.includes('1 Tier')==true ){%>
+                                                    
+                                                <% Subscribeitemtabs=''%>
+                                                <%}else{%>
+                                                    <%Subscribeitemtabs='Subscribeitemtab'%>
+                                            <% }%>
+                                                    
+                                                
+                                            <%}%>
+                                    <%}else{%>
+                                    
+                                       <% if(content.details.available_to.includes('1 Tier')==true){%>
+                                        
+                                        <%Subscribeitemtabs=''%>
+                                    <%}else{%>
+                                        <%Subscribeitemtabs='Subscribeitemtab'%>
+                                   <% }%> 
+                                   <% }%>
+                                             <div class="<%=Subscribeitemtabs%>">
+                                              <div class="nft_coll ">
+                                                  <div class="nft_wrap">
+                                                      <a href="/item-details?id=<%=content._id %>">
+                                                     <% if(content.media_type[0]=="video"){%> 
+
+                                                        <video width="200"height="259">
+                                                            <source src="/uploadFile/<%=content.image %>" type="video/<%=content.media_type[1]%>">
+                                                        </video>
+                                                            
+                                                            
+                                                            <%} 
+                                                        else {%> 
+                                                            <img src="/uploadFile/<%=content.image %>" class="lazy img-fluid" alt=""></a>
+
+                                                              
+                                                             <%} %>
+                                                  </div>
+                                                  <div class="nft_coll_pp">
+                                                      <a href="/author?id=<%=content.userinfo._id %>">
+                                                        <img class="lazy" src="/uploadFile/<%=content.userinfo.image %>" alt=""></a>
+                                                      <i class="fa fa-check"></i>
+                                                  </div>
+                                                  <div class="nft_coll_info">
+                                                      <a href="/model"><h4><%=content.title %> </h4></a>
+                                                      <span>ERC-192</span>
+                                                  </div>
+                                              </div>
+                                           </div>
+                                            <% }) %>
+                                              
+                                          
+                                              
+                                              
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </section>
+              
+                          
+              
+                          <section id="section-popular">
+                              <div class="container">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                          <div class="text-center">
+                                              <h2>Top Sellers</h2>
+                                              <div class="small-border bg-color-2"></div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-12 wow fadeIn">
+                                          <ol class="author_list">
+
+                                            <% users.forEach(function(user){%>
+                                              <li>                                    
+                                                  <div class="author_list_pp">
+                                                      <a href="/author?id=<%= user._id %>">
+                                                          <img class="lazy" <% if(user.image){%> src="/uploadFile/<%=user.image %>" <%}else{%>
+                                                            src="/images/author/author-1.jpg" <%}%> alt="">
+                                                          <i class="fa fa-check"></i>
+                                                      </a>
+                                                  </div>                                    
+                                                  <div class="author_list_info">
+                                                      <a href="/author?id=<%=user._id %>"><%=user.name %></a>
+                                                      <span class="d-none">3.2 ETH</span>
+                                                  </div>
+                                              </li>
+                                            <% }) %>
+                                          </ol>
+                                      </div>
+                                  </div>
+                              </div>
+                          </section>
+              
+                          
+                          <section id="section-category" class="no-top">
+                              <div class="container">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                          <div class="text-center">
+                                              <h2>Browse by categories</h2>
+                                              <div class="small-border bg-color-2"></div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-2 col-sm-4 col-6 mb-sm-30 wow fadeInRight" data-wow-delay=".1s">
+                                          <a href='/explore?category=Age' class="icon-box style-2 rounded">
+                                              <i class="fa fa-image"></i>
+                                              <span>Age</span>
+                                          </a>
+                                      </div>
+                                      <div class="col-md-2 col-sm-4 col-6 mb-sm-30 wow fadeInRight" data-wow-delay=".2s">
+                                          <a href='/explore?category=Fetish' class="icon-box style-2 rounded">
+                                              <i class="fa fa-music"></i>
+                                              <span>Fetish</span>
+                                          </a>
+                                      </div>
+                                      <div class="col-md-2 col-sm-4 col-6 mb-sm-30 wow fadeInRight" data-wow-delay=".3s">
+                                          <a href='/explore?category=Orientation' class="icon-box style-2 rounded">
+                                              <i class="fa fa-search"></i>
+                                              <span>Orientation</span>
+                                          </a>
+                                      </div>
+                                      <div class="col-md-2 col-sm-4 col-6 mb-sm-30 wow fadeInRight" data-wow-delay=".4s">
+                                          <a href='/explore?category=Specific Acts' class="icon-box style-2 rounded">
+                                              <i class="fa fa-globe"></i>
+                                              <span>Specific Acts</span>
+                                          </a>
+                                      </div>
+                                      <div class="col-md-2 col-sm-4 col-6 mb-sm-30 wow fadeInRight" data-wow-delay=".5s">
+                                          <a href='/explore?category=Ethnicity' class="icon-box style-2 rounded">
+                                              <i class="fa fa-vcard"></i>
+                                              <span>Ethnicity</span>
+                                          </a>
+                                      </div>
+                                      <div class="col-md-2 col-sm-4 col-6 mb-sm-30 wow fadeInRight" data-wow-delay=".6s">
+                                          <a href='/explore?category=Collectibles' class="icon-box style-2 rounded">
+                                              <i class="fa fa-th"></i>
+                                              <span>Collectibles</span>
+                                          </a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </section>     
+                      </div>
+                      <!-- content close -->
+              
+              
+                  
+                <a href="#" id="back-to-top"></a>
+                      
+              
+                <div class="modal hide fade"data-backdrop="true" data-keyboard="false" id="welcomeModal" style="overflow:hidden;">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <p class="text-center">Are you 18 or older ?</p>
+                          <div class="action-btns text-center">
+                            <a href="#" onclick="StayPage()" class="btn btn-primary">Yes</a>
+                            <a href="#" onclick="goBack()" class="btn btn-primary">No</a>
+                          </div> 
+                        </div>   
+                      </div>
+                    </div>
+                  </div> 
+                  
+    <script>
+        window.onload=function(){
+            
+            $("#welcomeModal").modal('show');
+            $('#welcomeModal').on('show.bs.modal', function (e) {
+                keyboard: false
+               })
+        }
+
+        function StayPage() {
+            $("#welcomeModal").modal('hide')
+         }
+        function goBack() {
+           window.history.back();
+         }
+    </script>              
+
+
+<style>
+    div#myModal .action-btns a.btn {
+    padding: 5px 35px;
+    border-radius: 20px;
+    color: #fff;
+    background: #b30606;
+    border: none;
+}
+div#myModal .action-btns a.btn:nth-child(2n) {
+    background: #2747bc;
+}
+div#myModal .modal-dialog {
+    max-width: 280px;
+    margin: 15rem auto;
+}
+div#myModal .modal-content{
+    border-radius: 1.1rem;
+}
+</style>
+
+<script>
+     window.onload = function() { //alert("hello")
+ 
+      checkLogin("<%=name %>");
+ 
+   };
+</script>
+                      
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+       <!-- web3 cdn -->
+    <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/web3modal"></script>
+    <script type="text/javascript" src="https://unpkg.com/evm-chains/lib/index.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider"></script>
+    <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+    <!-- web3 cdn -->
+ 
+          
+                  
+                

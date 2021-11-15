@@ -1,0 +1,560 @@
+<style >
+    .ui-datepicker-calendar {
+          /* display: none; */
+      }​
+  </style>
+    <div class="heading-row mb-20"style="margin-top: 69px;">
+      <div class="row align-item-center">
+         <div class="col-lg-6">
+            <h3 class="page-title"><span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-account-plus"></i></span> Add Content </h3>
+         </div>
+          <div class="col-lg-6">
+           <div class="text-right">
+             <div>
+               <a href="/users/dashboard" class="btn btn-common bg-gradient-primary">Go Back</a>
+             </div>
+           </div>
+         </div>
+    </div>
+    </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+             <div class="card-body">
+               <div class="row">
+                 <div class="col-md-11 m-auto">
+                   <div class="add-painting-form">
+                     <form  id="form" method="post" enctype="multipart/form-data" action="/users/add-painting">
+                     <div class="profile-form mt-20 view-banner-page">
+                         <div class="row">
+                            <div class="col-md-4">
+                               <div class="form-group">
+                                <label>Model Images(PNG, JPG, GIF, WEBP or MP4. Max 200mb.)</label>
+                                 <div id="attribute_section_add_main">
+                                   <div id="attribute_section_add0" class="attribute_section-add-new">
+                                       <div class="border-gray document-upload-box artist-img">
+                                         <div class="text-left">
+                                            <div class="uploader-img img_video0">
+                                              <img id="user_profile_image_preview0" src="/assets/images/other/demo-img.png" class="m-t-5 painting-main-img" >
+                                            </div>
+                                             <div class="input-group mb-3 mb-3 verification">
+                                                <input type="text" class="form-control" readonly="" id="text_img_name" data-rule-required="true" data-msg-required="Please select your Id.">
+                                                <span class="input-group-btn">
+                                                  <span class="btn btn-common bg-gradient-primary btn-file1">
+                                                  Upload <input type="file"id="imgInp6" value="" name="file" multiple  accept="image*" onchange="readURL(this,0);" required>
+                                                   <input type="hidden" name="old_image" value="">
+                                                  </span>   
+                                                </span>
+                                                <button class="btn btn-common bg-gradient-primary removie-icon ml-15 d-none" style="min-width: auto;">
+                                                  <i class="mdi mdi-delete-forever" ></i>
+                                                </button>
+                                               </div>
+                                            </div>
+                                          </div>
+                                           
+                                          <div class="mt-20 ml-15">
+                                            <a href="javascript:void(0);" class="btn-clone d-none" title="Add" onclick="attribute_cloning_add();">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
+                                            <a  href="javascript:void(0);" id="attribute_cloning" class="btn-clone d-none" title="Remove" onclick="remove_current_div_venues($(this));">
+                                                <i class="fa fa-minus"></i>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                  </div>
+                              </div>
+                           </div>
+                          
+                           <div class="col-md-8">
+                              <h4>Basic Details</h4>
+                             
+                             
+  
+                            
+                              <div class="row">
+                              
+                               
+                                 <div class="col-md-4">
+                                   <div class="form-group">
+                                    <label>No of copies<span style="color: red;">*</span></label>
+                                    <input type="text"name="total_copy" id="total_copy" class="form-control" required>
+                                   
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                   <div class="form-group">
+                                    <label>No of copies for Sale<span style="color: red;">*</span></label>
+                                    <input type="text" name="copy_for_sale" id="copy_for_sale" onkeyup ="checkForSale(value)" class="form-control" required>
+                                  </div>
+                                </div>
+                               
+                              </div>
+  
+                              <div class="row">
+                                 <div class="col-md-4">
+                                   <div class="form-group">
+                                    <label>Display Name<span style="color: red;">*</span></label>
+                                    <input type="text"name="title" class="form-control" required>
+                                  </div>
+                                </div>
+                                 <div class="col-md-4">
+                                   <div class="form-group">
+                                      <label>Categories</label>
+                                      <div class="box">
+                                          <select class="form-control" name="category">
+                                           
+                                            <% category.forEach((category,index)=>{%>
+                                              
+                                              <option value="<%- category.name %>">
+                                                  <%- category.name %>
+                                               </option>
+                                              
+                                            <% }) %>
+                                           
+                                          </select>
+                                        </div>
+                                    </div>
+                                </div>
+  
+                                
+                              </div>
+  
+  
+                                 
+                              <div class="row">
+                                 <div class="col-md-4">
+                                    <div class="form-group for-flex-inline">
+                                      <label>For Sale</label>
+                                       <div class="form-check">
+                                          <label class="form-check-label">
+                                            <input type="radio" onclick="displayRadioValue(value)" class="form-check-input" name="for_sale" id="optionsRadios1" value="Yes" checked> Yes <i class="input-helper" ></i></label>
+                                        </div>
+                                         <div class="form-check">
+                                          <label class="form-check-label">
+                                            <input type="radio" onclick="displayRadioValue(value)" class="form-check-input" name="for_sale" id="optionsRadios1" value="No"> No <i class="input-helper"></i></label>
+                                        </div>
+
+                                        <div class="form-check">
+                                          <label class="form-check-label">
+                                            <input type="radio" onclick="displayRadioValue(value)" class="form-check-input" name="for_sale" id="optionsRadios1" value="Bid"> Bid <i class="input-helper"></i></label>
+                                        </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row" id="price-detail-tab">
+                                   <div class="col-md-4">
+                                   <div class="form-group">
+                                      <label>Basic Price (Taboo)</label>
+                                      <input type="text" name="basic_price" id="basic_price" onkeyup="calTaboo(value)"class="form-control"   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                    </div>
+                                </div>
+                                 <div class="col-md-4">
+                                   <div class="form-group">
+                                      <label>Platform Fee (15%)</label>
+                                      <input type="text" name="plateform_fees"id="plateform_fees"class="form-control" readonly>
+                                    </div>
+                                </div>
+                                 <div class="col-md-4">
+                                   <div class="form-group">
+                                      <label>You get (Taboo)</label>
+                                      <input type="text"name="total_taboo"id="total_taboo" class="form-control" readonly>
+                                    </div>
+                                </div>
+                                
+                                </div>
+                               
+
+                                <div class="row" id="price-detail-bid"style="display:none">
+                                   <div class="col-md-4">
+                                   <div class="form-group">
+                                      <label>Start Date</label>
+                                      <input type="date"  id="datepickerb1" name="bid_start"class="form-control ">
+                                    </div>
+                                </div>
+                                 <div class="col-md-4">
+                                   <div class="form-group">
+                                      <label>End Date</label>
+                                      <input type="date" id="datepickerb2" name="bid_end"class="form-control">
+                                    </div>
+                                </div>
+                                 <div class="col-md-4">
+                                   <div class="form-group">
+                                      <label>Bid Min Amount</label>
+                                      <input type="text"name="bid_min_amount" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row" id="price-detail-usd">
+                                   <div class="col-md-4">
+                                   <div class="form-group">
+                                      <label>Basic Price (USD)</label>
+                                      <input type="text"name="basic_price_usd" id="basic_price_usd" onkeyup="calUSD(value)"class="form-control" readonly>
+                                    </div>
+                                </div>
+                                 <div class="col-md-4">
+                                   <div class="form-group">
+                                      <label>Platform Fee (15%)</label>
+                                      <input type="text" name="plateform_fees_usd"id="plateform_fees_usd"class="form-control" readonly>
+                                    </div>
+                                </div>
+                                 <div class="col-md-4">
+                                   <div class="form-group">
+                                      <label>You get (USD)</label>
+                                      <input type="text"name="total_usd"id="total_usd" class="form-control" readonly>
+                                    </div>
+                                </div>
+                                
+                              
+                              
+                                </div>
+                              
+  
+                               <h4>Accept Payment In</h4>
+                              <div class="row">
+                                 <div class="col-md-12">
+                                    <div class="form-group for-flex-inline mt-3">
+                                       <div class="form-check ml-0">
+                                          <label class="form-check-label">
+                                            <input type="checkbox" checked="" name="payment_in" value="Taboo"class="form-check-input" onclick="this.checked = true;" > Taboo </label>
+                                        </div>
+                                     
+                                          
+                                    </div>
+                                  </div>
+                                </div>
+  
+  
+                                <h4 class="">This content available For(Comming Soon)</h4>
+                              <div class="row ">
+                                 <div class="col-md-12">
+                                    <div class="form-group for-flex-inline mt-3">
+                                       
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                              <input type="checkbox"    name="available_to[]"value="1 Tier" class="form-check-input" checked> 1 Tier </label>
+                                          </div>
+                                          <div class="form-check">
+                                            <label class="form-check-label">
+                                              <input type="checkbox" checked   name="available_to[]"value="2 Tier"class="form-check-input"> 2 Tier</label>
+                                          </div>
+                                          <div class="form-check">
+                                            <label class="form-check-label">
+                                              <input type="checkbox" checked name="available_to"   value="3 Tier"class="form-check-input"> 3 Tier </label>
+                                          </div>
+                                          <div class="form-check ml-0">
+                                          <label class="form-check-label">
+                                            <input type="checkbox" checked=""   name="available_to[]" value="4 Tier" class="form-check-input"> 4 Tier </label>
+                                        </div>
+                                          
+                                    </div>
+                                  </div>
+                                </div>
+  
+                               
+                               <!-- <input type="hidden" class="form-check-input" name="contract_type"  value=" ERC 721"> -->
+
+  
+                                          <h4 class="">Chose Contract Type</h4>
+                                            <div class="row">
+                                               <div class="col-md-12">
+                                                  <div class="form-group for-flex-inline">
+                                                     <div class="form-check ml-0">
+                                                        <label class="form-check-label">
+                                                          <input type="radio" checked class="form-check-input" name="contract_type" id="optionsRadios1" value="ERC 1155"> ERC 1155 <i class="input-helper"></i></label>
+                                                      </div>
+                                                       <div class="form-check"style="display:none;">
+                                                        <label class="form-check-label">
+                                                          <input type="radio" class="form-check-input" name="contract_type" id="optionsRadios1" value=" ERC 721"> ERC 721  <i class="input-helper"></i></label>
+                                                      </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+  
+  
+  
+  
+  
+                                 
+                                
+  
+  
+                                     
+  
+                                    <div class="row">
+                                       <div class="col-md-12">
+                                         <div class="form-group">
+                                            <label>Meta Tag<span style="color: red;">*</span></label>
+                                            <input type="text"name="meta_tag" class="form-control" required>
+                                          </div>
+                                      </div>
+                                       <div class="col-md-12">
+                                         <div class="form-group">
+                                            <label>Description (optional)</label>
+                                             <textarea class="form-control"name="description" rows="6"></textarea>
+                                          </div>
+                                      </div>
+                                    </div>
+  
+  
+  
+  
+  
+                               <div class="popup-btn text-center">
+                                <input type="submit" name="preview" value="preview" class="btn btn-common bg-gradient-primary">
+                                <button type="submit"  class="btn btn-common bg-gradient-primary" >Submit</button>
+                              </div>
+                           </div>
+                         </div>
+                       
+                        
+                 
+  
+                     </div>
+                     </form>
+                   </div>
+                 </div>
+               </div>
+             </div>
+          </div>
+        </div>
+      </div>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script>
+    /* function validateForm() {
+ 
+  
+ let x = document.forms["form"]["total_copy"].value;
+ if (x == "") {
+   $('.err_message').text('This fild is required')
+   return false;
+ }else{
+   $('.err_message').text('')
+ }
+} */
+    async function fetchText() {
+    let response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=taboo-token&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true');
+    if (response.ok) { // if HTTP-status is 200-299
+  // get the response body (the method explained below)
+  let data = await response.json();
+ 
+  return data['taboo-token'].usd
+}
+   
+}
+    
+    async function calTaboo(basic_price){
+      let one_taboo_to_usd = await fetchText()
+      
+      console.log('1 taboo to usd',one_taboo_to_usd)
+     // alert(basic_price)
+      let plateform_fees=(basic_price*15)/100
+      let total_taboo=basic_price-plateform_fees;
+      $("#plateform_fees").val(plateform_fees);
+      $("#total_taboo").val(total_taboo);
+      // fatch live usd
+      
+    
+      //usd price 
+      let taboo_price=basic_price*one_taboo_to_usd;
+      let plateform_fees_usd=(taboo_price*15)/100
+      let total_usd=taboo_price-plateform_fees_usd;
+      $("#basic_price_usd").val(taboo_price)
+      $("#plateform_fees_usd").val(plateform_fees_usd);
+      $("#total_usd").val(total_usd);
+    }
+    
+    function calUSD(basic_price){
+     // alert(basic_price)
+
+      let plateform_fees=(basic_price*15)/100
+      let total_taboo=basic_price-plateform_fees;
+      $("#plateform_fees_usd").val(plateform_fees);
+      $("#total_usd").val(total_taboo);
+
+      let taboo_price=basic_price*884.117;
+      let plateform_fees_taboo=(taboo_price*15)/100
+      let taboo=basic_price-plateform_fees;
+      $("#plateform_fees").val(plateform_fees_taboo);
+      $("#total_taboo").val(taboo);
+      $("#basic_price").val(taboo_price);
+            
+    }
+
+
+    /* function calTaboo(basic_price){
+     // alert(basic_price)
+
+      let plateform_fees=(basic_price*15)/100
+      let total_taboo=basic_price-plateform_fees;
+      $("#plateform_fees").val(plateform_fees);
+      $("#total_taboo").val(total_taboo);
+     
+    }
+    
+    function calUSD(basic_price){
+     // alert(basic_price)
+
+      let plateform_fees=(basic_price*15)/100
+      let total_taboo=basic_price-plateform_fees;
+      $("#plateform_fees_usd").val(plateform_fees);
+      $("#total_usd").val(total_taboo);
+
+      let taboo_price=basic_price*884.117;
+      let plateform_fees_taboo=(taboo_price*15)/100
+      let taboo=basic_price-plateform_fees;
+      $("#plateform_fees").val(plateform_fees_taboo);
+      $("#total_taboo").val(taboo);
+      $("#basic_price").val(taboo_price);
+            
+    }   */
+  </script>
+  
+  <script type="text/javascript" > 
+function readURL(input,count) {
+ 
+if (input.files && input.files[0]) {
+  if(input.files[0].type=="video/mp4"){
+    var reader = new FileReader();
+    reader.onload = function (e) {
+
+      $('.img_video'+count).html('<video controlsList="nodownload" width="200" height="150" controls> <source src="'+ e.target.result+'" type="video/mp4"> <source src="movie.ogg" type="video/ogg"> Your browser does not support the video tag. </video>');
+    };
+  }else{
+    var reader = new FileReader();
+    reader.onload = function (e) {
+    /* $('#user_profile_image_preview')
+    .attr('src', e.target.result)
+    .width(200)
+    .height(150); */
+    $('.img_video'+count).html('<img id="user_profile_image_preview'+count+'" width="200" height="150" src="'+e.target.result+'" class="m-t-5 painting-main-img" >');
+    };
+  }
+
+
+
+reader.readAsDataURL(input.files[0]);
+}
+var src = $('#imgInp6').val(); // "static/images/banner/blue.jpg"
+var tarr = src.split('/');      // ["static","images","banner","blue.jpg"]
+var file = tarr[tarr.length-1]; // "blue.jpg"
+var data = file.split('.')[0];  // "blue"
+
+//alert(data);
+$('#text_img_name').val(src);
+}
+
+</script>
+
+<script>
+  $(document).on('click.bs.dropdown.data-api', '.dropdown.keep-inside-clicks-open', function (e) {
+    e.stopPropagation();
+  });
+</script>
+
+
+<script>
+var countval = 1; //for Increase id num  
+function attribute_cloning_add(){
+    //var new_count = countval++; //for increase id number
+    // both for change id  
+   // $clone1 = $("#attribute_section_add").clone();
+    //$clone1.attr('id','attribute_section_add'+new_count);
+    $('#attribute_section_add_main').append(` <div id="attribute_section_add${countval}" class="attribute_section-add-new">
+                                       <div class="border-gray document-upload-box artist-img">
+                                         <div class="text-left">
+                                            <div class="uploader-img img_video${countval}">
+                                              <img id="user_profile_image_preview${countval}" src="/assets/images/other/demo-img.png" class="m-t-5 painting-main-img" >
+                                            </div>
+                                             <div class="input-group mb-3 mb-3 verification">
+                                                <input type="text" class="form-control" readonly="" id="text_img_name" data-rule-required="true" data-msg-required="Please select your Id.">
+                                                <span class="input-group-btn">
+                                                  <span class="btn btn-common bg-gradient-primary btn-file1">
+                                                  Upload <input type="file"id="imgInp6" value="" name="file" multiple  accept="image*" onchange="readURL(this,${countval});" required>
+                                                   <input type="hidden" name="old_image" value="">
+                                                  </span>   
+                                                </span>
+                                                <button class="btn btn-common bg-gradient-primary removie-icon ml-15 d-none" style="min-width: auto;">
+                                                  <i class="mdi mdi-delete-forever" ></i>
+                                                </button>
+                                               </div>
+                                            </div>
+                                          </div>
+                                           
+                                          <div class="mt-20 ml-15">
+                                            <a href="javascript:void(0);" class="btn-clone" title="Add" onclick="attribute_cloning_add();">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
+                                            <a  href="javascript:void(0);" id="attribute_cloning" class="btn-clone" title="Remove" onclick="remove_current_div_venues($(this));">
+                                                <i class="fa fa-minus"></i>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                  </div>`); //for append Clone Data
+                                  countval++;
+    re_arrange_qualification();
+    
+}
+
+</script>
+
+<!-- Remove Clone by Click Minus Button -->
+<script>
+    function remove_current_div_venues(obj){
+        var parent_id = obj.parent().parent().attr('id'); //for parent ID
+        if( parent_id != 'attribute_section_add'){
+            obj.parent().parent().remove();
+            re_arrange_qualification(); 
+        }    
+    }
+
+    function displayRadioValue(value) {
+           
+            if(value=="No"){
+              $("#price-detail-usd").css("display","none")
+
+               $("#price-detail-tab").css("display","none")
+               $("#price-detail-bid").css("display","none")
+
+            }
+            else if(value=="Bid"){
+
+              $("#price-detail-usd").css("display","none")
+
+               $("#price-detail-tab").css("display","none")
+               
+              $("#price-detail-bid").css("display","")
+
+            }
+            else
+            {
+              $("#price-detail-usd").css("display","")
+
+              $("#price-detail-tab").css("display","")
+              
+              $("#price-detail-bid").css("display","none")
+
+            }
+        }
+  
+        function checkForSale(value){
+
+           let  total_copy=$("#total_copy").val();
+           let total=parseInt(total_copy);
+           if(value>total){
+             alert("No.Of copy For Sale Should not be greater then Total Copy");
+             $("#copy_for_sale").val("");
+           }
+
+        }
+</script>
+<style>
+
+  .form-control:disabled, .form-control[readonly] {
+    background-color: #101922;
+    opacity: 1;
+}
+  </style>

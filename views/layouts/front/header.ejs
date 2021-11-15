@@ -1,0 +1,336 @@
+<style>
+    /*header.header-mobile {
+         overflow: visible !important; 
+    }*/
+    .for-wallet-address-show .address.address-show{
+        position: relative;
+    }
+    .for-wallet-address-show .address.address-show ul {
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 36px;
+        z-index: 1100;
+        background-color: #29292d;
+        box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+        padding: 10px 0;
+        border-radius: 8px;
+        height: auto;
+        visibility: hidden;
+        transition: all ease-in-out .2s;
+        opacity: 0;
+    }
+    .for-wallet-address-show .address.address-show ul li{
+        list-style: none;
+    }
+    .for-wallet-address-show .address.address-show ul li a {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        color: #ddd;
+        text-align: left;
+        padding: 3px 10px;
+    }
+    
+    .for-wallet-address-show .address.address-show ul li a:hover{
+        background-color: #b30606;
+    }
+    .for-wallet-address-show .address.address-show:hover ul{
+        visibility: visible;
+        height: auto;
+        opacity: 1;
+    }
+    </style> 
+ <!-- header begin -->
+ <header class="transparent ">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="de-flex sm-pt10">
+                <div class="de-flex-col">
+                        <!-- logo begin -->
+                        <div id="logo">
+                            <a href="/">
+                               <!--  <h1 style="font-size: 40px;padding: 10px 0;margin: 0;">TAO</h1> -->
+                                <img alt="" class="logo" src="/images/logo.png" height="70">
+                            </a>
+                        </div>
+                        <!-- logo close -->
+                    </div>
+                    <div class="de-flex-col">
+                        <form action="global-search" name="" method="get" >
+                            <div class="quick-search-new">
+                                <input id="quick_search" onkeyup="searchData(value)" class="xs-hide quick_search" name="quick_search" placeholder="search item here..." type="text" />
+                                <!-- <button class="btn btn-info" type="submit">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button> -->
+                                <span id="search-tab">
+                                    <ul class="search-list"id="search-tab-content">
+                                        
+                                    </ul>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                <div class="de-flex-col header-col-mid">
+                    <!-- mainmenu begin -->
+                    <ul id="mainmenu">
+                        <li>
+                            <a href="https://taboo-token-123.netlify.app/">Defi<span></span></a>
+                           
+                        </li>
+                        <li>
+                            <a href="/explore">Explore<span></span></a>
+                           
+                        </li>
+                        <li>
+                            <a href="/defi">Buy Taboo<span></span></a>
+                           
+                        </li>
+                         <!-- <li>
+                            <a href="Collection.php">Collections<span></span></a>
+                           
+                        </li> -->
+                         <!--  <li>
+                            <a href="Activity.php">Activity<span></span></a>
+                        </li> -->
+                        
+                         <li>
+                            <a href="/model">Model<span></span></a>
+                        </li>
+                         <li>
+                            <a href="/contact">Contact Us<span></span></a>
+                        </li>
+                       
+                                                      
+                      
+                       
+                    </ul>
+                    <div class="menu_side_area"id="user">
+                       
+                            <div id="checkuser">
+                                <a href="#" class="btn-main"onclick="checkUser()">Login</a>
+                                <span id="menu-btn"></span>
+                                <a href="/users/login" class="btn-main">Login/Signup as Creator</a>
+                                
+                            </div>
+
+                            <div id="logout"style="display:none">
+                                <!-- <a href="#" class="btn-main"><%=name %></a> -->
+                              <div class="d-flex align-items-center">
+                                <div class="for-wallet-address-show">
+                                    <div class="balance"><span id="wallet-balance">99999999999999999</span> Taboo</div>
+                                    <div class="address address-show">
+                                        <span><%=name %></span>
+                                        <img src="/images/author/author-2.jpg">
+                                        <ul>
+                                            <li><a href="/transactions">All Transaction</a></li>
+                                            <li><a href="/users/logout">Logout<i class="fa fa-sign-out"></i> </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                 
+                             
+                              <a href="/users/logout" class="btn-main">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </a> 
+                            </div>
+                                
+                            </div>
+                            
+                          
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+<!-- header close -->
+
+<script>
+    window.onload = () => { console.log()
+        checkLogin("<%=name %>");
+
+        //let balance=checkBalance("<%=name %>");
+        //console.log(balance);
+  };
+
+    async function checkLogin(name){ //alert(name);
+      
+      if(name){
+         checkBalance("<%=name %>");
+        //console.log(balance);
+
+        document.getElementById("checkuser").style.display="none";
+        document.getElementById("logout").style.display="block";
+         
+
+      }else
+       {
+        
+        document.getElementById("logout").style.display="none";
+  
+        document.getElementById("checkuser").style.display="block";
+
+       }  
+
+    }
+</script>
+<script>
+    function getParameterByName(name, url = window.location.href) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    var quick_search = getParameterByName('quick_search'); // "lorem"
+    $('.quick_search').val(quick_search);
+    $(document).ready(function () {
+      var GlobalSearchText = $('.quick_search').val();
+      console.log('GlobalSearchText:', GlobalSearchText)
+      $.ajax({
+        type: "GET",
+        data: {
+          GlobalSearchText: GlobalSearchText
+        },
+        url: "/global-search",
+        cache: false,
+        success: function (data) {
+          console.log('searchData:', data)
+          
+        }
+      });
+    });
+  </script>
+<script>
+
+    function searchData(query){   
+        let data={category:query,
+                  title:query,
+                  basic_price:query,
+                  meta_tag:query
+                };
+      $.ajax({type:"get",
+             url:"/search",
+             data:data,
+             success:function(res)
+             { 
+                console.log(res);
+                document.getElementById('search-tab-content').innerHTML="";  
+
+              if(res.length>0)
+                {               
+                                   
+                  res.forEach(function(content,index)
+                   {
+                     let html=`
+                              <li>
+                               <a href="/item-details?id=`+content._id+`">`+content.title+`</a>
+                              </li>
+                               `;
+                   
+                      
+                       document.getElementById('search-tab-content').innerHTML+=html;
+                    
+                  });
+              
+
+                }  
+               else
+                 {
+                    let html=`
+                              <li>
+                                <p>Not Found</p>
+                              </li>
+                              `;
+                    document.getElementById('search-tab-content').innerHTML+=html;  
+ 
+                 }
+  
+  
+             },
+         
+      });
+    }
+  
+
+    function checkBalance(address){ //alert(address)
+        $.ajax({type:"get",
+               url:"/users/wallet-balance",
+              data:{wallet:address},
+               success:function(res){ 
+                   if(res)
+                    { 
+                        document.getElementById("wallet-balance").innerText=res;
+
+                    }
+               }});
+       }
+     
+     </script>  
+     
+     <style>
+         ul.search-list {
+    background: #29292d;
+    display: block;
+    list-style: none;
+    margin-left: 30px;
+    border-radius: 5px;
+    width: 100%;
+    color: #fff;
+}
+ul.search-list li a{
+    color: #fff;
+} 
+
+.menu_side_area {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.for-wallet-address-show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(15, 15, 15);
+    border-radius: 8px;
+}
+.for-wallet-address-show .balance {
+    font-size: 14px;
+    margin: 0 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.for-wallet-address-show .balance span {
+    display: inline-block;
+    max-width: 68px;
+    overflow: hidden;
+    margin-right: 5px;
+}
+
+.for-wallet-address-show .address {
+    background-color: #29292d;
+    padding: 5px;
+    border-radius: 8px;
+    margin-left: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+.for-wallet-address-show .address span {
+    display: inline-block;
+    max-width: 78px;
+    overflow: hidden;
+}
+.for-wallet-address-show .address img{
+    height: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+     </style>

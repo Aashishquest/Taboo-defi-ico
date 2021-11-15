@@ -1,0 +1,292 @@
+<style >
+  .ui-datepicker-calendar {
+        display: none;
+    }​
+</style>
+  <div class="heading-row mb-20"style="margin-top: 69px;">
+    <div class="row align-item-center">
+       <div class="col-lg-6">
+          <h3 class="page-title"><span class="page-title-icon bg-gradient-primary text-white mr-2"><i class="mdi mdi-account-plus"></i></span> Edit Category </h3>
+       </div>
+        <div class="col-lg-6">
+         <div class="text-right">
+           <div>
+             <a href="/users/category" class="btn btn-common bg-gradient-primary">Go Back</a>
+           </div>
+         </div>
+       </div>
+  </div>
+  </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+           <div class="card-body">
+             <div class="row">
+               <div class="col-md-11 m-auto">
+                 <div class="add-painting-form">
+                   <form name="cat_form" method="post" enctype="multipart/form-data" action="/users/update-category">
+                   <div class="profile-form mt-20 view-banner-page">
+                       <div class="row">
+                          <div class="col-md-4">
+                             <div class="form-group">
+                              <label>Model Images(PNG, JPG, GIF, WEBP or MP4. Max 200mb.)</label>
+                               <div id="attribute_section_add_main">
+                                 <div id="attribute_section_add0" class="attribute_section-add-new">
+                                     <div class="border-gray document-upload-box artist-img">
+                                       <div class="text-left">
+                                          <div class="uploader-img img_video0">
+                                            <img id="user_profile_image_preview0" src="/uploadFile/category/<%= category.image %>" class="m-t-5 painting-main-img" >
+                                          </div>
+                                           <div class="input-group mb-3 mb-3 verification">
+                                              <input type="text" class="form-control" readonly="" id="text_img_name" data-rule-required="true" data-msg-required="Please select your Id.">
+                                              <span class="input-group-btn">
+                                                <span class="btn btn-common bg-gradient-primary btn-file1">
+                                                Upload <input type="file"id="imgInp6" value="" name="file" multiple  accept="image*" onchange="readURL(this,0);">
+                                                 <input type="hidden" name="old_image" value="<%= category.image %>">
+                                                </span>   
+                                              </span>
+                                              <button class="d-none btn btn-common bg-gradient-primary removie-icon ml-15" style="min-width: auto;">
+                                                <i class="mdi mdi-delete-forever" ></i>
+                                              </button>
+                                             </div>
+                                          </div>
+                                        </div>
+                                         
+
+                                  </div>
+                                </div>
+                            </div>
+                         </div>
+                        
+                         <div class="col-md-8">
+                            
+                           
+                           
+
+                          
+                            <div class="row">
+                            
+                              <input type="hidden" name="category_id" class="form-control" id="category_id" value="<%= category._id %>" />
+
+                               <div class="col-md-8">
+                                 <div class="form-group">
+                                  <label>Name</label>
+                                  <input type="text"name="name"value="<%= category.name %>" class="form-control">
+                                  <span class="err_message" style="color: red;"></span>
+                                </div>
+                              </div>
+                              
+                             
+                            </div>
+
+                           
+
+                             <div class="popup-btn text-center">
+                              <button type="submit"  class="btn btn-common bg-gradient-primary" onclick="return validateForm()">Submit</button>
+                            </div>
+                         </div>
+                       </div>
+                     
+                      
+               
+
+                   </div>
+                   </form>
+                 </div>
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+    <script>
+function validateForm() {
+ 
+  
+  let x = document.forms["cat_form"]["name"].value;
+  if (x == "") {
+    $('.err_message').text('Category fild is required')
+    return false;
+  }else{
+    $('.err_message').text('')
+  }
+}
+</script>
+<script>
+  
+  function calTaboo(basic_price){
+   // alert(basic_price)
+
+    let plateform_fees=(basic_price*15)/100
+    let total_taboo=basic_price-plateform_fees;
+    $("#plateform_fees").val(plateform_fees);
+    $("#total_taboo").val(total_taboo);
+  }
+  
+  function calUSD(basic_price){
+   // alert(basic_price)
+
+    let plateform_fees=(basic_price*15)/100
+    let total_taboo=basic_price-plateform_fees;
+    $("#plateform_fees_usd").val(plateform_fees);
+    $("#total_usd").val(total_taboo);
+
+    let taboo_price=basic_price*884.117;
+    let plateform_fees_taboo=(taboo_price*15)/100
+    let taboo=basic_price-plateform_fees;
+    $("#plateform_fees").val(plateform_fees_taboo);
+    $("#total_taboo").val(taboo);
+    $("#basic_price").val(taboo_price);
+          
+  }
+
+
+  
+</script>
+
+<script type="text/javascript" > 
+function readURL(input,count) {
+
+if (input.files && input.files[0]) {
+if(input.files[0].type=="video/mp4"){
+  var reader = new FileReader();
+  reader.onload = function (e) {
+
+    $('.img_video'+count).html('<video controlsList="nodownload" width="200" height="150" controls> <source src="'+ e.target.result+'" type="video/mp4"> <source src="movie.ogg" type="video/ogg"> Your browser does not support the video tag. </video>');
+  };
+}else{
+  var reader = new FileReader();
+  reader.onload = function (e) {
+  /* $('#user_profile_image_preview')
+  .attr('src', e.target.result)
+  .width(200)
+  .height(150); */
+  $('.img_video'+count).html('<img id="user_profile_image_preview'+count+'" width="200" height="150" src="'+e.target.result+'" class="m-t-5 painting-main-img" >');
+  };
+}
+
+
+
+reader.readAsDataURL(input.files[0]);
+}
+var src = $('#imgInp6').val(); // "static/images/banner/blue.jpg"
+var tarr = src.split('/');      // ["static","images","banner","blue.jpg"]
+var file = tarr[tarr.length-1]; // "blue.jpg"
+var data = file.split('.')[0];  // "blue"
+
+//alert(data);
+$('#text_img_name').val(src);
+}
+
+</script>
+
+<script>
+$(document).on('click.bs.dropdown.data-api', '.dropdown.keep-inside-clicks-open', function (e) {
+  e.stopPropagation();
+});
+</script>
+
+
+<script>
+var countval = 1; //for Increase id num  
+function attribute_cloning_add(){
+  //var new_count = countval++; //for increase id number
+  // both for change id  
+ // $clone1 = $("#attribute_section_add").clone();
+  //$clone1.attr('id','attribute_section_add'+new_count);
+  $('#attribute_section_add_main').append(` <div id="attribute_section_add${countval}" class="attribute_section-add-new">
+                                     <div class="border-gray document-upload-box artist-img">
+                                       <div class="text-left">
+                                          <div class="uploader-img img_video${countval}">
+                                            <img id="user_profile_image_preview${countval}" src="/assets/images/other/demo-img.png" class="m-t-5 painting-main-img" >
+                                          </div>
+                                           <div class="input-group mb-3 mb-3 verification">
+                                              <input type="text" class="form-control" readonly="" id="text_img_name" data-rule-required="true" data-msg-required="Please select your Id.">
+                                              <span class="input-group-btn">
+                                                <span class="btn btn-common bg-gradient-primary btn-file1">
+                                                Upload <input type="file"id="imgInp6" value="" name="file" multiple  accept="image*" onchange="readURL(this,${countval});" required>
+                                                 <input type="hidden" name="old_image" value="">
+                                                </span>   
+                                              </span>
+                                              <button class="btn btn-common bg-gradient-primary removie-icon ml-15" style="min-width: auto;">
+                                                <i class="mdi mdi-delete-forever" ></i>
+                                              </button>
+                                             </div>
+                                          </div>
+                                        </div>
+                                         
+                                        <div class="mt-20 ml-15">
+                                          <a href="javascript:void(0);" class="btn-clone" title="Add" onclick="attribute_cloning_add();">
+                                              <i class="fa fa-plus"></i>
+                                          </a>
+                                          <a  href="javascript:void(0);" id="attribute_cloning" class="btn-clone" title="Remove" onclick="remove_current_div_venues($(this));">
+                                              <i class="fa fa-minus"></i>
+                                          </a>
+                                      </div>
+
+                                  </div>
+                                </div>`); //for append Clone Data
+                                countval++;
+  re_arrange_qualification();
+  
+}
+
+</script>
+
+<!-- Remove Clone by Click Minus Button -->
+<script>
+  function remove_current_div_venues(obj){
+      var parent_id = obj.parent().parent().attr('id'); //for parent ID
+      if( parent_id != 'attribute_section_add'){
+          obj.parent().parent().remove();
+          re_arrange_qualification(); 
+      }    
+  }
+
+  function displayRadioValue(value) {
+         
+          if(value=="No"){
+            $("#price-detail-usd").css("display","none")
+
+             $("#price-detail-tab").css("display","none")
+             $("#price-detail-bid").css("display","none")
+
+          }
+          else if(value=="Bid"){
+
+            $("#price-detail-usd").css("display","none")
+
+             $("#price-detail-tab").css("display","none")
+             
+            $("#price-detail-bid").css("display","")
+
+          }
+          else
+          {
+            $("#price-detail-usd").css("display","")
+
+            $("#price-detail-tab").css("display","")
+            
+            $("#price-detail-bid").css("display","none")
+
+          }
+      }
+
+      function checkForSale(value){
+
+         let  total_copy=$("#total_copy").val();
+         let total=parseInt(total_copy);
+         if(value>total){
+           alert("No.Of copy For Sale Should not be greater then Total Copy");
+           $("#copy_for_sale").val("");
+         }
+
+      }
+</script>
+<style>
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #101922;
+  opacity: 1;
+}
+</style>

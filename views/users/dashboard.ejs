@@ -1,0 +1,546 @@
+<div class="page-header dash-header">
+    <h3 class="page-title">
+      <span class="page-title-icon bg-gradient-primary text-white mr-2">
+        <i class="mdi mdi-home"></i>
+      </span> Dashboard 
+    </h3>
+  </div>
+  <section class="for-dashboard-boxes">
+      <div class="container-fluid">
+       <div class="row">
+        <div class="col-md-2 stretch-card grid-margin">
+          <div class="card bg-gradient-danger card-img-holder text-white">
+             <a href="/users/paintings">
+                  <div class="card-body">
+                  <img src="/assets/images/other/circle.svg" class="card-img-absolute" alt="circle-image" />
+                  <h4 class="font-weight-normal mb-3">Total Contents <i class="mdi  mdi-bookmark-outline mdi-24px float-right"></i>
+                  </h4>
+                  <h2 class=""><%=total %></h2>
+                </div>
+             </a>
+          </div>
+        </div>
+        <div class="col-md-2 stretch-card grid-margin">
+          <div class="card bg-gradient-danger card-img-holder text-white">
+            <div class="card-body">
+              <img src="/assets/images/other/circle.svg" class="card-img-absolute" alt="circle-image" />
+              <h4 class="font-weight-normal mb-3">Content On Sale  <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+              </h4>
+              <h2 class=""><%=total_for_sale %></h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 stretch-card grid-margin">
+          <div class="card bg-gradient-danger card-img-holder text-white">
+            <div class="card-body">
+              <img src="/assets/images/other/circle.svg" class="card-img-absolute" alt="circle-image" />
+              <h4 class="font-weight-normal mb-3">Pending Approval <i class="mdi  mdi-bookmark-outline mdi-24px float-right"></i>
+              </h4>
+              <h2 class=""><%=total_pending %></h2>
+            </div>
+          </div>
+        </div>
+  
+         <div class="col-md-2 stretch-card grid-margin">
+          <div class="card bg-gradient-danger card-img-holder text-white">
+            <div class="card-body">
+              <img src="/assets/images/other/circle.svg" class="card-img-absolute" alt="circle-image" />
+              <h4 class="font-weight-normal mb-3">Taboo Earned <i class="mdi  mdi-bookmark-outline mdi-24px float-right"></i>
+              </h4>
+              <h2 class="">
+                     <%= total_earning %>
+                   </h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 stretch-card grid-margin">
+          <div class="card bg-gradient-danger card-img-holder text-white">
+            <div class="card-body">
+              <img src="/assets/images/other/circle.svg" class="card-img-absolute" alt="circle-image" />
+              <h4 class="font-weight-normal mb-3">Earned Amount In $ <i class="mdi  mdi-bookmark-outline mdi-24px float-right"></i>
+              </h4>
+              <h2 class=""> <%= total_earning/884 %></h2>
+            </div>
+          </div>
+        </div>
+  
+  
+      
+       
+      
+      </div>
+      </div>
+  </section>
+  
+  <section>
+      <div class="container-fluid p-0">
+          <div class="row personal-info-heading mt-0  align-items-end">
+                      <div class="col-xl-2  col-lg-3 col-md-3 col-sm-3">
+                        <div class="custom-space-btw for-flex-remove  another-drop-down  align-items-end mb-15">
+                          <div class="for-two-select-in-one mb-0">  
+                              <div class="for-select-existing-doc">
+                                  <div class="input-group">
+                                      <div class="dropdown keep-inside-clicks-open">
+                                          <h3 class="small-title">Categories</h3>
+                                          <button class="dropdwn-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              All
+                                          </button>
+                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 55px, 0px);">
+                                              <div class="for-doc-select">
+                                                  <div class="checkbox"> 	
+                                                      <label>
+                                                            All
+                                                          <input type="checkbox" value="All"name="category"onclick="CheckboxValues('category')">
+                                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                        </label>
+                                                  </div>	
+                                              </div>
+                                              <div class="for-doc-select">
+                                                  <div class="checkbox"> 	
+                                                       <label>
+                                                            Age
+                                                          <input type="checkbox" value="Age"name="category"onclick="CheckboxValues('category')">
+                                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                        </label>
+                                                  </div>	
+                                              </div>
+                                              <div class="for-doc-select">
+                                                  <div class="checkbox"> 	
+                                                       <label>
+                                                            Fetish
+                                                          <input type="checkbox" value="Fetish"name="category"onclick="CheckboxValues('category')">
+                                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                        </label>
+                                                  </div>	
+                                              </div>
+                                              <div class="for-doc-select">
+                                                  <div class="checkbox"> 	
+                                                       <label>
+                                                            Orientation
+                                                          <input type="checkbox" value="Orientation"name="category"onclick="CheckboxValues('category')">
+                                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                        </label>
+                                                  </div>	
+                                              </div>
+                                              <div class="for-doc-select">
+                                                  <div class="checkbox"> 	
+                                                       <label>
+                                                            Specific Acts
+                                                          <input type="checkbox" value="Specific Acts"name="category"onclick="CheckboxValues('category')">
+                                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                        </label>
+                                                  </div>	
+                                              </div>
+                                              <div class="for-doc-select">
+                                                  <div class="checkbox"> 	
+                                                       <label>
+                                                            Ethnicity
+                                                          <input type="checkbox" value="Ethnicity"name="category"onclick="CheckboxValues('category')">
+                                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                        </label>
+                                                  </div>	
+                                              </div>
+                                               <div class="for-doc-select">
+                                                  <div class="checkbox"> 	
+                                                       <label>
+                                                            Collectibles
+                                                          <input type="checkbox" value="Collectibles"name="category"onclick="CheckboxValues('category')">
+                                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                        </label>
+                                                  </div>	
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-2  col-lg-3 col-md-3 col-sm-3">
+                        <div class="custom-space-btw for-flex-remove  another-drop-down  align-items-end mb-15">
+                          <div class="for-two-select-in-one mb-0">  
+                              <div class="for-select-existing-doc">
+                                  <div class="input-group">
+                                      <div class="dropdown keep-inside-clicks-open">
+                                          <h3 class="small-title">Price</h3>
+                                          <button class="dropdwn-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              All
+                                          </button>
+                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 55px, 0px);">
+                                              <div class="for-doc-select">
+                                                  <div class="checkbox"> 	
+                                                      <label>
+                                                            All
+                                                          <input type="checkbox" value=""name="basic_price"onclick="CheckboxValues('basic_price')">
+                                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                        </label>
+                                                  </div>	
+                                              </div>
+                                              <div class="for-doc-select">
+                                                  <div class="checkbox"> 	
+                                                       <label>
+                                                            0-10,000
+                                                          <input type="checkbox"  value="10000" name="basic_price"onclick="CheckboxValues('basic_price')">
+                                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                        </label>
+                                                  </div>	
+                                              </div>
+                                              <div class="for-doc-select">
+                                                  <div class="checkbox"> 	
+                                                       <label>
+                                                           10,001-20,000
+                                                          <input type="checkbox" value="20000"name="basic_price"onclick="CheckboxValues('basic_price')">
+                                                          <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                        </label>
+                                                  </div>	
+                                              </div>
+                                              <div class="for-doc-select">
+                                                <div class="checkbox"> 	
+                                                     <label>
+                                                         20,001-30,000
+                                                        <input type="checkbox" value="30000"name="basic_price"onclick="CheckboxValues('basic_price')">
+                                                        <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                      </label>
+                                                </div>	
+                                            </div>
+                                            <div class="for-doc-select">
+                                              <div class="checkbox"> 	
+                                                   <label>
+                                                       30,000 +
+                                                      <input type="checkbox" value="30001"name="basic_price"onclick="CheckboxValues('basic_price')">
+                                                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                    </label>
+                                              </div>	
+                                          </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-4 ml-auto  col-lg-4 col-md-4 col-sm-4 custom-flex-row for-mobile-search">
+                          <form class=" response-search mb-15"> 
+                               <div class="input-group search-address-book">
+                                  <input type="text" class="form-control autocomplete" id="myInput" placeholder="Search" onkeyup="autoSearch(this);">
+                                  <div class="input-group-append">
+                                      <button class="btn btn-search" type="button"><img src="/assets/images/icons/search-black.png"></button>
+                                  </div>
+                              </div>
+                            </form>
+                      </div>
+                  </div>
+      </div>
+  </section>
+  
+  <section>
+      <div class="container-fluid p-0">
+          <div class="row"id="content-list">
+           
+          </div>
+         
+      </div>
+  </section>
+  <style>
+    .dash-header {
+    margin-top: 65px;
+    margin-bottom: 0;
+}
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  function autoSearch(){
+    //alert($('#myInput').val())
+    //global-serach-content
+    $.ajax({type:"get",
+             url:"/users/global-serach-content",
+             data:{
+               search_data:$('#myInput').val()
+              },
+             success:function(res)
+             {
+
+              if(res.length>0)
+                {               
+                  
+                  document.getElementById('content-list').innerHTML="";  
+
+                  res.forEach(function(content,index)
+                   { let html="";
+                       if(content.media_type[0]=="video"){
+
+                         html='<div class="col-md-6">\
+                          <div class="info-box-certify multiple-certify-inner">\
+                <div class="row align-item-center">\
+                   <div class="col-xl-4 offset-xl-1 col-md-12">\
+                     <div>\
+                      <video width="100%"height="200">\
+                        <source src="/uploadFile/'+content.image+'" type="video/'+content.media_type[1]+'">\
+                      </video>\
+                     </div>\
+                   </div>\
+                   <div class="col-xl-6 col-md-12">\
+                     <table class="table">\
+                       <tbody>\
+                         <tr>\
+                           <td width="40%">Category</td>\
+                           <td width="10%">:</td>\
+                           <td width="40%">'+content.category+'</td>\
+                         </tr>\
+                        <tr>\
+                           <td>Cotent</td>\
+                           <td>:</td>\
+                           <td>'+content.title+'</td>\
+                         </tr>\
+                         <tr>\
+                           <td>Basic Price</td>\
+                           <td>:</td>\
+                           <td>'+content.basic_price+'</td>\
+                         </tr>\
+                         <tr>\
+                           <td>For Sale</td>\
+                           <td>:</td>\
+                           <td>'+content.for_sale+'</td>\
+                         </tr>\
+                         <tr>\
+                           <td>Image Type</td>\
+                           <td>:</td>\
+                           <td>'+content.media_type[1]+'</td>\
+                         </tr>\
+                       </tbody>\
+                     </table>\
+                     <div>\
+                        <h6 class="pending-line"><b>'+content.status+'</b> &nbsp; '+content.created_at+'</h6>\
+                     </div>\
+                   </div>\
+                 </div>\
+             </div>';
+
+                       }
+                       else
+                       {
+
+      
+                           html='<div class="col-md-6">\
+                          <div class="info-box-certify multiple-certify-inner">\
+                <div class="row align-item-center">\
+                   <div class="col-xl-4 offset-xl-1 col-md-12">\
+                     <div>\
+                       <img src="/uploadFile/'+content.image+'" alt="artist img" class="img-fluid"/>\
+                     </div>\
+                   </div>\
+                   <div class="col-xl-6 col-md-12">\
+                     <table class="table">\
+                       <tbody>\
+                         <tr>\
+                           <td width="40%">Category</td>\
+                           <td width="10%">:</td>\
+                           <td width="40%">'+content.category+'</td>\
+                         </tr>\
+                        <tr>\
+                           <td>Cotent</td>\
+                           <td>:</td>\
+                           <td>'+content.title+'</td>\
+                         </tr>\
+                         <tr>\
+                           <td>Basic Price</td>\
+                           <td>:</td>\
+                           <td>'+content.basic_price+'</td>\
+                         </tr>\
+                         <tr>\
+                           <td>For Sale</td>\
+                           <td>:</td>\
+                           <td>'+content.for_sale+'</td>\
+                         </tr>\
+                         <tr>\
+                           <td>Image Type</td>\
+                           <td>:</td>\
+                           <td>'+content.media_type[1]+'</td>\
+                         </tr>\
+                       </tbody>\
+                     </table>\
+                     <div>\
+                        <h6 class="pending-line"><b>'+content.status+'</b> &nbsp; '+content.created_at+'</h6>\
+                     </div>\
+                   </div>\
+                 </div>\
+             </div>';
+            }
+              document.getElementById('content-list').innerHTML+=html;  
+            });
+                
+           //$("#content-list").html(html); 
+             }else{
+              document.getElementById('content-list').innerHTML='<div class="col-md-12"> <h3 class="text-center mt-5" style="color:#fff;">Not Found<h3> </div>';  
+
+
+             } 
+                   
+
+
+             },
+         
+      });
+  }
+</script>
+  <script>
+    window.onload = function() { //alert("hello")
+       fetchData("","");
+       abbrev_name("<%=name %>");
+
+    };
+    function fetchData(query,basic_price){   //console.log(query)
+      $.ajax({type:"get",
+             url:"/users/serach-content",
+             data:{category:query,basic_price:basic_price},
+             success:function(res)
+             {
+
+              if(res.length>0)
+                {               
+                  
+                  document.getElementById('content-list').innerHTML="";  
+
+                  res.forEach(function(content,index)
+                   { let html="";
+                       if(content.media_type[0]=="video"){
+
+                         html='<div class="col-md-6">\
+                          <div class="info-box-certify multiple-certify-inner">\
+                <div class="row align-item-center">\
+                   <div class="col-xl-4 offset-xl-1 col-md-12">\
+                     <div>\
+                      <video width="100%"height="200">\
+                        <source src="/uploadFile/'+content.image+'" type="video/'+content.media_type[1]+'">\
+                      </video>\
+                     </div>\
+                   </div>\
+                   <div class="col-xl-6 col-md-12">\
+                     <table class="table">\
+                       <tbody>\
+                         <tr>\
+                           <td width="40%">Category</td>\
+                           <td width="10%">:</td>\
+                           <td width="40%">'+content.category+'</td>\
+                         </tr>\
+                        <tr>\
+                           <td>Cotent</td>\
+                           <td>:</td>\
+                           <td>'+content.title+'</td>\
+                         </tr>\
+                         <tr>\
+                           <td>Basic Price</td>\
+                           <td>:</td>\
+                           <td>'+content.basic_price+'</td>\
+                         </tr>\
+                         <tr>\
+                           <td>For Sale</td>\
+                           <td>:</td>\
+                           <td>'+content.for_sale+'</td>\
+                         </tr>\
+                         <tr>\
+                           <td>Image Type</td>\
+                           <td>:</td>\
+                           <td>'+content.media_type[1]+'</td>\
+                         </tr>\
+                       </tbody>\
+                     </table>\
+                     <div>\
+                        <h6 class="pending-line"><b>'+content.status+'</b> &nbsp; '+content.created_at+'</h6>\
+                     </div>\
+                   </div>\
+                 </div>\
+             </div>';
+
+                       }
+                       else
+                       {
+
+      
+                           html='<div class="col-md-6">\
+                          <div class="info-box-certify multiple-certify-inner">\
+                <div class="row align-item-center">\
+                   <div class="col-xl-4 offset-xl-1 col-md-12">\
+                     <div>\
+                       <img src="/uploadFile/'+content.image+'" alt="artist img" class="img-fluid"/>\
+                     </div>\
+                   </div>\
+                   <div class="col-xl-6 col-md-12">\
+                     <table class="table">\
+                       <tbody>\
+                         <tr>\
+                           <td width="40%">Category</td>\
+                           <td width="10%">:</td>\
+                           <td width="40%">'+content.category+'</td>\
+                         </tr>\
+                        <tr>\
+                           <td>Cotent</td>\
+                           <td>:</td>\
+                           <td>'+content.title+'</td>\
+                         </tr>\
+                         <tr>\
+                           <td>Basic Price</td>\
+                           <td>:</td>\
+                           <td>'+content.basic_price+'</td>\
+                         </tr>\
+                         <tr>\
+                           <td>For Sale</td>\
+                           <td>:</td>\
+                           <td>'+content.for_sale+'</td>\
+                         </tr>\
+                         <tr>\
+                           <td>Image Type</td>\
+                           <td>:</td>\
+                           <td>'+content.media_type[1]+'</td>\
+                         </tr>\
+                       </tbody>\
+                     </table>\
+                     <div>\
+                        <h6 class="pending-line"><b>'+content.status+'</b> &nbsp; '+content.created_at+'</h6>\
+                     </div>\
+                   </div>\
+                 </div>\
+             </div>';
+            }
+              document.getElementById('content-list').innerHTML+=html;  
+            });
+                
+           //$("#content-list").html(html); 
+             }else{
+              document.getElementById('content-list').innerHTML='<div class="col-md-12"> <h3 class="text-center mt-5" style="color:#fff;">Not Found<h3> </div>';  
+
+
+             } 
+                   
+
+
+             },
+         
+      });
+    }
+ 
+  function CheckboxValues(name) {
+    const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+ 
+  
+    let values = [];
+    let basic_price=[];
+
+    checkboxes.forEach((checkbox) => { //alert(checkbox.value)
+       
+      if(name=="category"){
+          values.push(checkbox.value);
+         }else
+          {
+            basic_price.push(checkbox.value);
+          }
+      
+     });
+ 
+     console.log('cat val',values);
+     console.log('basic val',basic_price);
+     fetchData(values,basic_price);
+   }   
+
+   
+  </script>

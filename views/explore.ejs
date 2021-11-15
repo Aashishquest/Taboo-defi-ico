@@ -1,0 +1,467 @@
+<div class="no-bottom no-top" id="content">
+    <div id="top"></div>
+    
+    <!-- section begin -->
+    <section id="subheader" class="text-light" data-bgimage="url(/images/background/subheader.jpg) top">
+            <div class="center-y relative text-center">
+                <div class="container">
+                    <div class="row">
+                        
+                        <div class="col-md-12 text-center">
+                            <h1>Explore </h1>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- section close -->
+    
+
+    <!-- section begin -->
+    <section class="explor-sec" aria-label="section">
+        <div class="container">
+            <div class="row wow fadeIn">
+                <div class="col-lg-12">
+
+                    <div class="items_filter">
+                        <form action="https://www.designesia.com/themes/gigaland/blank.php" class="row form-dark" id="form_quick_search" method="post" name="form_quick_search">
+                            <div class="col text-center">
+                                <input class="form-control" id="name_1" name="name_1" onkeyup="searchContent(value)" placeholder="search item here..." type="text" /> <a href="#" id="btn-submit"><i class="fa fa-search bg-color-secondary"></i></a>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+
+                        <div id="item_category" class="dropdown outer-div-explor">
+                            <a  href="#" class="btn-selector catgory1"id="activeid">All categories</a>
+                            <ul class="search-category-item">
+                                <li onclick="searchContent('')" class="active"><span>All categories</span></li>
+                                <li onclick="searchContent('Age')"><span>Age</span></li>
+                                <li onclick="searchContent('Art')"><span>Art</span></li>
+                                <li onclick="searchContent('Music')"><span>Music</span></li>
+                                <li onclick="searchContent('Virtual World')" ><span>Virtual World</span></li>
+                                <li onclick="searchContent('Trading Cards')" ><span>Trading Cards</span></li>
+                                <li onclick="searchContent('Collectibles')" ><span>Collectibles</span></li>
+                                <li onclick="searchContent('Sports')" ><span>Sports</span></li>
+                                <li onclick="searchContent('Utility')" ><span>Utility</span></li>
+                            </ul>
+                        </div>
+
+                        <div id="buy_category" class="dropdown outer-div-explor">
+                            <a href="#" class="btn-selector has-offer">Has Offers</a>
+                            <ul>
+                                <li class="active"><span>Has Offers</span></li>
+                                <li><span>On Auction</span></li>
+                                
+                            </ul>
+                        </div>
+
+                        <div id="items_type" class="dropdown outer-div-explor">
+                            <a href="#" class="btn-selector sort-by">Sort By Price</a>
+                            <ul>
+                                <li class="active"onclick="sortContent('hl')"><span>High to Low</span></li>
+                                <li onclick="sortContent('lh')"><span>Low to High</span></li>
+                                <li><span>Discount</span></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>                     
+                <!-- nft item begin -->
+              
+                <div class="row" id="explore-list">
+                     
+                </div> 
+               
+                 
+
+                <div class="col-md-12 text-center">
+                    <% if(totalContent>16){%> 
+                        <a href="#" id="loadmore" class="btn-main wow fadeInUp lead">Load more</a>
+
+                        <%} %>
+                </div>                                              
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="staticBackdrops" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form name="contactForm" id="contact_form"  class="form-border" method="post" action="">
+                    <h5 class="modal-title mb-3" id="staticBackdropLabel">Enter Minimum Bid Amount</h5>
+                    <div class="field-set" style="background-size: cover;">
+                        <span id="error_message"></span>
+                        <input type="text" name="name" id="bid_amount" class="form-control" placeholder="Enter Minimum Bid Amount">
+                    </div>
+    
+                    <div class="spacer-half" style="background-size: cover;"></div>
+                    <input type="hidden"name="content_id" id="amountcontents_id" value=""/>
+                    <input type="hidden"name="content_min_bid_price" id="content_min_bid_price" value=""/>
+                    <div id="submit" style="background-size: cover;">
+                        <button type="button" onclick="placeBid()" id="send_message"class="btn btn-main">submit</button>
+                    </div>
+                    
+                </form>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+
+</div>
+<style>
+    .Subscribeitemtab .nft__item::after {
+    content: "";
+    background-color: rgba(111 ,37 ,37,0.94);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    border-radius: 8px;
+    z-index: 10;
+    /* width: 88%; */
+    margin: auto;
+    height: 94%;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+<script>
+  window.onload = function() { //alert("hello")
+     
+    let category= searchFilter()
+     if(category){
+        fetchData(category);
+     }else
+     {
+        fetchData("");
+     }
+
+     checkLogin("<%=name %>");
+
+  };
+  function startBid(containt_id,amount){ 
+    $('#amountcontents_id').val(containt_id)
+    $('#content_min_bid_price').val(amount)
+    $('#staticBackdrops').modal('show')
+       
+   }
+   function placeBid(){
+      let checkAmount=checkBidAmount();
+   
+      if(checkAmount)
+      {
+          let amount= document.getElementById('bid_amount').value
+          let id = document.getElementById('amountcontents_id').value
+          
+          
+         confirmBid(amount,id);
+       }
+       else
+        {
+            return false;
+        }
+  }  
+  function checkBidAmount(){  //alert("hello")
+      let min_amount=document.getElementById('content_min_bid_price').value;
+      let amount= document.getElementById('bid_amount').value
+
+      min_amount=parseInt(min_amount);
+      amount=parseInt(amount);
+      if(amount<min_amount){ 
+          document.getElementById('error_message').innerText="Bid Amount Should be greater than min bid Amount";
+         document.getElementById('bid_amount').value="";
+      }
+      else
+      {
+        document.getElementById('error_message').innerText="";
+
+          return true;
+      }
+  }  
+  function confirmBid(amount,id){
+    
+    let address=getAccountData();
+
+
+        $.ajax({
+            dataType: "json",
+            type: 'GET',
+            url: '/place-bid',
+            data: {
+                    "address":address,
+                        "bid_amount":amount,
+                        "content_id":id
+                    },
+            success: function(data) {
+                swal({
+                        type: 'success',
+                        text: 'Bid completed successfully.',
+                        timer: 3000,
+                        onOpen: function() {
+                        swal.showLoading()
+                    }
+                }).then(function() {
+                    location.reload();
+                });
+                            location.reload();
+            }
+        });
+
+    }
+  function fetchData(query){   console.log(query)
+    $.ajax({type:"get",
+           url:"/search",
+           data:query,
+           success:function(res)
+           { console.log(res);
+
+            if(res.length>0)
+              {               
+                
+                document.getElementById('explore-list').innerHTML="";  
+                var Subscribeitemtabs= ''
+                console.log('session:','<%=session.subscription%>')
+                res.forEach(function(content,index)
+                 {
+                     console.log('content.nftToken',content.nftToken)
+
+                    console.log('content.for_sale',content.details.for_sale)
+                    var session_subs_type = '<%=session.subscription%>'
+                        if('<%=session.subscription%>'!=''){
+                            if(content.details.available_to.includes('<%=session.subscription%>')==true ){
+                             
+                                Subscribeitemtabs=''
+                    }else{
+                            if(session_subs_type=='3 Tier'){
+                                
+                                if(content.details.available_to.includes('2 Tier')==true ){
+
+                                    Subscribeitemtabs=''
+                                }else if(content.details.available_to.includes('1 Tier')==true){
+                                    Subscribeitemtabs=''
+                                }else {
+                                    Subscribeitemtabs='Subscribeitemtab'
+                                }
+                              }else if(content.details.available_to.includes('1 Tier')==true ){
+                             
+                                 Subscribeitemtabs=''
+                              }else{
+                                 
+                                 Subscribeitemtabs='Subscribeitemtab'
+                          }
+                             
+                        
+                    }
+                    }else{
+                      
+                        if(content.details.available_to.includes('1 Tier')==true){
+                        console.log('aaaaaaaaa')
+                        Subscribeitemtabs=''
+                    }else{
+                        Subscribeitemtabs='Subscribeitemtab'
+                    } 
+                    }
+                  
+                     var min_bid_amount=''
+                     var contentId=''
+                    var cont_id=''
+                    var amounts = ''
+                    if(content.details.for_sale=="Bid"){
+                        cont_id = content._id;
+                        amounts = content.details.bid_min_amount
+                        var myDate = content.details.bid_end.split("-");
+                        var newDate = new Date( myDate[0], myDate[1] - 1, myDate[2]);
+                        var end_date = newDate.getTime()
+                        var todayDate = new Date().toISOString().slice(0, 10);
+                        var myDate1 = todayDate.split("-");
+                        var newDate1 = new Date( myDate1[0], myDate1[1] - 1, myDate1[2]);
+                        var to_day_date = newDate1.getTime()  
+                        if(end_date>to_day_date){
+                            var disable_bid = ''
+                        }else{
+                            
+                            var disable_bid = 'disabled'
+                        }
+                       min_bid_amount = ` <input type="hidden" name="min_bid_amount"id="min_bid_amount" value="`+content.details.bid_min_amount+`" class="form-control"/>`
+                       contentId = ` <input type="hidden" name="contentId" id="contantId" value="`+content._id+`" class="form-control contentId"/>`
+                       var totan=  '<button type="button" '+disable_bid+' class="btn btn-primary " onclick="startBid(\'' + content._id + '\',\'' + amounts + '\'); " >Place Bid</button>'
+                       var ids = content._id
+                       
+                       $('#content_id').val(ids)
+                    }else{
+                        if(content.nftToken){
+                         var totan = '<a href="#" onclick="startBuy(\'' + content._id + '\',\'' + content.basic_price + '\'); ">Buy Now</a>'
+                     }else{
+                        var totan = `<a href="#">Sold Out</a>`
+                     }
+                    }
+                     let html="";
+                    if(content.media_type[0]=="video"){
+
+                         html=`<div data-id="`+content.details.available_to+`" class=" ${Subscribeitemtabs} d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"style="display:block">
+                    <div class="nft__item">
+                        <div class="de_countdown" data-year="2021" data-month="8" data-day="16" data-hour="8"></div>
+                        <div class="author_list_pp">
+                            <a href="/author?id=`+content.userinfo._id+`">                                    
+                                <img class="lazy" src="/uploadFile/`+content.userinfo.image+`" alt="">
+                                <i class="fa fa-check"></i>
+                            </a>
+                        </div>
+                        <div class="nft__item_wrap">
+                            <a href="/item-details?id=`+content._id+`">
+
+                              <video width="100%" height="249">
+                              <source src="/uploadFile/`+content.image+`" type="video/`+content.media_type[1]+`">
+                              </video>                           
+                           
+                                </a>
+                        </div>
+                        <div class="nft__item_info">
+                            <a href="/item-details?id=`+content._id+`">
+                                <h4>`+content.title+`</h4>
+                            </a>
+                            <div class="nft__item_price">
+                                `+content.basic_price+`
+                            </div>
+                            <div class="nft__item_action">
+                                ${min_bid_amount}
+                               ${totan}
+                               ${contentId}
+                            </div>
+                            <div class="nft__item_like d-none">
+                                <i class="fa fa-heart"></i><span>50</span>
+                            </div>                            
+                        </div> 
+                    </div>
+                </div>`;
+
+                      }
+                      else
+                       {
+
+                         html=`<div data-id="`+content.details.available_to+`" class=" ${Subscribeitemtabs} d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"style="display:block">
+                    <div class="nft__item">
+                        <div class="de_countdown" data-year="2021" data-month="8" data-day="16" data-hour="8"></div>
+                        <div class="author_list_pp">
+                            <a href="/author?id=`+content.userinfo._id+`">                                    
+                                <img class="lazy" src="/uploadFile/`+content.userinfo.image+`" alt="">
+                                <i class="fa fa-check"></i>
+                            </a>
+                        </div>
+                        <div class="nft__item_wrap">
+                            <a href="/item-details?id=`+content._id+`" >
+                                <img src="/uploadFile/`+content.image+`" class="lazy nft__item_preview" alt="">
+                            </a>
+                        </div>
+                        <div class="nft__item_info">
+                            <a href="/item-details?id=`+content._id+`">
+                                <h4>`+content.title+`</h4>
+                            </a>
+                            <div class="nft__item_price">
+                                `+content.basic_price+`
+                            </div>
+                            <div class="nft__item_action">
+                                ${min_bid_amount}
+                                ${totan}
+                                ${contentId}
+                            </div>
+                            <div class="nft__item_like d-none">
+                                <i class="fa fa-heart"></i><span>50</span>
+                            </div>                            
+                        </div> 
+                    </div>
+                </div>`;
+
+                       }
+                      
+                        
+
+                  document.getElementById('explore-list').innerHTML+=html;
+                    
+                });
+              
+         //$("#content-list").html(html); 
+           }else{
+            document.getElementById('explore-list').innerHTML='<div class="col-md-12"> <h1 class="text-center">Not Found<h1> </div>';  
+
+
+           } 
+                 
+
+
+           },
+       
+    });
+  }
+
+function CheckboxValues(name) {
+   
+  const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+  let values = [];
+  checkboxes.forEach((checkbox) => { alert(checkbox.value)
+      values.push(checkbox.value);
+   });
+ 
+   console.log(values);
+   fetchData(values);
+ }   
+
+ function searchFilter(){
+    const queryString = window.location.search;
+
+    const urlParams = new URLSearchParams(queryString);
+
+     const category = urlParams.get('category')
+     const sortby = urlParams.get('sortby');
+        console.log(sortby);
+     
+      const activeid = document.getElementById("activeid");
+
+      if (category === null || category === "undefined")
+          {
+                activeid.innerText = "All Categories";
+
+          }
+        else
+          {
+               activeid.innerText = category;
+          }
+
+     if(category!="undefine"||category!=null)
+      {
+         return {category:category,sortby:'lh'};
+      }
+      else if(sortby!="" && category!=""){
+       
+
+        return {category:category,sortby:sortby};
+
+      }
+    console.log(category);
+ }
+
+ function searchContent(value){
+     let obj={category:value,sortby:""}
+     fetchData(obj);
+ }
+
+ function sortContent(value){
+     let obj={category:"",sortby:value}
+     fetchData(obj);
+ }
+
+ 
+</script>
