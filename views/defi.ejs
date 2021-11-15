@@ -48,7 +48,7 @@
                                     </div>
                                     <div >
                                         <p class="mb-0">Swap To:</p>
-                                        <a href="#" class="select-token-btn" data-bs-toggle="modal" data-bs-target="#selecttokenModal">Select a Token</a>
+                                        <a href="#" id="select_token" class="select-token-btn" data-bs-toggle="modal" data-bs-target="#selecttokenModal">Select a Token</a>
                                     </div>
                                 </div>
                            </div>
@@ -105,12 +105,12 @@
     <h5 class="modal-title text-center" id="exampleModalLabel">Select a token</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   </div>
-  <div class="modal-body select-token-body">
+    <div class="modal-body select-token-body">
       <input type="text" name="" class="form-control" placeholder="Search Name or paste Address">
     <div>
         <ul >
-            <li class="active">
-                <a href="">
+            <li id="ETH" onclick="currencyChange(this.id)" class="active">
+                <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/eth-icon.png">
                             <div >
@@ -121,8 +121,8 @@
                         </div>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li id="bnb" onclick="currencyChange(this.id)">
+                <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/bnb-icon.png">
                             <div >
@@ -133,8 +133,8 @@
                         </div>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li id="usdt" onclick="currencyChange(this.id)">
+                <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/tether.png">
                             <div >
@@ -145,8 +145,8 @@
                         </div>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li id="btc" onclick="currencyChange(this.id)">
+                <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/bitcoin.png">
                             <div >
@@ -157,8 +157,8 @@
                         </div>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li id="cardano" onclick="currencyChange(this.id)">
+                <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/eth-icon.png">
                             <div >
@@ -169,8 +169,8 @@
                         </div>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li id="solana" onclick="currencyChange(this.id)">
+                <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/eth-icon.png">
                             <div >
@@ -181,20 +181,20 @@
                         </div>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li id="xrp" onclick="currencyChange(this.id)">
+                <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/eth-icon.png">
                             <div >
                                 <h4 class="mb-0">XRP </h4>
-                                <p class="mb-0" value="xrp" >xrp</p>
+                                <p onclick="currencyChange()" class="mb-0" value="xrp" >xrp</p>
                             
                             </div>
                         </div>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li id="dogecoin" onclick="currencyChange(this.id)">
+                <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/eth-icon.png">
                             <div >
@@ -204,13 +204,13 @@
                         </div>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li id="dot" onclick="currencyChange(this.id)">
+                <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/eth-icon.png">
                             <div >
                                 <h4 class="mb-0">DOT</h4>
-                                <p class="mb-0" value="xrp" >Polkadot</p>
+                                <p class="mb-0" value="dot" >Polkadot</p>
                             </div>
                         </div>
                 </a>
@@ -300,7 +300,8 @@ $(this).addClass("active");
 <!-- Function for giving currency value -->
 <script>
     function myChangeFunction(bidding) {
-        let currency = document.getElementById("currencyTypes").value;
+        // let currency = document.getElementById("currencyTypes").id;
+        let currency= document.getElementById("select_token").value
 
         if (currency == 'cardano' || currency == 'solana' || currency == 'dogecoin') {
             axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=taboo-token&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true%27`)
@@ -376,12 +377,20 @@ $(this).addClass("active");
 </script>
 
 <script>
+
+    // function currencyChange(currencyType){
+    //     console.log(currencyType);
+    // }
+
+
     let currencyTypeGlobal;
     window.onload = function () {
-        changeCurrency("eth");
+        currencyChange("eth");
     };
-    function changeCurrency(currencyType) {
+    function currencyChange(currencyType) {
         // alert(currencyType);
+        document.getElementById("select_token").value= currencyType;
+        console.log("select_token",document.getElementById("select_token").value)
         currencyTypeGlobal = currencyType
         if (currencyType == "eth") {
             let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
