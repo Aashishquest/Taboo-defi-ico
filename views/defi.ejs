@@ -97,7 +97,7 @@
                 <input type="text" name="" class="form-control" placeholder="Search Name or paste Address">
                 <div>
                     <ul>
-                        <li id="eth" onclick="currencyChange(this.id)" data-bs-dismiss="modal" class="active">
+                        <li id="eth" onclick="currencyChange(this.id) "  data-bs-dismiss="modal" class="active">
                             <a href="#">
                                 <div class="eth-box">
                                     <img src="assets/images/eth-icon.png">
@@ -285,6 +285,9 @@
 
 <!-- Function for giving currency value -->
 <script>
+    async function myFunction(){
+        myChangeFunction(bidding)
+    }
     function myChangeFunction(bidding) {
         // let currency = document.getElementById("currencyTypes").id;
         let currency = document.getElementById("select_token").value
@@ -385,6 +388,7 @@
         let select_token = document.getElementById("select_token")
         select_token.value = currencyType;
         select_token.innerHTML = select_token.value.toUpperCase()
+        myFunction()
         console.log("select_token", document.getElementById("select_token").value)
         currencyTypeGlobal = currencyType
         if (currencyType == "eth") {
