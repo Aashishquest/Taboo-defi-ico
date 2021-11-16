@@ -105,11 +105,12 @@
     <h5 class="modal-title text-center" id="exampleModalLabel">Select a token</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   </div>
+  
     <div class="modal-body select-token-body">
       <input type="text" name="" class="form-control" placeholder="Search Name or paste Address">
     <div>
         <ul >
-            <li id="ETH" onclick="currencyChange(this.id)" class="active">
+            <li id="ETH"  onchange="myChangeFunction(bidding),changeCurrency(this.value)" onchange="myChangeFunction()"class="active">
                 <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/eth-icon.png">
@@ -121,7 +122,7 @@
                         </div>
                 </a>
             </li>
-            <li id="bnb" onclick="currencyChange(this.id)">
+            <li id="bnb"  onchange="myChangeFunction(bidding),changeCurrency(this.value)" onchange="myChangeFunction()">
                 <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/bnb-icon.png">
@@ -133,7 +134,7 @@
                         </div>
                 </a>
             </li>
-            <li id="usdt" onclick="currencyChange(this.id)">
+            <li id="usdt"  onchange="myChangeFunction(bidding),changeCurrency(this.value)"onchange="myChangeFunction()">
                 <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/tether.png">
@@ -145,7 +146,7 @@
                         </div>
                 </a>
             </li>
-            <li id="btc" onclick="currencyChange(this.id)">
+            <li id="btc"  onchange="myChangeFunction(bidding),changeCurrency(this.value)" onchange="myChangeFunction()">
                 <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/bitcoin.png">
@@ -157,7 +158,7 @@
                         </div>
                 </a>
             </li>
-            <li id="cardano" onclick="currencyChange(this.id)">
+            <li id="cardano"  onchange="myChangeFunction(bidding),changeCurrency(this.value)" onchange="myChangeFunction()">
                 <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/cardano-ada-logo.png">
@@ -169,7 +170,7 @@
                         </div>
                 </a>
             </li>
-            <li id="solana" onclick="currencyChange(this.id)">
+            <li id="solana"  onchange="myChangeFunction(bidding),changeCurrency(this.value)"onchange="myChangeFunction()">
                 <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/solana-sol-logo.png">
@@ -181,7 +182,7 @@
                         </div>
                 </a>
             </li>
-            <li id="xrp" onclick="currencyChange(this.id)">
+            <li id="xrp"  onchange="myChangeFunction(bidding),changeCurrency(this.value)" onchange="myChangeFunction()">
                 <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/xrp-icon-freelogovectors.net_.png">
@@ -193,7 +194,7 @@
                         </div>
                 </a>
             </li>
-            <li id="dogecoin" onclick="currencyChange(this.id)">
+            <li id="dogecoin"  onchange="myChangeFunction(bidding),changeCurrency(this.value)" onchange="myChangeFunction()">
                 <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/dogecoin-doge-logo.png">
@@ -204,7 +205,7 @@
                         </div>
                 </a>
             </li>
-            <li id="dot" onclick="currencyChange(this.id)">
+            <li id="dot" >
                 <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/polkadot-new-dot-logo.png">
@@ -212,6 +213,7 @@
                                 <h4 class="mb-0">DOT</h4>
                                 <p class="mb-0" value="dot" >Polkadot</p>
                             </div>
+                        
                         </div>
                 </a>
             </li>
