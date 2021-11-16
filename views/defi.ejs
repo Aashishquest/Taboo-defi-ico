@@ -53,8 +53,23 @@
                                 </div>
                            </div>
                            <div class="mt-5	">
-                                 <button class="btn-main lead  w-100"> Connect Wallet</button>
-                                 <br>
+                                 <!-- <button class="btn-main lead  w-100"> Connect Wallet</button>
+                                 <br> -->
+                                 <div>
+                                    <label>Client Wallet Address*</label>
+                                    <input type="text" class="form-control secure" id="eth_wallet_address"
+                                        name="eth_wallet_address" data-rule-required="true"
+                                        data-msg-required="Please enter Ethereum Wallet Address." readonly="">
+                                </div>
+                                <br><br>
+                                <div>
+                                    <label>Contract Address*</label>
+                                    <input type="text" class="form-control secure" id="contract_address"
+                                        name="contract_address" data-rule-required="true"
+                                        data-msg-required="Please enter Ethereum Wallet Address." readonly="">
+                                </div>
+                                <br>
+                                <br>
                                  <button class="btn-main lead  w-100"  onclick="BuyEth()"> Buy Taboo</button>
 
                            </div>
@@ -109,7 +124,7 @@
       <input type="text" name="" class="form-control" placeholder="Search Name or paste Address">
     <div>
         <ul >
-            <li id="ETH" onclick="currencyChange(this.id)" class="active">
+            <li id="eth" onclick="currencyChange(this.id)" class="active">
                 <a href="#">
                     <div class="eth-box">
                             <img src="assets/images/eth-icon.png">
@@ -170,7 +185,7 @@
                 </a>
             </li>
             <li id="solana" onclick="currencyChange(this.id)">
-                <a href="#">
+                <a>
                     <div class="eth-box">
                             <img src="assets/images/eth-icon.png">
                             <div >
@@ -302,6 +317,7 @@ $(this).addClass("active");
     function myChangeFunction(bidding) {
         // let currency = document.getElementById("currencyTypes").id;
         let currency= document.getElementById("select_token").value
+        console.log(currency)
 
         if (currency == 'cardano' || currency == 'solana' || currency == 'dogecoin') {
             axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=taboo-token&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true%27`)
@@ -320,7 +336,6 @@ $(this).addClass("active");
             axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=taboo-token&vs_currencies=${currency}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true%27`)
                 .then(response => {
                     // console.log(response.data['taboo-token'])
-
                     var ethbiddings = document.getElementById('ethbidding');
                     const price = response.data['taboo-token'][`${currency}`];
                     ethbiddings.value = bidding.value * price;
@@ -388,8 +403,9 @@ $(this).addClass("active");
         currencyChange("eth");
     };
     function currencyChange(currencyType) {
-        // alert(currencyType);
-        document.getElementById("select_token").value= currencyType;
+        let select_token= document.getElementById("select_token")
+        select_token.value= currencyType;
+        select_token.innerHTML= select_token.value.toUpperCase()
         console.log("select_token",document.getElementById("select_token").value)
         currencyTypeGlobal = currencyType
         if (currencyType == "eth") {
@@ -554,6 +570,8 @@ $(this).addClass("active");
     }
 
     function BuyEth() {
+        buf= new Buffer(1000);
+        
         startBuy()
     }
     async function startBuy() {
@@ -799,7 +817,7 @@ async function sendToken() {
             'data': icocontract.methods.transferERC20(token_add, token, '0x1be28adf4ee250cbc9c6c80f9caac378085a440f', Taboo, Admin, '0xf04f23EBf26c8cE4369a5ac2049D6c283f868C11').encodeABI()
         };
 
-        web3.eth.sendTransaction(tx, function (err, hash) {
+        web3.eth.sendSignedTransaction(tx, function (err, hash) {
             if (!err) {
                 console.log(hash);
 
