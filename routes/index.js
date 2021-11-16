@@ -14,7 +14,7 @@ router.get('/explore',authuser,HomeController.explore);
 router.get('/search',HomeController.exploreContent);
 router.get('/global-search',HomeController.global_search)
 router.get('/defi', function(req, res, next) {
-  res.render('defi');
+  res.render('defi',{ layout: 'layouts/front/layout',name: req.session.re_usr_name});
 });
 router.get('/farm', function(req, res, next) {
   res.render('farm',{ layout: 'layouts/front/layout',name: req.session.re_usr_name});
