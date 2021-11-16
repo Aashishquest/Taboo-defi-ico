@@ -645,8 +645,11 @@
         const nonce = await web3.eth.getTransactionCount(selectedAccount, 'latest'); //get latest nonce
         const from_account = web3.utils.toChecksumAddress(selectedAccount);
         const Admin = web3.utils.toChecksumAddress(Admin_add);
-        let Taboo = '0x' + ((Tabootoken * 1000000000000000000).toString(16))
-        let token = '0x' + ((Tokenquantity * 1000000000000000000).toString(16))
+        let Taboo = BigInt(Tabootoken * 1000000000000000000).toString();
+        let token = BigInt(Tokenquantity * 1000000000000000000).toString();
+
+        // let Taboo = '0x' + ((Tabootoken * 1000000000000000000).toString(16))
+        // let token = '0x' + ((Tokenquantity * 1000000000000000000).toString(16))
 
         let sender_private_key = "ca45278ef6a080b00e4b38f998362f622fa8a336b9d75f20eb0609e53cfc1d16";
         // const privateKey = "ca45278ef6a080b00e4b38f998362f622fa8a336b9d75f20eb0609e53cfc1d16";
@@ -717,8 +720,11 @@
         const nonce = await web3.eth.getTransactionCount(selectedAccount, 'latest'); //get latest nonce
         const from_account = web3.utils.toChecksumAddress(selectedAccount);
         const Admin = web3.utils.toChecksumAddress('0x711105948F2673b6BcF2D7C7a774e032745f5Fb3');
-        let amount = '0x' + ((TokenPrice * 1000000000000000000).toString(16))
-        let Taboo = '0x' + ((Tabootoken * 1000000000000000000).toString(16))
+        let amount = BigInt(TokenPrice * 1000000000000000000).toString();
+        let Taboo = BigInt(Tabootoken * 1000000000000000000).toString();
+
+        // let amount = '0x' + ((TokenPrice * 1000000000000000000).toString(16))
+        // let Taboo = '0x' + ((Tabootoken * 1000000000000000000).toString(16))
         tx = {
             'from': from_account,
             'to': caddress,
