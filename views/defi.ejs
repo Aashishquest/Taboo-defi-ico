@@ -99,7 +99,7 @@
                 <input type="text" name="" class="form-control" placeholder="Search Name or paste Address">
                 <div>
                     <ul>
-                        <li id="eth" onclick="currencyChange(this.id)" data-bs-dismiss="modal" class="active">
+                        <li id="eth" onclick="currencyChange(this.id) "  data-bs-dismiss="modal" class="active">
                             <a href="#">
                                 <div class="eth-box">
                                     <img src="assets/images/eth-icon.png">
@@ -287,6 +287,9 @@
 
 <!-- Function for giving currency value -->
 <script>
+    async function tabooToTokenValue_(){
+        tabooToTokenValue(bidding)
+    }
     function tabooToTokenValue(bidding) {
         // let currency = document.getElementById("currencyTypes").id;
         let currency = document.getElementById("select_token").value
@@ -408,6 +411,7 @@
         let select_token = document.getElementById("select_token")
         select_token.value = currencyType;
         select_token.innerHTML = select_token.value.toUpperCase()
+        tabooToTokenValue_()
         console.log("select_token", document.getElementById("select_token").value)
         if (currencyType == "eth") {
             let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
