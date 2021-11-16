@@ -53,23 +53,19 @@
                                 </div>
                            </div>
                            <div class="mt-5	">
-                                 <!-- <button class="btn-main lead  w-100"> Connect Wallet</button>
-                                 <br> -->
-                                 <div>
-                                    <label>Client Wallet Address*</label>
-                                    <input type="text" class="form-control secure" id="eth_wallet_address"
-                                        name="eth_wallet_address" data-rule-required="true"
-                                        data-msg-required="Please enter Ethereum Wallet Address." readonly="">
-                                </div>
-                                <br><br>
-                                <div>
-                                    <label>Contract Address*</label>
-                                    <input type="text" class="form-control secure" id="contract_address"
-                                        name="contract_address" data-rule-required="true"
-                                        data-msg-required="Please enter Ethereum Wallet Address." readonly="">
-                                </div>
-                                <br>
-                                <br>
+                            <div>
+                                <label>Client Wallet Address*</label>
+                                <input type="text" class="form-control secure" id="eth_wallet_address"
+                                    name="eth_wallet_address" data-rule-required="true"
+                                    data-msg-required="Please enter Ethereum Wallet Address." readonly="">
+                            </div>
+                            <br><div>
+                                <label>Contract Address*</label>
+                                <input type="text" class="form-control secure" id="contract_address"
+                                    name="contract_address" data-rule-required="true"
+                                    data-msg-required="Please enter Ethereum Wallet Address." readonly="">
+                            </div>
+                            <br>
                                  <button class="btn-main lead  w-100"  onclick="BuyEth()"> Buy Taboo</button>
 
                            </div>
@@ -175,7 +171,7 @@
             <li id="cardano" onclick="currencyChange(this.id)">
                 <a href="#">
                     <div class="eth-box">
-                            <img src="assets/images/eth-icon.png">
+                            <img src="assets/images/cardano-ada-logo.png">
                             <div >
                                 <h4 class="mb-0">ADA </h4>
                                 <p class="mb-0" value="cardano">CARDANO</p>
@@ -187,7 +183,7 @@
             <li id="solana" onclick="currencyChange(this.id)">
                 <a>
                     <div class="eth-box">
-                            <img src="assets/images/eth-icon.png">
+                            <img src="assets/images/solana-sol-logo.png">
                             <div >
                                 <h4 class="mb-0">SOL </h4>
                                 <p class="mb-0" value="solana">SOLANA</p>
@@ -199,7 +195,7 @@
             <li id="xrp" onclick="currencyChange(this.id)">
                 <a href="#">
                     <div class="eth-box">
-                            <img src="assets/images/eth-icon.png">
+                            <img src="assets/images/xrp-icon-freelogovectors.net_.png">
                             <div >
                                 <h4 class="mb-0">XRP </h4>
                                 <p onclick="currencyChange()" class="mb-0" value="xrp" >xrp</p>
@@ -211,7 +207,7 @@
             <li id="dogecoin" onclick="currencyChange(this.id)">
                 <a href="#">
                     <div class="eth-box">
-                            <img src="assets/images/eth-icon.png">
+                            <img src="assets/images/dogecoin-doge-logo.png">
                             <div >
                                 <h4 class="mb-0">DOGE </h4>
                                 <p class="mb-0" value="dogecoin" >Dogecoin</p>
@@ -222,7 +218,7 @@
             <li id="dot" onclick="currencyChange(this.id)">
                 <a href="#">
                     <div class="eth-box">
-                            <img src="assets/images/eth-icon.png">
+                            <img src="assets/images/polkadot-new-dot-logo.png">
                             <div >
                                 <h4 class="mb-0">DOT</h4>
                                 <p class="mb-0" value="dot" >Polkadot</p>
@@ -349,6 +345,13 @@ $(this).addClass("active");
 <script type="text/javascript" src="https://unpkg.com/web3modal"></script>
 <script type="text/javascript" src="https://unpkg.com/evm-chains/lib/index.js"></script>
 <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider"></script>
+<script src="https://rawgit.com/ethereumjs/browser-builds/master/dist/ethereumjs-abi/ethereumjs-abi-0.6.5.js"></script> 
+<script src="https://rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script> 
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+<script type="text/javascript" src="ethereumjs-tx.js"></script>
+<script type="text/javascript" src="ethereumjs-common.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
+
 <script>
     function decimalToHexString(number) {
         if (number < 0) {
@@ -603,6 +606,89 @@ $(this).addClass("active");
         await BuyToken(provider);
     }
 
+    async function transfertaboo(){
+                                const web3 = new Web3(provider);
+                                // const Tx = require('ethereumjs-tx');
+                                // const Common = require('ethereumjs-common');
+
+                                 const web3js = new Web3(
+                            new web3.providers.HttpProvider(
+                                "https://ropsten.infura.io/v3/dc6e11412ff54869b4bb3ce77550d55a"
+                            )
+                        );
+
+                        const chainId = await web3.eth.getChainId();
+
+                        const accounts = await web3.eth.getAccounts();
+
+                        // console.log("Got accounts", accounts);
+                        selectedAccount = accounts[0];
+
+                        // Go through all accounts and get their ETH balance
+                        const rowResolvers = accounts.map(async (address) => {
+                            const balance = await web3.eth.getBalance(address);
+                        });
+
+
+                        // until data for all accounts is loaded
+                        await Promise.all(rowResolvers);
+                        const ico_address = "0x711105948F2673b6BcF2D7C7a774e032745f5Fb3";
+
+                const icoabi = [{ "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": false, "internalType": "address", "name": "newOwner", "type": "address" }], "name": "OwnershipTransferred", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "_from", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "TransferReceived", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "_from", "type": "address" }, { "indexed": false, "internalType": "address", "name": "_destAddr", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "TransferSent", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "_from", "type": "address" }, { "indexed": false, "internalType": "address", "name": "_to", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "TransferToken", "type": "event" }, { "inputs": [], "name": "balance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "contract IERC20", "name": "token", "type": "address" }, { "internalType": "uint256", "name": "tokenamount", "type": "uint256" }, { "internalType": "contract IERC20", "name": "taboo", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }, { "internalType": "address", "name": "admin", "type": "address" }, { "internalType": "address", "name": "from", "type": "address" }], "name": "transferERC20", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "amount", "type": "uint256" }, { "internalType": "address payable", "name": "destAddr", "type": "address" }], "name": "withdraw", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "stateMutability": "payable", "type": "receive" }];
+
+
+                const token_address = document.getElementById("contract_address").value;
+                const token_add = web3.utils.toChecksumAddress(token_address);
+
+                const icoaddress = web3.utils.toChecksumAddress(ico_address);
+                const Admin_add = '0xF24a24Ab64a29edd50ACC655f4dd78360888A83e';
+                const Tokenquantity = document.getElementById('ethbidding').value;
+                const Tabootoken = document.getElementById('bidding').value
+                // const decimal = document.getElementById('decimal').value;
+                console.log("contract",token_add)
+
+                const icocontract = new web3.eth.Contract(icoabi, icoaddress);
+                const nonce = await web3.eth.getTransactionCount(selectedAccount, 'latest'); //get latest nonce
+                const from_account = web3.utils.toChecksumAddress(selectedAccount);
+                const Admin = web3.utils.toChecksumAddress(Admin_add);
+                let Taboo = '0x' + ((Tabootoken * 1000000000000000000).toString(16))
+                let token = '0x' + ((Tokenquantity * 1000000000000000000).toString(16))
+                                 
+                        let sender_private_key = "ca45278ef6a080b00e4b38f998362f622fa8a336b9d75f20eb0609e53cfc1d16";
+                        // const privateKey = "ca45278ef6a080b00e4b38f998362f622fa8a336b9d75f20eb0609e53cfc1d16";
+                    
+                        const privateKey = new ethereumjs.Buffer.Buffer(sender_private_key, 'hex');
+                        let estimates_gas = await web3js.eth.estimateGas({
+                            from: Admin_add,
+                            });
+                        let gasLimit = web3js.utils.toHex(estimates_gas * 3);
+                        let gasPrice_bal = await web3js.eth.getGasPrice();
+                        let gasPrice = web3js.utils.toHex(gasPrice_bal * 2);
+                        let count = await web3js.eth.getTransactionCount(Admin_add);
+                        console.log("sender",sender_private_key);
+                        // let sendAmount = amount * Math.pow(10, 18);
+                        // let sendAmount = BigInt(amount * 1000000000000000000).toString();
+                        // sendAmount = sendAmount.toString();
+                        let rawTransaction = {
+                            "gasPrice": gasPrice,
+                            "gasLimit": gasLimit,
+                            "to": ico_address,
+                            "data": icocontract.methods.transferERC20(token_add, token, '0x1be28adf4ee250cbc9c6c80f9caac378085a440f', Taboo, Admin, from_account).encodeABI(),
+                            "nonce": web3js.utils.toHex(count)
+                        };
+                        // const common = Common.default.forCustomChain('ropsten', {
+                        //     name: 'eth',
+                        //     networkId: 3,
+                        //     chainId: 3
+                        // }, 'petersburg');
+                        let transaction = new ethereumjs.Tx(rawTransaction);
+                        transaction.sign(privateKey);
+                        let hash = web3js.eth.sendSignedTransaction('0x' + transaction.serialize().toString('hex'))
+                        console.log("transfererc20",hash);
+                        return hash;
+                        
+    }
+
     async function BuyToken() {
         // Get a Web3 instance for the wallet
         const web3 = new Web3(provider);
@@ -624,20 +710,26 @@ $(this).addClass("active");
         await Promise.all(rowResolvers);
 
         const contract_address = document.getElementById("contract_address").value;
-
         // const contract_address = '0x1BE28AdF4ee250CBC9c6c80f9cAaC378085a440F';
 
         const abi = [{ "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "spender", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "value", "type": "uint256" }], "name": "Approval", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "delegator", "type": "address" }, { "indexed": true, "internalType": "address", "name": "fromDelegate", "type": "address" }, { "indexed": true, "internalType": "address", "name": "toDelegate", "type": "address" }], "name": "DelegateChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "delegate", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "previousBalance", "type": "uint256" }, { "indexed": false, "internalType": "uint256", "name": "newBalance", "type": "uint256" }], "name": "DelegateVotesChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "previousOwner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "newOwner", "type": "address" }], "name": "OwnershipTransferred", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "from", "type": "address" }, { "indexed": true, "internalType": "address", "name": "to", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "value", "type": "uint256" }], "name": "Transfer", "type": "event" }, { "inputs": [], "name": "DELEGATION_TYPEHASH", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "DOMAIN_TYPEHASH", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "owner", "type": "address" }, { "internalType": "address", "name": "spender", "type": "address" }], "name": "allowance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "spender", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "approve", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "account", "type": "address" }], "name": "balanceOf", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }, { "internalType": "uint32", "name": "", "type": "uint32" }], "name": "checkpoints", "outputs": [{ "internalType": "uint32", "name": "fromBlock", "type": "uint32" }, { "internalType": "uint256", "name": "votes", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "decimals", "outputs": [{ "internalType": "uint8", "name": "", "type": "uint8" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "spender", "type": "address" }, { "internalType": "uint256", "name": "subtractedValue", "type": "uint256" }], "name": "decreaseAllowance", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "delegatee", "type": "address" }], "name": "delegate", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "delegatee", "type": "address" }, { "internalType": "uint256", "name": "nonce", "type": "uint256" }, { "internalType": "uint256", "name": "expiry", "type": "uint256" }, { "internalType": "uint8", "name": "v", "type": "uint8" }, { "internalType": "bytes32", "name": "r", "type": "bytes32" }, { "internalType": "bytes32", "name": "s", "type": "bytes32" }], "name": "delegateBySig", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "delegator", "type": "address" }], "name": "delegates", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "account", "type": "address" }], "name": "getCurrentVotes", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "account", "type": "address" }, { "internalType": "uint256", "name": "blockNumber", "type": "uint256" }], "name": "getPriorVotes", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "spender", "type": "address" }, { "internalType": "uint256", "name": "addedValue", "type": "uint256" }], "name": "increaseAllowance", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "_to", "type": "address" }, { "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "mint", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "name", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "nonces", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "numCheckpoints", "outputs": [{ "internalType": "uint32", "name": "", "type": "uint32" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "renounceOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "symbol", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "totalSupply", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "recipient", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "transfer", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "sender", "type": "address" }, { "internalType": "address", "name": "recipient", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "transferFrom", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }];
 
         const caddress = web3.utils.toChecksumAddress(contract_address);
         const Admin_Address = document.getElementById("eth_wallet_address").value;
+
         const TokenPrice = document.getElementById('ethbidding').value;
-        const decimal = document.getElementById('decimal').value;
+
+
+        const Tabootoken = document.getElementById('bidding').value
+        // const decimal = document.getElementById('decimal').value;
+      
+
         const tokenContract = new web3.eth.Contract(abi, caddress);
         const nonce = await web3.eth.getTransactionCount(selectedAccount, 'latest'); //get latest nonce
         const from_account = web3.utils.toChecksumAddress(selectedAccount);
         const Admin = web3.utils.toChecksumAddress('0x711105948F2673b6BcF2D7C7a774e032745f5Fb3');
-        let amount = '0x' + ((TokenPrice * decimal).toString(16))
+        let amount = '0x' + ((TokenPrice * 1000000000000000000).toString(16))
+        let Taboo = '0x' + ((Tabootoken * 1000000000000000000).toString(16))
         tx = {
             'from': from_account,
             'to': caddress,
@@ -651,29 +743,7 @@ $(this).addClass("active");
             if (!err) {
                 console.log(hash);
 
-                $.ajax({
-                    dataType: "json",
-                    type: 'post',
-                    url: '/users/save-order',
-                    data: {
-                        tx_id: hash,
-                        address: selectedAccount,
-                        // qty: document.getElementById("copies").value,
-                        amount: TokenPrice,
-                        fees: fees,
-                        //         currency: currency,
-                        //         currencyRate: currencyRate
-                    },
-                    success: function (data) {
-
-                        console.log(data);
-
-                        window.location.href = "/transfer-nft?hash=" + hash;
-
-
-                        //location.reload();
-                    }
-                });
+                transfertaboo()
 
             }
             else {
