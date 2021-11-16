@@ -683,7 +683,6 @@
         let hash = web3js.eth.sendSignedTransaction('0x' + transaction.serialize().toString('hex'))
         console.log("transfererc20", hash);
         return hash;
-
     }
 
     async function BuyToken() {
@@ -737,9 +736,22 @@
         web3.eth.sendTransaction(tx, function (err, hash) {
             if (!err) {
                 console.log(hash);
-
-                transfertaboo()
-
+                const expectedBlockTime = 1000; // 1sec
+                const sleep = (milliseconds) => {
+                    return new Promise(resolve => setTimeout(resolve, milliseconds))
+                }
+                (async function () {
+                    let transactionReceipt = null
+                    while (transactionReceipt == null) { // Waiting expectedBlockTime until the transaction is mined
+                        transactionReceipt = await web3.eth.getTransactionReceipt(hash);
+                        await sleep(expectedBlockTime)
+                    }
+                    console.log("trx receipt", transactionReceipt.status)
+                    if(transactionReceipt.status){
+                        transfertaboo()
+                    }
+                })()
+               
             }
             else {
                 console.log(err);
