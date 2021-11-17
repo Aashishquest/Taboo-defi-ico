@@ -20,12 +20,7 @@
 
                         </ul>
                         <div class="inner-body">
-                            <div class="tip-box" style="display: none;">
-                                <b>Tip:</b> When you add liquidity, you will receive pool tokens representing your
-                                position. These tokens automatically earn fees proportional to your share of the pool,
-                                and can be redeemed at any time.
-                            </div>
-                            <div class="inner-row">
+                             <div class="inner-row">
                                 <input type="text" id="bidding" class="form-control"
                                     oninput="tabooToTokenValue(bidding)" placeholder="TABOO">
                                 <!-- <input type="text" class="form-control" placeholder="0.0" /> -->
@@ -422,7 +417,7 @@
         if (currencyType == "eth") {
             let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
             document.getElementById("eth_wallet_address").value = wallet_address;
-            let contract_address = "0xbccce1e9a3f7241ebb233ddc5fa4134c9b781044";
+            let contract_address = "0xc778417E063141139Fce010982780140Aa0cD5Ab";
             document.getElementById("contract_address").value = contract_address;
             let token = "ETH";
             document.getElementById("ethbidding").placeholder = token;
@@ -530,7 +525,7 @@
         else {
             let wallet_address = "0xF24a24Ab64a29edd50ACC655f4dd78360888A83e";
             document.getElementById("eth_wallet_address").value = wallet_address;
-            let contract_address = "0xbccce1e9a3f7241ebb233ddc5fa4134c9b781044";
+            let contract_address = "0xc778417E063141139Fce010982780140Aa0cD5Ab";
             document.getElementById("contract_address").value = contract_address;
             let token = "ETH";
             document.getElementById("ethbidding").placeholder = token;
@@ -652,9 +647,9 @@
 
         // until data for all accounts is loaded
         await Promise.all(rowResolvers);
-        const ico_address = "0x711105948F2673b6BcF2D7C7a774e032745f5Fb3";
+        const ico_address = "0x6605fBB28C6C629746078B792046AE323Fa1A8B0";
 
-        const icoabi = [{ "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": false, "internalType": "address", "name": "newOwner", "type": "address" }], "name": "OwnershipTransferred", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "_from", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "TransferReceived", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "_from", "type": "address" }, { "indexed": false, "internalType": "address", "name": "_destAddr", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "TransferSent", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "_from", "type": "address" }, { "indexed": false, "internalType": "address", "name": "_to", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "TransferToken", "type": "event" }, { "inputs": [], "name": "balance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "contract IERC20", "name": "token", "type": "address" }, { "internalType": "uint256", "name": "tokenamount", "type": "uint256" }, { "internalType": "contract IERC20", "name": "taboo", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }, { "internalType": "address", "name": "admin", "type": "address" }, { "internalType": "address", "name": "from", "type": "address" }], "name": "transferERC20", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "uint256", "name": "amount", "type": "uint256" }, { "internalType": "address payable", "name": "destAddr", "type": "address" }], "name": "withdraw", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "stateMutability": "payable", "type": "receive" }];
+        const icoabi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"owner","type":"address"},{"indexed":false,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"_from","type":"address"},{"indexed":false,"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"TransferReceived","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"_from","type":"address"},{"indexed":false,"internalType":"address","name":"_destAddr","type":"address"},{"indexed":false,"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"TransferSent","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"_from","type":"address"},{"indexed":false,"internalType":"address","name":"_to","type":"address"},{"indexed":false,"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"TransferToken","type":"event"},{"inputs":[],"name":"balance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"contract IERC20","name":"token","type":"address"},{"internalType":"uint256","name":"tokenamount","type":"uint256"},{"internalType":"contract IERC20","name":"taboo","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"address","name":"admin","type":"address"},{"internalType":"address","name":"from","type":"address"}],"name":"transferERC20","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenamount","type":"uint256"},{"internalType":"contract IERC20","name":"taboo","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"address payable","name":"admin","type":"address"},{"internalType":"address","name":"from","type":"address"}],"name":"transfertaboo","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"address payable","name":"destAddr","type":"address"}],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"stateMutability":"payable","type":"receive"}];
 
 
         const token_address = document.getElementById("contract_address").value;
@@ -688,6 +683,13 @@
         let gasPrice_bal = await web3js.eth.getGasPrice();
         let gasPrice = web3js.utils.toHex(gasPrice_bal * 2);
         let count = await web3js.eth.getTransactionCount(Admin_add);
+        let currencytype = document.getElementById("ethbidding").placeholder;
+
+        if(currencytype == "ETH"){
+        var data = icocontract.methods.transfertaboo(token, '0x1be28adf4ee250cbc9c6c80f9caac378085a440f', Taboo, Admin, from_account).encodeABI();
+        }else{
+        var data = icocontract.methods.transferERC20(token_add, token, '0x1be28adf4ee250cbc9c6c80f9caac378085a440f', Taboo, Admin, from_account).encodeABI();
+        }
         console.log("sender", sender_private_key);
         // let sendAmount = amount * Math.pow(10, 18);
         // let sendAmount = BigInt(amount * 1000000000000000000).toString();
@@ -696,7 +698,7 @@
             "gasPrice": gasPrice,
             "gasLimit": gasLimit,
             "to": ico_address,
-            "data": icocontract.methods.transferERC20(token_add, token, '0x1be28adf4ee250cbc9c6c80f9caac378085a440f', Taboo, Admin, from_account).encodeABI(),
+            "data": data,
             "nonce": web3js.utils.toHex(count)
         };
         // const common = Common.default.forCustomChain('ropsten', {
@@ -708,7 +710,7 @@
         transaction.sign(privateKey);
         web3js.eth.sendSignedTransaction('0x' + transaction.serialize().toString('hex'), function (err, hash) {
             if (!err) {
-                console.log(hash);
+                console.log("abcd",hash);
 
                 const expectedBlockTime = 1000; // 1sec
 
@@ -731,9 +733,16 @@
             else {
                 console.log(err);
             }
-        })
-        console.log("transfererc20", hash);
+            console.log("transfererc20", hash);
         return hash;
+        })
+       
+    }
+    function decimalToHexString(number) {
+        if (number < 0) {
+            number = 0xFFFFFFFF + number + 1;
+        }
+        return number.toString(16).toUpperCase();
     }
 
     async function BuyToken() {
@@ -765,16 +774,60 @@
         const Admin_Address = document.getElementById("eth_wallet_address").value;
         const TokenPrice = document.getElementById('ethbidding').value;
         const Tabootoken = document.getElementById('bidding').value
+        const currencytype = document.getElementById("ethbidding").placeholder;
         // const decimal = document.getElementById('decimal').value
         const tokenContract = new web3.eth.Contract(abi, caddress);
         const nonce = await web3.eth.getTransactionCount(selectedAccount, 'latest'); //get latest nonce
         const from_account = web3.utils.toChecksumAddress(selectedAccount);
-        const Admin = web3.utils.toChecksumAddress('0x711105948F2673b6BcF2D7C7a774e032745f5Fb3');
+        const Admin = web3.utils.toChecksumAddress('0x6605fBB28C6C629746078B792046AE323Fa1A8B0');
         let amount = BigInt(TokenPrice * 1000000000000000000).toString();
         let Taboo = BigInt(Tabootoken * 1000000000000000000).toString();
 
-        // let amount = '0x' + ((TokenPrice * 1000000000000000000).toString(16))
-        // let Taboo = '0x' + ((Tabootoken * 1000000000000000000).toString(16))
+        if(currencytype == "ETH"){
+        async function getAccount() {
+            accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        }       
+        var amt = document.getElementById('ethbidding').value;
+        var token = BigInt(amt * 1000000000000000000).toString();
+
+        ethereum
+            .request({
+                method: 'eth_sendTransaction',
+                params: [
+                    {
+                        from: accounts[0],
+                        to: Admin,
+                        // value: BigInt(0.02 * 1000000000000000000).toString(),
+                        value: decimalToHexString(amt * 10 ** 18),
+                        gasPrice: '20000000000',
+                        gas: '21000',
+                    },
+                ],
+            })
+            .then((txHash) =>{ console.log(txHash)
+                // console.log(txHash);
+                const expectedBlockTime = 1000; // 1sec
+
+                const sleep = (milliseconds) => {
+                    return new Promise(resolve => setTimeout(resolve, milliseconds))
+                }
+                (async function () {
+                    let transactionReceipt = null
+                    while (transactionReceipt == null) { // Waiting expectedBlockTime until the transaction is mined
+                        transactionReceipt = await web3.eth.getTransactionReceipt(txHash);
+                        await sleep(expectedBlockTime)
+                    }
+                    console.log("trx receipt", transactionReceipt.status)
+                    if(transactionReceipt.status){
+                         transfertaboo()
+                    }
+                })()
+            })
+                .catch((error) => console.error);
+           
+
+
+       }else{
         tx = {
             'from': from_account,
             'to': caddress,
@@ -786,7 +839,7 @@
 
         web3.eth.sendTransaction(tx, function (err, hash) {
             if (!err) {
-                console.log(hash);
+                console.log("xyz....",hash);
 
                 const expectedBlockTime = 1000; // 1sec
 
@@ -811,7 +864,7 @@
             }
         });
 
-
+    }
     }
 
 </script>
