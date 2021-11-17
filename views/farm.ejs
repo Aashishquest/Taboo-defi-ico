@@ -70,9 +70,25 @@
                                         name="contract_address" data-rule-required="true"
                                         data-msg-required="Please enter Ethereum Wallet Address." readonly="">
                                 </div>
+                                <div class="select-coin-box">
+                                    <label>Coin</label>
+                                    <select class="form-control" id="farmcontract"
+                                        style="box-shadow: none;outline: none;border: 1px solid #ddd !important;"
+                                        >
+    
+                                        <option value="deposit">deposit</option>
+                                        <option value="withdraw">withdraw</option>
+                                        <option value="harvest">Harvest</option>
+                                     
+    
+                                    </select>
+                                </div>
                                 <br>
-                                <button class="btn-main lead  w-100" onclick="BuyEth()"> Buy Taboo</button>
-
+                                <br>
+                                <br>
+                                <button class="btn-main lead  w-100" onclick="farm()"> Buy Taboo</button>
+                                <button class="btn-main lead  w-100" onclick="Approve()"> Buy Taboo</button>
+                               
                             </div>
                         </div>
                     </div>
@@ -166,8 +182,7 @@
 <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
 <script type="text/javascript" src="ethereumjs-tx.js"></script>
 <script type="text/javascript" src="ethereumjs-common.js"></script>
-<script
-    src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
 
 <script>
     function decimalToHexString(number) {
@@ -409,7 +424,8 @@
     
         }
     
-        function Withdraw() {
+       
+        function farm() {
             startBuy()
         }
         async function startBuy() {
@@ -504,9 +520,7 @@
                 else {
                     console.log(err);
                 }
-            });
-    
-    
+            }); 
         }
     
     </script>
