@@ -1,3 +1,13 @@
+<!-- Custom Style -->
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+</style>
+
 <!-- content begin -->
 <div class="no-bottom no-top" id="content">
     <div id="top"></div>
@@ -26,8 +36,8 @@
                                 and can be redeemed at any time.
                             </div>
                             <div class="inner-row">
-                                <input type="text" id="bidding" class="form-control"
-                                    onchange="tabooToTokenValue(bidding)" placeholder="TABOO">
+                                <input type="number" id="bidding" class="form-control"
+                                    oninput="tabooToTokenValue(bidding)" placeholder="TABOO" min="0" >
                                 <!-- <input type="text" class="form-control" placeholder="0.0" /> -->
                                 <div class="inner-row eth-box">
                                     <img src="assets/images/taboo-icon.png">
@@ -44,7 +54,7 @@
                             </div>
                             <div class="inner-row">
                                 <!-- <input type="text" class="form-control" placeholder="0.0" /> -->
-                                <small id="Tbalance"> </small>
+                                
                                 <input type="text" id="ethbidding" class="form-control" placeholder="ETH" readonly>
                                 
                                 <div class="inner-row eth-box">
@@ -58,6 +68,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <div>
+                                <span style="font-size: 12px;">Your Taboo Balance: </span>
+                                <b><span id="Tbalance" style="font-size: 12px;"></span></b>
+                            </div>
+                            
                             <div class="mt-5	">
                                 <div>
                                     <label>Client Wallet Address*</label>
@@ -293,8 +308,7 @@
     function tabooToTokenValue(bidding) {
         // let currency = document.getElementById("currencyTypes").id;
         let currency = document.getElementById("select_token").value
-        console.log(currency)
-
+        
         if (currency == 'cardano' || currency == 'solana' || currency == 'dogecoin') {
             axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=taboo-token&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true%27`)
                 .then(response => {
@@ -304,7 +318,7 @@
                         .then(response => {
                             var ethbiddings = document.getElementById('ethbidding');
                             const oneTaboo = bidding.value / ((response.data[`${currency}`].usd / price))
-                            ethbiddings.value = oneTaboo.toFixed(18);
+                            ethbiddings.value = oneTaboo.toFixed(5);
                         })
                 })
 
@@ -314,7 +328,7 @@
                     // console.log(response.data['taboo-token'])
                     var ethbiddings = document.getElementById('ethbidding');
                     const price = response.data['taboo-token'][`${currency}`];
-                    ethbiddings.value = (bidding.value * price).toFixed(18);
+                    ethbiddings.value = (bidding.value * price).toFixed(5);
                     // console.log(response.data['taboo-token'][`${currency}`])
                 })
         }
@@ -411,6 +425,7 @@
         let select_token = document.getElementById("select_token")
         select_token.value = currencyType;
         select_token.innerHTML = select_token.value.toUpperCase()
+
         tabooToTokenValue_()
         console.log("select_token", document.getElementById("select_token").value)
         if (currencyType == "eth") {
