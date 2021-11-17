@@ -628,7 +628,7 @@
             return;
         }
 
-        // Subscribe to accounts change
+        // Subscribe to accounts change: If the account is changed, the transactions goes on those accounts
         provider.on("accountsChanged", (accounts) => {
             BuyToken();
         });
