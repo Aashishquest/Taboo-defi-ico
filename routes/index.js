@@ -19,6 +19,9 @@ router.get('/defi', function(req, res, next) {
 router.get('/farm', function(req, res, next) {
   res.render('farm',{ layout: 'layouts/front/layout',name: req.session.re_usr_name});
 });
+router.get('/farming', function(req, res, next) {
+  res.render('yield_farm',{ layout: 'layouts/front/layout',name: req.session.re_usr_name});
+});
 router.get('/buy-content',TransactionController.buyNft);
 
 router.get('/model',authuser,HomeController.model);
