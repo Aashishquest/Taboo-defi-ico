@@ -23,37 +23,14 @@
                                 <a href="javascript:void(0);" class="tab1 active">
                                     <div>
                                         <img src="assets/images/exchange_1.png">
-                                        <span>Swap</span>
+                                        <span>Buy</span>
                                     </div>
                                 </a>
                             </li>
 
                         </ul>
                         <div class="inner-body">
-                            <div class="tip-box" style="display: none;">
-                                <b>Tip:</b> When you add liquidity, you will receive pool tokens representing your
-                                position. These tokens automatically earn fees proportional to your share of the pool,
-                                and can be redeemed at any time.
-                            </div>
-                            <div class="inner-row">
-                                <input type="number" id="bidding" class="form-control"
-                                    oninput="tabooToTokenValue(bidding)" placeholder="TABOO" min="0" >
-                                <!-- <input type="text" class="form-control" placeholder="0.0" /> -->
-                                <div class="inner-row eth-box">
-                                    <img src="assets/images/taboo-icon.png">
-                                    <div>
-                                        <p class="mb-0">Swap From:</p>
-
-                                        <h4 class="mb-0">TABOO</h4>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <small id="Tbalance"> </small>
-                            <div class="exchange-icon-box">
-                                <span><img src="assets/images/swap_1.png"></span>
-                            </div>
-                            <div class="inner-row">
+                           <div class="inner-row">
                                 <!-- <input type="text" class="form-control" placeholder="0.0" /> -->
                                 
                                 <input type="text" id="ethbidding" class="form-control" placeholder="ETH" readonly>
@@ -63,33 +40,56 @@
                                         <img id="slidecaption" src="assets/images/ethereum.png">
                                     </div>
                                     <div>
-                                        <p class="mb-0">Swap To:</p>
+                                        <p class="mb-0">Swap From:</p>
                                         <a href="#" id="select_token" class="select-token-btn" data-bs-toggle="modal"
                                             data-bs-target="#selecttokenModal">Select a Token</a>
                                     </div>
                                 </div>
                             </div>
-                            <div>
+
+                            
+                            <div class="exchange-icon-box">
+                                <span><img src="assets/images/swap_1.png"></span>
+                            </div>
+
+                            <div class="inner-row">
+                                <input type="number" id="bidding" class="form-control"
+                                    oninput="tabooToTokenValue(bidding)" placeholder="TABOO" min="0" >
+                                <!-- <input type="text" class="form-control" placeholder="0.0" /> -->
+                                <div class="inner-row eth-box">
+                                    <img src="assets/images/taboo-icon.png">
+                                    <div>
+                                        <p class="mb-0">Swap To:</p>
+
+                                        <h4 class="mb-0">TABOO</h4>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <small id="Tbalance"> </small>
+
+                            
+                            <!-- <div>
                                 <span style="font-size: 12px;">Your Taboo Balance: </span>
                                 <b><span id="Tbalance" style="font-size: 12px;"></span></b>
-                            </div>
+                            </div> -->
                             
                             <div class="mt-5	">
                                 <div>
-                                    <label>Client Wallet Address*</label>
-                                    <input type="text" class="form-control secure" id="eth_wallet_address"
+                                    <!-- <label>Client Wallet Address*</label> -->
+                                    <input type="hidden" class="form-control secure" id="eth_wallet_address"
                                         name="eth_wallet_address" data-rule-required="true"
                                         data-msg-required="Please enter Ethereum Wallet Address." readonly="">
                                 </div>
                                 <br>
                                 <div>
-                                    <label>Contract Address*</label>
-                                    <input type="text" class="form-control secure" id="contract_address"
+                                    <!-- <label>Contract Address*</label> -->
+                                    <input type="hidden" class="form-control secure" id="contract_address"
                                         name="contract_address" data-rule-required="true"
                                         data-msg-required="Please enter Ethereum Wallet Address." readonly="">
                                 </div>
                                 <br>
-                                <button class="btn-main lead  w-100" onclick="BuyEth()"> Buy Taboo</button>
+                                <button class="btn-main lead  w-100"onclick="BuyEth()"> Buy Taboo</button>
 
                             </div>
                         </div>
@@ -100,6 +100,23 @@
     </section>
 
 </div>
+
+<div class="modal fade defi-modal" id="transactionModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">Transaction</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal_" aria-label="Close"></button>
+            </div>
+            <div class="modal-body select-token-body text-center" id="modalBody">
+                <a href="#">Check Your Transaction</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 <!-- Modal -->
@@ -414,6 +431,7 @@
         selectedAccount = accounts[0];
         const contract_address = "0x1BE28AdF4ee250CBC9c6c80f9cAaC378085a440F";
         const token_address = document.getElementById("contract_address").value;
+        console.log("token_addres", token_address)
         const abi = [{ "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "spender", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "value", "type": "uint256" }], "name": "Approval", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "delegator", "type": "address" }, { "indexed": true, "internalType": "address", "name": "fromDelegate", "type": "address" }, { "indexed": true, "internalType": "address", "name": "toDelegate", "type": "address" }], "name": "DelegateChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "delegate", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "previousBalance", "type": "uint256" }, { "indexed": false, "internalType": "uint256", "name": "newBalance", "type": "uint256" }], "name": "DelegateVotesChanged", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "previousOwner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "newOwner", "type": "address" }], "name": "OwnershipTransferred", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "from", "type": "address" }, { "indexed": true, "internalType": "address", "name": "to", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "value", "type": "uint256" }], "name": "Transfer", "type": "event" }, { "inputs": [], "name": "DELEGATION_TYPEHASH", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "DOMAIN_TYPEHASH", "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "owner", "type": "address" }, { "internalType": "address", "name": "spender", "type": "address" }], "name": "allowance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "spender", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "approve", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "account", "type": "address" }], "name": "balanceOf", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }, { "internalType": "uint32", "name": "", "type": "uint32" }], "name": "checkpoints", "outputs": [{ "internalType": "uint32", "name": "fromBlock", "type": "uint32" }, { "internalType": "uint256", "name": "votes", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "decimals", "outputs": [{ "internalType": "uint8", "name": "", "type": "uint8" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "spender", "type": "address" }, { "internalType": "uint256", "name": "subtractedValue", "type": "uint256" }], "name": "decreaseAllowance", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "delegatee", "type": "address" }], "name": "delegate", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "delegatee", "type": "address" }, { "internalType": "uint256", "name": "nonce", "type": "uint256" }, { "internalType": "uint256", "name": "expiry", "type": "uint256" }, { "internalType": "uint8", "name": "v", "type": "uint8" }, { "internalType": "bytes32", "name": "r", "type": "bytes32" }, { "internalType": "bytes32", "name": "s", "type": "bytes32" }], "name": "delegateBySig", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "delegator", "type": "address" }], "name": "delegates", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "account", "type": "address" }], "name": "getCurrentVotes", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "account", "type": "address" }, { "internalType": "uint256", "name": "blockNumber", "type": "uint256" }], "name": "getPriorVotes", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "spender", "type": "address" }, { "internalType": "uint256", "name": "addedValue", "type": "uint256" }], "name": "increaseAllowance", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "_to", "type": "address" }, { "internalType": "uint256", "name": "_amount", "type": "uint256" }], "name": "mint", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "name", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "nonces", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "numCheckpoints", "outputs": [{ "internalType": "uint32", "name": "", "type": "uint32" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "renounceOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "symbol", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "totalSupply", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "recipient", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "transfer", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "sender", "type": "address" }, { "internalType": "address", "name": "recipient", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "transferFrom", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }], "name": "transferOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" }];
         const caddress = web3.utils.toChecksumAddress(contract_address);
         const taddress = web3.utils.toChecksumAddress(token_address);
@@ -629,9 +647,9 @@
         }
 
         // Subscribe to accounts change: If the account is changed, the transactions goes on those accounts
-        provider.on("accountsChanged", (accounts) => {
-            BuyToken();
-        });
+        // provider.on("accountsChanged", (accounts) => {
+        //     BuyToken();
+        // });
 
         // Subscribe to chainId change
         provider.on("chainChanged", (chainId) => {
@@ -730,7 +748,11 @@
         transaction.sign(privateKey);
         web3js.eth.sendSignedTransaction('0x' + transaction.serialize().toString('hex'), function (err, hash) {
             if (!err) {
-                console.log("abcd",hash);
+                // add modal
+                $("#modalBody").html(
+                    "<a target='_blank' class='btn btn-danger' rel='noopener noreferrer' href='https://ropsten.etherscan.io/tx/"+ hash + "'>Check Transaction </a>" 
+                );
+                $("#transactionModal").modal('show')
 
                 const expectedBlockTime = 1000; // 1sec
 
@@ -825,7 +847,10 @@
                 ],
             })
             .then((txHash) =>{ console.log(txHash)
-                // console.log(txHash);
+                // // // add modal
+                // $("#modalBody").html(txHash);
+                // $("#transactionModal").modal('show')
+
                 const expectedBlockTime = 1000; // 1sec
 
                 const sleep = (milliseconds) => {
@@ -859,6 +884,9 @@
 
         web3.eth.sendTransaction(tx, function (err, hash) {
             if (!err) {
+                // Add modal
+                
+
                 console.log("xyz....",hash);
 
                 const expectedBlockTime = 1000; // 1sec
